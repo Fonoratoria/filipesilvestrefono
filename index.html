@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fonoaudiólogo em Anápolis/GO. Atendimento domiciliar e online em Voz, Disfagia e Comunicação. CRFA 5-13357.">
+<title>Filipe Silvestre — Fonoaudiólogo | Anápolis/GO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   VARIÁVEIS E RESET
+============================================= */
+:root {
+  --azul: #006EB4;
+  --azul-escuro: #005a93;
+  --turquesa: #46C8BE;
+  --grafite: #141414;
+  --cinza-texto: #4a4a4a;
+  --cinza-suave: #6b6b6b;
+  --bg-suave: #F5FAFC;
+  --branco: #ffffff;
+  --sombra: 0 4px 24px rgba(0,110,180,0.10);
+  --raio: 14px;
+  --max-width: 1100px;
+  --secao-padding: 96px 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--grafite);
+  background: var(--branco);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* =============================================
+   UTILITÁRIOS
+============================================= */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--azul);
+  color: var(--branco);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(0,110,180,0.30);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.btn-whatsapp:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(0,110,180,0.35);
+}
+.btn-whatsapp svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+.secao-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--azul);
+  background: rgba(0,110,180,0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.secao-label::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--turquesa);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.titulo-secao {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--grafite);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.titulo-secao .destaque { color: var(--azul); }
+
+.subtitulo-secao {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+.divisor {
+  width: 48px;
+  height: 3px;
+  background: var(--turquesa);
+  border-radius: 2px;
+  margin: 16px 0 32px;
+}
+
+/* =============================================
+   HEADER / NAV
+============================================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,110,180,0.08);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+}
+
+.nav-marca {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.nav-marca-nome {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--grafite);
+}
+.nav-marca-crfa {
+  font-size: 11px;
+  color: var(--cinza-suave);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cinza-texto);
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.ativo { color: var(--azul); }
+
+.nav-cta {
+  background: var(--azul);
+  color: white !important;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--azul-escuro) !important; transform: translateY(-1px); }
+
+/* Menu mobile */
+.nav-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.nav-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--grafite);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* =============================================
+   HERO
+============================================= */
+#hero {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.hero-foto {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--grafite);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+}
+.hero-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Badge Google dentro da foto */
+.hero-badge-google {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.hero-badge-google .estrelas { color: #fbbc05; font-size: 14px; }
+.hero-badge-google .nota { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 800; color: var(--grafite); }
+.hero-badge-google .reviews { font-size: 11px; color: var(--cinza-suave); }
+
+.hero-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-headline {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800;
+  color: var(--azul);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero-headline span { display: block; }
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+.hero-sub strong { color: var(--grafite); font-weight: 600; }
+
+.hero-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* =============================================
+   SEÇÃO 2 — VOCÊ SE RECONHECE?
+============================================= */
+#servicos {
+  background: var(--bg-suave);
+  padding: var(--secao-padding);
+}
+
+.servicos-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.servicos-header .subtitulo-secao { margin: 0 auto; }
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.servico-card {
+  background: white;
+  border-radius: var(--raio);
+  padding: 40px 32px;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-top: 3px solid transparent;
+}
+.servico-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,110,180,0.15);
+}
+.servico-card:nth-child(1) { border-top-color: var(--azul); }
+.servico-card:nth-child(2) { border-top-color: var(--turquesa); }
+.servico-card:nth-child(3) { border-top-color: #9bc8e8; }
+
+.servico-numero {
+  font-family: 'Sora', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--azul);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.servico-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 16px;
+}
+
+.servico-texto {
+  font-size: 15px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.servico-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul);
+  transition: gap 0.2s;
+}
+.servico-link:hover { gap: 10px; }
+.servico-link::after { content: "→"; }
+
+/* =============================================
+   SEÇÃO 3 — SOBRE / QUEM SOU EU
+============================================= */
+#sobre {
+  padding: var(--secao-padding);
+}
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sobre-foto {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--bg-suave);
+  box-shadow: var(--sombra);
+}
+.sobre-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.sobre-conteudo {}
+
+.sobre-texto {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+/* Seção Formação */
+.formacao-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.formacao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: var(--max-width);
+  margin: 48px auto 0;
+}
+
+.formacao-foto {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-suave);
+  box-shadow: var(--sombra);
+}
+.formacao-foto img { width: 100%; object-fit: cover; }
+
+.formacao-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.formacao-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--cinza-texto);
+  line-height: 1.5;
+}
+.formacao-lista li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--turquesa);
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   SEÇÃO 4 — POR QUE ME ESCOLHER
+============================================= */
+#diferenciais {
+  background: var(--bg-suave);
+  padding: var(--secao-padding);
+}
+
+.diferenciais-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.diferenciais-header .divisor { margin: 16px auto 0; }
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.diferencial-card {
+  background: white;
+  border-radius: var(--raio);
+  padding: 36px;
+  box-shadow: var(--sombra);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+.diferencial-card:hover { transform: translateY(-3px); }
+
+.diferencial-numero {
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--azul);
+  line-height: 1;
+  min-width: 44px;
+}
+
+.diferencial-body {}
+.diferencial-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 10px;
+}
+.diferencial-texto {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+}
+
+.diferenciais-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* =============================================
+   SEÇÃO 5 — AGENDE SUA AVALIAÇÃO
+============================================= */
+#agendar {
+  padding: var(--secao-padding);
+}
+
+.agendar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.agendar-foto {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-suave);
+  box-shadow: var(--sombra);
+}
+.agendar-foto img { width: 100%; object-fit: cover; }
+
+.agendar-texto {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+/* =============================================
+   SEÇÃO 6 — AVALIAÇÃO VOCAL (Voxmetria)
+============================================= */
+#avaliacao-vocal {
+  background: var(--grafite);
+  padding: var(--secao-padding);
+  position: relative;
+  overflow: hidden;
+}
+#avaliacao-vocal::before {
+  content: "";
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(70,200,190,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.avaliacao-vocal-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.avaliacao-vocal-header {
+  margin-bottom: 48px;
+}
+.avaliacao-vocal-header .secao-label {
+  background: rgba(70,200,190,0.15);
+  color: var(--turquesa);
+}
+.avaliacao-vocal-header .titulo-secao { color: white; }
+.avaliacao-vocal-header .subtitulo-secao { color: rgba(255,255,255,0.7); }
+
+.avaliacao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Imagem da avaliação vocal */
+.avaliacao-imagem {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #006EB4, #46C8BE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.avaliacao-imagem img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Placeholder para vídeo */
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: linear-gradient(135deg, #006EB4 0%, #46C8BE 100%);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.play-btn {
+  width: 72px; height: 72px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.play-btn::after {
+  content: "";
+  width: 0; height: 0;
+  border-left: 20px solid var(--azul);
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  margin-left: 5px;
+}
+.video-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+.video-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: white;
+  color: var(--grafite);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.avaliacao-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.avaliacao-lista li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+}
+.avaliacao-lista li::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--turquesa);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.btn-turquesa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--turquesa);
+  color: var(--grafite);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(70,200,190,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-turquesa:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(70,200,190,0.45); }
+
+/* =============================================
+   SEÇÃO 7 — CASOS REAIS (Vídeos)
+============================================= */
+#casos-reais {
+  padding: var(--secao-padding);
+}
+
+.casos-header {
+  text-align: center;
+  margin-bottom: 56px;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+.casos-header .divisor { margin: 16px auto 0; }
+
+.casos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.caso-card {
+  border-radius: var(--raio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  background: white;
+}
+.caso-video {
+  aspect-ratio: 9/16;
+  background: linear-gradient(135deg, #1a1a2e, #006EB4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  text-align: center;
+}
+/* Quando tiver iframe YouTube, substituir .caso-video por iframe */
+.caso-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.caso-legenda {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.5;
+}
+
+/* Seção Disfagia — vídeo único centralizado */
+.disfagia-video-wrap {
+  max-width: 380px;
+  margin: 0 auto 48px;
+}
+
+/* =============================================
+   SEÇÃO 8 — CONTATO
+============================================= */
+#contato {
+  background: var(--bg-suave);
+  padding: var(--secao-padding);
+}
+
+.contato-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contato-inner .titulo-secao { margin-bottom: 12px; }
+.contato-inner .subtitulo-secao { margin: 0 auto 40px; }
+
+.contato-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.contato-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--cinza-texto);
+}
+.contato-item a { color: var(--azul); font-weight: 600; }
+.contato-item a:hover { text-decoration: underline; }
+
+.horario-box {
+  background: white;
+  border-radius: var(--raio);
+  padding: 28px;
+  box-shadow: var(--sombra);
+  margin-bottom: 36px;
+  text-align: left;
+}
+.horario-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 10px;
+}
+.horario-texto {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.6;
+}
+
+/* =============================================
+   RODAPÉ
+============================================= */
+footer {
+  background: var(--grafite);
+  color: rgba(255,255,255,0.6);
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+footer a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+footer a:hover { color: white; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+
+/* =============================================
+   RESPONSIVO — MOBILE
+============================================= */
+@media (max-width: 768px) {
+  :root { --secao-padding: 64px 20px; }
+
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+  .nav-menu-btn { display: flex; }
+
+  /* Hero */
+  #hero {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 64px;
+    min-height: auto;
+    gap: 36px;
+  }
+  .hero-foto { order: -1; aspect-ratio: 3/4; }
+  .hero-headline { font-size: 34px; }
+  .hero-btns { align-items: stretch; }
+  .btn-whatsapp { justify-content: center; }
+
+  /* Serviços */
+  .servicos-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  /* Sobre */
+  .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
+  .formacao-grid { grid-template-columns: 1fr; gap: 24px; }
+
+  /* Diferenciais */
+  .diferenciais-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Agendar */
+  .agendar-grid { grid-template-columns: 1fr; gap: 36px; }
+
+  /* Avaliação vocal */
+  .avaliacao-grid { grid-template-columns: 1fr; gap: 36px; }
+
+  /* Casos reais */
+  .casos-grid { grid-template-columns: 1fr; max-width: 360px; }
+
+  /* Títulos */
+  .titulo-secao { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     HEADER / NAV
+============================================= -->
+<header>
+  <nav>
+    <div class="nav-marca">
+      <span class="nav-marca-nome">Filipe Silvestre</span>
+      <span class="nav-marca-crfa">Fonoaudiólogo · CRFa 5-13357</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#hero" class="ativo">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="nav-cta">Agendar</a></li>
+    </ul>
+
+    <button class="nav-menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+
+<!-- =============================================
+     SEÇÃO 1 — HERO
+============================================= -->
+<section id="hero">
+  <!-- FOTO — substituir src pela foto principal do jaleco cruzando os braços -->
+  <div class="hero-foto">
+    <img src="foto-hero.jpg" alt="Filipe Silvestre, Fonoaudiólogo em Anápolis/GO">
+    <div class="hero-badge-google">
+      <!-- Logo Google (SVG simples) -->
+      <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#FFC107" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/>
+        <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/>
+        <path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.6 26.8 36.5 24 36.5c-5.2 0-9.6-3.5-11.2-8.3l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+        <path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.6l6.2 5.2C41 35.3 44 30 44 24c0-1.3-.1-2.7-.4-4z"/>
+      </svg>
+      <div>
+        <div class="nota">5.0 <span class="estrelas">★★★★★</span></div>
+        <div class="reviews">10 avaliações</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-conteudo">
+    <p class="secao-label">Anápolis/GO · Domiciliar e Online</p>
+    <h1 class="hero-headline">
+      <span>Vozes que ressoam.</span>
+      <span>Refeições sem medo.</span>
+      <span>Palavras que reconectam.</span>
+    </h1>
+    <p class="hero-sub">
+      Atendimento fonoaudiológico humanizado em <strong>Anápolis e online.</strong><br>
+      Voz, deglutição e comunicação.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 2 — VOCÊ SE RECONHECE?
+============================================= -->
+<section id="servicos">
+  <div class="container">
+    <div class="servicos-header">
+      <span class="secao-label">Áreas de atuação</span>
+      <h2 class="titulo-secao">Você se reconhece em<br>algum desses casos?</h2>
+      <div class="divisor" style="margin: 16px auto 0;"></div>
+    </div>
+
+    <div class="servicos-grid">
+
+      <!-- Card 1: Voz -->
+      <div class="servico-card">
+        <div class="servico-numero">1</div>
+        <h3 class="servico-titulo">Voz</h3>
+        <p class="servico-texto">
+          Sua voz cansa rápido, fica rouca ou falha na hora mais importante?
+          Quer aprimorar sua voz para palco, sala de aula ou liderança?
+          Voz firme, saudável e com a projeção que sua profissão exige.
+        </p>
+        <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20avaliar%20minha%20voz" class="servico-link">Avaliar minha voz</a>
+      </div>
+
+      <!-- Card 2: Disfagia -->
+      <div class="servico-card">
+        <div class="servico-numero">2</div>
+        <h3 class="servico-titulo">Disfagia</h3>
+        <p class="servico-texto">
+          Dificuldade para engolir? Tosse durante as refeições? Medo de se engasgar?
+          Reabilitação para idosos, pós-AVC e pacientes neurológicos.
+          Comer com segurança, dignidade e autonomia.
+        </p>
+        <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20avaliar%20a%20deglutição" class="servico-link">Avaliar minha deglutição</a>
+      </div>
+
+      <!-- Card 3: Comunicação -->
+      <div class="servico-card">
+        <div class="servico-numero">3</div>
+        <h3 class="servico-titulo">Comunicação</h3>
+        <p class="servico-texto">
+          Dificuldade em se fazer entender? Fala confusa após AVC ou lesão?
+          Reabilitação da fala e linguagem para pacientes neurológicos.
+          Reconectar-se com quem você ama.
+        </p>
+        <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20recuperar%20minha%20fala" class="servico-link">Recuperar minha fala</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 3 — SOBRE
+============================================= -->
+<section id="sobre">
+  <div class="container">
+
+    <!-- Parte 1: Quem sou eu -->
+    <div class="sobre-grid">
+      <div class="sobre-conteudo">
+        <span class="secao-label">Sobre</span>
+        <h2 class="titulo-secao">Quem sou eu?</h2>
+        <div class="divisor"></div>
+        <p class="sobre-texto">
+          Sou fonoaudiólogo com atendimento domiciliar e online em Anápolis/GO.
+          Com zelo, originalidade e visão, ofereço um cuidado humanizado e baseado
+          em evidências — no conforto da sua própria casa.
+        </p>
+        <p class="sobre-texto">
+          Vozes que ressoam. Esse é o meu propósito: despertar o potencial
+          comunicativo de cada pessoa, com resultados reais e duradouros.
+        </p>
+      </div>
+      <!-- FOTO — foto Filipe casual (colete, fundo flores) -->
+      <div class="sobre-foto">
+        <img src="foto-sobre.jpg" alt="Filipe Silvestre">
+      </div>
+    </div>
+
+    <!-- Parte 2: Formação -->
+    <div class="formacao-grid">
+      <!-- FOTO — foto Filipe lendo livro VOZ -->
+      <div class="formacao-foto">
+        <img src="foto-formacao.jpg" alt="Formação Filipe Silvestre">
+      </div>
+      <div>
+        <h3 class="formacao-titulo">Formação</h3>
+        <ul class="formacao-lista">
+          <li>Graduação em Fonoaudiologia — Universidade de Brasília (UnB)</li>
+          <li>Pós-graduação em Voz e Disfagia</li>
+          <li>FIV — Formação Integrada em Voz (CEV) | Coach Vocal</li>
+          <li>Vivência clínica em UTI — Hospital Regional da Asa Norte (HRAN/Brasília)</li>
+          <li>Reabilitação física e neurológica — Centro CERIII (Vila São José Bento Cottolengo)</li>
+          <li>Ministrante de treinamentos em comunicação e oratória</li>
+          <li>Aprimoramentos contínuos em Voz e Disfagia</li>
+          <li>CRFA 5-13357</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 4 — POR QUE ME ESCOLHER
+============================================= -->
+<section id="diferenciais">
+  <div class="container">
+    <div class="diferenciais-header">
+      <span class="secao-label">Diferenciais</span>
+      <h2 class="titulo-secao">Por que me escolher?</h2>
+      <p class="subtitulo-secao" style="margin: 12px auto 0;">O que torna meu atendimento diferente</p>
+      <div class="divisor"></div>
+    </div>
+
+    <div class="diferenciais-grid">
+
+      <div class="diferencial-card">
+        <div class="diferencial-numero">1</div>
+        <div class="diferencial-body">
+          <h3 class="diferencial-titulo">Avaliação vocal completa</h3>
+          <p class="diferencial-texto">
+            Anamnese clínica, avaliação perceptivo-auditiva atualizada e análise
+            acústica complementar com Voxmetria. Tudo junto, num único atendimento.
+          </p>
+        </div>
+      </div>
+
+      <div class="diferencial-card">
+        <div class="diferencial-numero">2</div>
+        <div class="diferencial-body">
+          <h3 class="diferencial-titulo">Feedback e orientações claras</h3>
+          <p class="diferencial-texto">
+            Ao final da avaliação, você recebe feedback detalhado, orientações
+            personalizadas e um exercício inicial pra começar já. Sai com clareza e ação.
+          </p>
+        </div>
+      </div>
+
+      <div class="diferencial-card">
+        <div class="diferencial-numero">3</div>
+        <div class="diferencial-body">
+          <h3 class="diferencial-titulo">Formação especializada em voz</h3>
+          <p class="diferencial-texto">
+            Pós-graduação em Voz e Disfagia, Formação Integrada em Voz pelo CEV
+            (Coach Vocal) e aprimoramento contínuo. Conhecimento técnico aplicado
+            a cada paciente.
+          </p>
+        </div>
+      </div>
+
+      <div class="diferencial-card">
+        <div class="diferencial-numero">4</div>
+        <div class="diferencial-body">
+          <h3 class="diferencial-titulo">Atendimento domiciliar e online</h3>
+          <p class="diferencial-texto">
+            Você escolhe: no conforto da sua casa em Anápolis ou online de qualquer
+            lugar. Mesma técnica, mesmo cuidado.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="diferenciais-cta">
+      <a href="https://wa.me/556298814511?text=Quero%20conversar%20com%20o%20Filipe" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero conversar com o Filipe
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 5 — AGENDE SUA AVALIAÇÃO
+============================================= -->
+<section id="agendar">
+  <div class="container">
+    <div class="agendar-grid">
+      <!-- FOTO — Filipe com tablet/prancheta (foto azul escuro) -->
+      <div class="agendar-foto">
+        <img src="foto-agendar.jpg" alt="Atendimento domiciliar Filipe Silvestre">
+      </div>
+      <div>
+        <span class="secao-label">Atendimento domiciliar</span>
+        <h2 class="titulo-secao">Agende sua <span class="destaque">avaliação</span></h2>
+        <div class="divisor"></div>
+        <p class="agendar-texto">
+          Esqueça deslocamentos e salas de espera. Levo o atendimento
+          fonoaudiológico até você — com a mesma qualidade, tecnologia e
+          cuidado de uma clínica especializada.
+        </p>
+        <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20uma%20consulta" class="btn-whatsapp">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar uma consulta
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 6 — AVALIAÇÃO VOCAL (Voxmetria)
+============================================= -->
+<section id="avaliacao-vocal">
+  <div class="avaliacao-vocal-inner container">
+    <div class="avaliacao-vocal-header">
+      <span class="secao-label">Tecnologia clínica</span>
+      <h2 class="titulo-secao">Avaliação acústica da voz</h2>
+      <p class="subtitulo-secao">
+        Análise vocal com software Voxmetria e microfone profissional.
+        Você recebe um relatório completo da sua avaliação.
+      </p>
+    </div>
+
+    <div class="avaliacao-grid">
+      <!-- FOTO/VÍDEO — imagem da avaliação vocal (foto com logo azul neon) -->
+      <!-- Substituir por imagem real ou embed YouTube quando tiver vídeo -->
+      <div class="avaliacao-imagem">
+        <img src="foto-avaliacao-vocal.jpg" alt="Avaliação vocal com Voxmetria">
+        <!-- Quando tiver vídeo YouTube, substituir por:
+        <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+                title="Avaliação vocal Filipe Silvestre"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
+        -->
+      </div>
+
+      <div>
+        <ul class="avaliacao-lista">
+          <li>Anamnese detalhada</li>
+          <li>Avaliação perceptivo-auditiva</li>
+          <li>Análise acústica da voz (Voxmetria)</li>
+          <li>Planejamento terapêutico</li>
+          <li>Exercícios iniciais</li>
+          <li>Relatório completo entregue ao paciente</li>
+        </ul>
+        <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20avaliar%20minha%20voz" class="btn-turquesa">
+          Avaliar minha voz
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 7 — CASOS REAIS
+============================================= -->
+<section id="casos-reais">
+  <div class="container">
+    <div class="casos-header">
+      <span class="secao-label">Casos reais</span>
+      <h2 class="titulo-secao">Casos reais dos meus atendimentos</h2>
+      <p class="subtitulo-secao" style="margin: 0 auto;">Veja transformações reais de pacientes que confiaram no meu trabalho</p>
+      <div class="divisor"></div>
+    </div>
+
+    <!-- Vídeos de Voz -->
+    <div class="casos-grid">
+      <div class="caso-card">
+        <!-- VÍDEO YOUTUBE — embed aqui quando disponível -->
+        <div class="caso-video">
+          <div>
+            <div class="play-btn"></div>
+            <div class="video-label">Vídeo em breve</div>
+          </div>
+          <span class="video-badge">VOZ</span>
+        </div>
+        <div class="caso-legenda">Recuperação vocal pós-cirurgia</div>
+      </div>
+
+      <div class="caso-card">
+        <!-- VÍDEO YOUTUBE — embed aqui quando disponível -->
+        <div class="caso-video">
+          <div>
+            <div class="play-btn"></div>
+            <div class="video-label">Vídeo em breve</div>
+          </div>
+          <span class="video-badge">VOZ</span>
+        </div>
+        <div class="caso-legenda">Muda vocal incompleta — Mudança significativa da voz já durante a primeira avaliação</div>
+      </div>
+    </div>
+
+    <!-- Vídeo extra de Voz (muda vocal) -->
+    <div style="max-width: 380px; margin: 28px auto 56px;">
+      <div class="caso-card">
+        <div class="caso-video">
+          <div>
+            <div class="play-btn"></div>
+            <div class="video-label">Vídeo em breve</div>
+          </div>
+          <span class="video-badge">VOZ</span>
+        </div>
+        <div class="caso-legenda">Muda vocal incompleta — antes e depois. Paciente que sofria bullying pela voz fina, hoje com voz natural recuperada.</div>
+      </div>
+    </div>
+
+    <!-- Disfagia -->
+    <div style="text-align:center; margin-bottom: 32px;">
+      <span class="secao-label">Disfagia</span>
+      <h3 class="titulo-secao" style="font-size:28px;">Atendimento em disfagia</h3>
+    </div>
+    <div class="casos-grid" style="max-width:380px;">
+      <div class="caso-card">
+        <div class="caso-video">
+          <div>
+            <div class="play-btn"></div>
+            <div class="video-label">Vídeo em breve</div>
+          </div>
+          <span class="video-badge">DISFAGIA</span>
+        </div>
+        <div class="caso-legenda">Terapia humanizada — paciente com Alzheimer canta comigo nos intervalos da terapia de disfagia</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =============================================
+     SEÇÃO 8 — CONTATO
+============================================= -->
+<section id="contato">
+  <div class="contato-inner">
+    <span class="secao-label" style="margin: 0 auto 16px; display: table;">Contato</span>
+    <h2 class="titulo-secao">Vamos conversar?</h2>
+    <p class="subtitulo-secao">Entre em contato pelo canal que preferir. Respondo rapidinho.</p>
+    <div class="divisor" style="margin: 16px auto 32px;"></div>
+
+    <div class="contato-infos">
+      <div class="contato-item">
+        📱 <a href="https://wa.me/556298814511">(62) 98814-5511</a>
+      </div>
+      <div class="contato-item">
+        📷 <a href="https://instagram.com/filipesilvestrefono" target="_blank">@filipesilvestrefono</a>
+      </div>
+      <div class="contato-item">
+        📍 Anápolis/GO
+      </div>
+    </div>
+
+    <div class="horario-box">
+      <div class="horario-titulo">Horário de funcionamento</div>
+      <div class="horario-texto">
+        Segunda a sexta: 8:00 às 17:00<br>
+        Atendimento domiciliar e online em Anápolis/GO
+      </div>
+    </div>
+
+    <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20uma%20avaliação" class="btn-whatsapp" style="margin: 0 auto; display: table;">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar avaliação
+    </a>
+  </div>
+</section>
+
+
+<!-- =============================================
+     RODAPÉ
+============================================= -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Termos e Condições</a>
+    <a href="#">Política de Privacidade</a>
+  </div>
+  <p>© 2026 Filipe Silvestre Fonoaudiologia | CNPJ 60.994.445/0001-66 | CRFA 5-13357</p>
+</footer>
+
+</body>
+</html>
