@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Fonoaudiólogo em Anápolis/GO. Atendimento domiciliar e online em Voz, Disfagia e Comunicação. CRFA 5-13357.">
-<title>Filipe Silvestre — Fonoaudiólogo | Anápolis/GO</title>
+<title>Fonoaudiólogo em Anápolis | Filipe Silvestre — Voz, Disfagia e Comunicação</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -24,20 +24,18 @@
   --sombra: 0 4px 24px rgba(0,110,180,0.10);
   --raio: 14px;
   --max-width: 1100px;
-  --secao-padding: 96px 24px;
+  --secao-v: 96px;
+  --secao-h: 24px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Inter', sans-serif;
   color: var(--grafite);
   background: var(--branco);
   -webkit-font-smoothing: antialiased;
 }
-
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
@@ -47,12 +45,18 @@ a { text-decoration: none; color: inherit; }
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--secao-h);
 }
 
+.secao-padding {
+  padding: var(--secao-v) var(--secao-h);
+}
+
+/* Botão WhatsApp — padrão único */
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background: var(--azul);
   color: var(--branco);
@@ -63,6 +67,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 50px;
   box-shadow: 0 6px 24px rgba(0,110,180,0.30);
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  cursor: pointer;
 }
 .btn-whatsapp:hover {
   background: var(--azul-escuro);
@@ -70,6 +75,24 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 10px 32px rgba(0,110,180,0.35);
 }
 .btn-whatsapp svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+.btn-turquesa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--turquesa);
+  color: var(--grafite);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(70,200,190,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.btn-turquesa:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(70,200,190,0.45); }
 
 .secao-label {
   display: inline-flex;
@@ -96,7 +119,7 @@ a { text-decoration: none; color: inherit; }
 
 .titulo-secao {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 800;
   color: var(--grafite);
   line-height: 1.2;
@@ -116,8 +139,11 @@ a { text-decoration: none; color: inherit; }
   height: 3px;
   background: var(--turquesa);
   border-radius: 2px;
-  margin: 16px 0 32px;
+  margin: 16px 0 40px;
 }
+
+/* SVG WhatsApp reutilizável */
+.ico-whatsapp { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
 
 /* =============================================
    HEADER / NAV
@@ -126,7 +152,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0,110,180,0.08);
 }
@@ -137,7 +163,7 @@ nav {
   justify-content: space-between;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--secao-h);
   height: 72px;
 }
 
@@ -202,6 +228,38 @@ nav {
   transition: all 0.3s;
 }
 
+/* Drawer mobile */
+.nav-mobile-drawer {
+  display: none;
+  flex-direction: column;
+  background: white;
+  border-top: 1px solid rgba(0,110,180,0.08);
+  padding: 20px var(--secao-h) 24px;
+  gap: 4px;
+}
+.nav-mobile-drawer.aberto { display: flex; }
+.nav-mobile-drawer a {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cinza-texto);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: color 0.2s;
+}
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer a:hover { color: var(--azul); }
+.nav-mobile-drawer .nav-cta-mobile {
+  margin-top: 8px;
+  background: var(--azul);
+  color: white !important;
+  padding: 14px 22px;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: 700 !important;
+  border-bottom: none !important;
+}
+
 /* =============================================
    HERO
 ============================================= */
@@ -210,10 +268,10 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 48px;
+  gap: 56px;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 64px 24px;
+  padding: 64px var(--secao-h);
 }
 
 .hero-foto {
@@ -221,8 +279,8 @@ nav {
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: var(--grafite);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.13);
 }
 .hero-foto img {
   width: 100%;
@@ -244,30 +302,29 @@ nav {
   gap: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
-.hero-badge-google .estrelas { color: #fbbc05; font-size: 14px; }
+.hero-badge-google .estrelas { color: #fbbc05; font-size: 14px; letter-spacing: 1px; }
 .hero-badge-google .nota { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 800; color: var(--grafite); }
 .hero-badge-google .reviews { font-size: 11px; color: var(--cinza-suave); }
 
 .hero-conteudo {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .hero-headline {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(32px, 4.5vw, 52px);
+  font-size: clamp(30px, 4vw, 50px);
   font-weight: 800;
   color: var(--azul);
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 .hero-headline span { display: block; }
 
 .hero-sub {
   font-size: 17px;
   color: var(--cinza-texto);
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 40px;
 }
 .hero-sub strong { color: var(--grafite); font-weight: 600; }
@@ -284,7 +341,7 @@ nav {
 ============================================= */
 #servicos {
   background: var(--bg-suave);
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
 }
 
 .servicos-header {
@@ -292,6 +349,7 @@ nav {
   margin-bottom: 56px;
 }
 .servicos-header .subtitulo-secao { margin: 0 auto; }
+.servicos-header .divisor { margin: 16px auto 0; }
 
 .servicos-grid {
   display: grid;
@@ -308,7 +366,6 @@ nav {
   box-shadow: var(--sombra);
   display: flex;
   flex-direction: column;
-  gap: 0;
   transition: transform 0.2s, box-shadow 0.2s;
   border-top: 3px solid transparent;
 }
@@ -360,10 +417,15 @@ nav {
 .servico-link::after { content: "→"; }
 
 /* =============================================
-   SEÇÃO 3 — SOBRE / QUEM SOU EU
+   SEÇÃO 3 — SOBRE
 ============================================= */
 #sobre {
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.sobre-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .sobre-grid {
@@ -371,59 +433,53 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: center;
-  max-width: var(--max-width);
-  margin: 0 auto;
+  margin-bottom: 72px;
 }
 
 .sobre-foto {
   border-radius: 20px;
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: var(--bg-suave);
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
   box-shadow: var(--sombra);
 }
 .sobre-foto img { width: 100%; height: 100%; object-fit: cover; }
-
-.sobre-conteudo {}
 
 .sobre-texto {
   font-size: 17px;
   color: var(--cinza-texto);
   line-height: 1.75;
-  margin-bottom: 40px;
-}
-
-/* Seção Formação */
-.formacao-titulo {
-  font-family: 'Sora', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--grafite);
   margin-bottom: 20px;
-  margin-top: 40px;
 }
 
 .formacao-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  max-width: var(--max-width);
-  margin: 48px auto 0;
+  gap: 56px;
+  align-items: start;
 }
 
 .formacao-foto {
   border-radius: 20px;
   overflow: hidden;
-  background: var(--bg-suave);
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
   box-shadow: var(--sombra);
 }
 .formacao-foto img { width: 100%; object-fit: cover; }
+
+.formacao-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 24px;
+}
 
 .formacao-lista {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 .formacao-lista li {
   display: flex;
@@ -431,15 +487,15 @@ nav {
   gap: 12px;
   font-size: 15px;
   color: var(--cinza-texto);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .formacao-lista li::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   background: var(--turquesa);
   border-radius: 50%;
-  margin-top: 7px;
+  margin-top: 6px;
   flex-shrink: 0;
 }
 
@@ -448,19 +504,20 @@ nav {
 ============================================= */
 #diferenciais {
   background: var(--bg-suave);
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
 }
 
 .diferenciais-header {
   text-align: center;
   margin-bottom: 56px;
 }
+.diferenciais-header .subtitulo-secao { margin: 12px auto 0; }
 .diferenciais-header .divisor { margin: 16px auto 0; }
 
 .diferenciais-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  gap: 24px;
   max-width: 860px;
   margin: 0 auto;
 }
@@ -484,9 +541,9 @@ nav {
   color: var(--azul);
   line-height: 1;
   min-width: 44px;
+  opacity: 0.25;
 }
 
-.diferencial-body {}
 .diferencial-titulo {
   font-family: 'Sora', sans-serif;
   font-size: 17px;
@@ -509,7 +566,7 @@ nav {
    SEÇÃO 5 — AGENDE SUA AVALIAÇÃO
 ============================================= */
 #agendar {
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
 }
 
 .agendar-grid {
@@ -524,15 +581,16 @@ nav {
 .agendar-foto {
   border-radius: 20px;
   overflow: hidden;
-  background: var(--bg-suave);
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
   box-shadow: var(--sombra);
+  aspect-ratio: 4/5;
 }
-.agendar-foto img { width: 100%; object-fit: cover; }
+.agendar-foto img { width: 100%; height: 100%; object-fit: cover; }
 
 .agendar-texto {
   font-size: 17px;
   color: var(--cinza-texto);
-  line-height: 1.7;
+  line-height: 1.65;
   margin-bottom: 36px;
 }
 
@@ -541,7 +599,7 @@ nav {
 ============================================= */
 #avaliacao-vocal {
   background: var(--grafite);
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
   position: relative;
   overflow: hidden;
 }
@@ -572,76 +630,18 @@ nav {
 .avaliacao-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 56px;
   align-items: center;
 }
 
-/* Imagem da avaliação vocal */
 .avaliacao-imagem {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 24px 64px rgba(0,0,0,0.4);
   aspect-ratio: 3/4;
   background: linear-gradient(135deg, #006EB4, #46C8BE);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 }
 .avaliacao-imagem img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Placeholder para vídeo */
-.video-placeholder {
-  width: 100%;
-  aspect-ratio: 9/16;
-  background: linear-gradient(135deg, #006EB4 0%, #46C8BE 100%);
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  padding: 24px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-  position: relative;
-  overflow: hidden;
-}
-.play-btn {
-  width: 72px; height: 72px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-}
-.play-btn::after {
-  content: "";
-  width: 0; height: 0;
-  border-left: 20px solid var(--azul);
-  border-top: 13px solid transparent;
-  border-bottom: 13px solid transparent;
-  margin-left: 5px;
-}
-.video-label {
-  font-family: 'Sora', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  opacity: 0.9;
-}
-.video-badge {
-  position: absolute;
-  top: 14px; left: 14px;
-  background: white;
-  color: var(--grafite);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 5px 10px;
-  border-radius: 6px;
-}
 
 .avaliacao-lista {
   list-style: none;
@@ -666,42 +666,29 @@ nav {
   flex-shrink: 0;
 }
 
-.btn-turquesa {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--turquesa);
-  color: var(--grafite);
-  font-family: 'Sora', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  padding: 16px 32px;
-  border-radius: 50px;
-  box-shadow: 0 6px 24px rgba(70,200,190,0.35);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.btn-turquesa:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(70,200,190,0.45); }
-
 /* =============================================
-   SEÇÃO 7 — CASOS REAIS (Vídeos)
+   SEÇÃO 7 — CASOS REAIS
 ============================================= */
 #casos-reais {
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
 }
 
 .casos-header {
   text-align: center;
   margin-bottom: 56px;
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
 }
 .casos-header .divisor { margin: 16px auto 0; }
+.casos-header .subtitulo-secao { margin: 0 auto; }
+
+.casos-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
 
 .casos-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  gap: 24px;
   max-width: 760px;
   margin: 0 auto;
 }
@@ -712,35 +699,70 @@ nav {
   box-shadow: var(--sombra);
   background: white;
 }
+
+/* Placeholder 9:16 */
 .caso-video {
   aspect-ratio: 9/16;
-  background: linear-gradient(135deg, #1a1a2e, #006EB4);
+  background: linear-gradient(135deg, #1a2a3a, #006EB4);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   color: white;
-  font-family: 'Sora', sans-serif;
-  font-size: 13px;
-  text-align: center;
 }
-/* Quando tiver iframe YouTube, substituir .caso-video por iframe */
 .caso-video iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
+
+.play-btn {
+  width: 64px; height: 64px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.play-btn::after {
+  content: "";
+  width: 0; height: 0;
+  border-left: 18px solid var(--azul);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 4px;
+}
+.video-label {
+  position: absolute;
+  bottom: 16px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.video-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: white;
+  color: var(--grafite);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
 .caso-legenda {
   padding: 16px 20px;
   font-size: 14px;
   color: var(--cinza-texto);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-/* Seção Disfagia — vídeo único centralizado */
-.disfagia-video-wrap {
-  max-width: 380px;
-  margin: 0 auto 48px;
+.disfagia-titulo {
+  text-align: center;
+  margin: 56px 0 32px;
 }
 
 /* =============================================
@@ -748,7 +770,7 @@ nav {
 ============================================= */
 #contato {
   background: var(--bg-suave);
-  padding: var(--secao-padding);
+  padding: var(--secao-v) var(--secao-h);
 }
 
 .contato-inner {
@@ -757,8 +779,7 @@ nav {
   text-align: center;
 }
 
-.contato-inner .titulo-secao { margin-bottom: 12px; }
-.contato-inner .subtitulo-secao { margin: 0 auto 40px; }
+.contato-inner .divisor { margin: 16px auto 40px; }
 
 .contato-infos {
   display: flex;
@@ -795,7 +816,7 @@ nav {
 .horario-texto {
   font-size: 14px;
   color: var(--cinza-texto);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* =============================================
@@ -804,20 +825,23 @@ nav {
 footer {
   background: var(--grafite);
   color: rgba(255,255,255,0.6);
-  padding: 40px 24px;
+  padding: 40px var(--secao-h);
   text-align: center;
   font-size: 13px;
   line-height: 1.8;
 }
 footer a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
 footer a:hover { color: white; }
-.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
 
 /* =============================================
    RESPONSIVO — MOBILE
 ============================================= */
 @media (max-width: 768px) {
-  :root { --secao-padding: 64px 20px; }
+  :root {
+    --secao-v: 64px;
+    --secao-h: 20px;
+  }
 
   /* Nav */
   .nav-links { display: none; }
@@ -827,36 +851,45 @@ footer a:hover { color: white; }
   /* Hero */
   #hero {
     grid-template-columns: 1fr;
-    padding: 40px 20px 64px;
+    padding: 36px var(--secao-h) 64px;
     min-height: auto;
-    gap: 36px;
+    gap: 32px;
   }
   .hero-foto { order: -1; aspect-ratio: 3/4; }
-  .hero-headline { font-size: 34px; }
+  .hero-headline { font-size: clamp(28px, 8vw, 38px); }
   .hero-btns { align-items: stretch; }
-  .btn-whatsapp { justify-content: center; }
+  .btn-whatsapp, .btn-turquesa { width: 100%; font-size: 15px; padding: 15px 24px; }
 
   /* Serviços */
-  .servicos-grid { grid-template-columns: 1fr; gap: 20px; }
+  .servicos-grid { grid-template-columns: 1fr; gap: 16px; }
 
   /* Sobre */
-  .sobre-grid { grid-template-columns: 1fr; gap: 36px; }
+  .sobre-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
   .formacao-grid { grid-template-columns: 1fr; gap: 24px; }
 
-  /* Diferenciais */
+  /* Diferenciais — garantir ordem 1,2,3,4 */
   .diferenciais-grid { grid-template-columns: 1fr; gap: 16px; }
+  .diferencial-card:nth-child(1) { order: 1; }
+  .diferencial-card:nth-child(2) { order: 2; }
+  .diferencial-card:nth-child(3) { order: 3; }
+  .diferencial-card:nth-child(4) { order: 4; }
 
   /* Agendar */
-  .agendar-grid { grid-template-columns: 1fr; gap: 36px; }
+  .agendar-grid { grid-template-columns: 1fr; gap: 32px; }
 
   /* Avaliação vocal */
   .avaliacao-grid { grid-template-columns: 1fr; gap: 36px; }
 
   /* Casos reais */
-  .casos-grid { grid-template-columns: 1fr; max-width: 360px; }
+  .casos-grid { grid-template-columns: 1fr; max-width: 340px; }
 
-  /* Títulos */
-  .titulo-secao { font-size: 28px; }
+  /* Diferenciais cta */
+  .diferenciais-cta .btn-whatsapp { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .hero-headline { font-size: 26px; }
+  .titulo-secao { font-size: 24px; }
 }
 </style>
 </head>
@@ -876,13 +909,22 @@ footer a:hover { color: white; }
       <li><a href="#hero" class="ativo">Início</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#servicos">Serviços</a></li>
-      <li><a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="nav-cta">Agendar</a></li>
+      <li><a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="nav-cta nav-cta-desktop">Agendar</a></li>
     </ul>
 
-    <button class="nav-menu-btn" aria-label="Menu">
+    <button class="nav-menu-btn" aria-label="Abrir menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </nav>
+
+  <!-- Drawer mobile -->
+  <div class="nav-mobile-drawer" id="navDrawer">
+    <a href="#hero" onclick="toggleMenu()">Início</a>
+    <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+    <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+    <a href="#contato" onclick="toggleMenu()">Contato</a>
+    <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="nav-cta-mobile">Agendar pelo WhatsApp</a>
+  </div>
 </header>
 
 
@@ -890,12 +932,11 @@ footer a:hover { color: white; }
      SEÇÃO 1 — HERO
 ============================================= -->
 <section id="hero">
-  <!-- FOTO — substituir src pela foto principal do jaleco cruzando os braços -->
   <div class="hero-foto">
+    <!-- Substituir src pela foto principal (jaleco, braços cruzados) -->
     <img src="foto-hero.jpg" alt="Filipe Silvestre, Fonoaudiólogo em Anápolis/GO">
     <div class="hero-badge-google">
-      <!-- Logo Google (SVG simples) -->
-      <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path fill="#FFC107" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/>
         <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/>
         <path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.6 26.8 36.5 24 36.5c-5.2 0-9.6-3.5-11.2-8.3l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
@@ -921,7 +962,7 @@ footer a:hover { color: white; }
     </p>
     <div class="hero-btns">
       <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="btn-whatsapp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Agendar pelo WhatsApp
       </a>
     </div>
@@ -937,12 +978,11 @@ footer a:hover { color: white; }
     <div class="servicos-header">
       <span class="secao-label">Áreas de atuação</span>
       <h2 class="titulo-secao">Você se reconhece em<br>algum desses casos?</h2>
-      <div class="divisor" style="margin: 16px auto 0;"></div>
+      <div class="divisor"></div>
     </div>
 
     <div class="servicos-grid">
 
-      <!-- Card 1: Voz -->
       <div class="servico-card">
         <div class="servico-numero">1</div>
         <h3 class="servico-titulo">Voz</h3>
@@ -954,7 +994,6 @@ footer a:hover { color: white; }
         <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20avaliar%20minha%20voz" class="servico-link">Avaliar minha voz</a>
       </div>
 
-      <!-- Card 2: Disfagia -->
       <div class="servico-card">
         <div class="servico-numero">2</div>
         <h3 class="servico-titulo">Disfagia</h3>
@@ -966,7 +1005,6 @@ footer a:hover { color: white; }
         <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20avaliar%20a%20deglutição" class="servico-link">Avaliar minha deglutição</a>
       </div>
 
-      <!-- Card 3: Comunicação -->
       <div class="servico-card">
         <div class="servico-numero">3</div>
         <h3 class="servico-titulo">Comunicação</h3>
@@ -987,11 +1025,10 @@ footer a:hover { color: white; }
      SEÇÃO 3 — SOBRE
 ============================================= -->
 <section id="sobre">
-  <div class="container">
+  <div class="container sobre-inner">
 
-    <!-- Parte 1: Quem sou eu -->
     <div class="sobre-grid">
-      <div class="sobre-conteudo">
+      <div>
         <span class="secao-label">Sobre</span>
         <h2 class="titulo-secao">Quem sou eu?</h2>
         <div class="divisor"></div>
@@ -1005,17 +1042,16 @@ footer a:hover { color: white; }
           comunicativo de cada pessoa, com resultados reais e duradouros.
         </p>
       </div>
-      <!-- FOTO — foto Filipe casual (colete, fundo flores) -->
+      <!-- Substituir src pela foto casual (colete, fundo flores) -->
       <div class="sobre-foto">
-        <img src="foto-sobre.jpg" alt="Filipe Silvestre">
+        <img src="foto-sobre.jpg" alt="Filipe Silvestre, fonoaudiólogo">
       </div>
     </div>
 
-    <!-- Parte 2: Formação -->
     <div class="formacao-grid">
-      <!-- FOTO — foto Filipe lendo livro VOZ -->
+      <!-- Substituir src pela foto lendo livro VOZ -->
       <div class="formacao-foto">
-        <img src="foto-formacao.jpg" alt="Formação Filipe Silvestre">
+        <img src="foto-formacao.jpg" alt="Formação de Filipe Silvestre">
       </div>
       <div>
         <h3 class="formacao-titulo">Formação</h3>
@@ -1038,13 +1074,14 @@ footer a:hover { color: white; }
 
 <!-- =============================================
      SEÇÃO 4 — POR QUE ME ESCOLHER
+     Ordem garantida: 1, 2, 3, 4
 ============================================= -->
 <section id="diferenciais">
   <div class="container">
     <div class="diferenciais-header">
       <span class="secao-label">Diferenciais</span>
       <h2 class="titulo-secao">Por que me escolher?</h2>
-      <p class="subtitulo-secao" style="margin: 12px auto 0;">O que torna meu atendimento diferente</p>
+      <p class="subtitulo-secao">O que torna meu atendimento diferente</p>
       <div class="divisor"></div>
     </div>
 
@@ -1052,7 +1089,7 @@ footer a:hover { color: white; }
 
       <div class="diferencial-card">
         <div class="diferencial-numero">1</div>
-        <div class="diferencial-body">
+        <div>
           <h3 class="diferencial-titulo">Avaliação vocal completa</h3>
           <p class="diferencial-texto">
             Anamnese clínica, avaliação perceptivo-auditiva atualizada e análise
@@ -1063,7 +1100,7 @@ footer a:hover { color: white; }
 
       <div class="diferencial-card">
         <div class="diferencial-numero">2</div>
-        <div class="diferencial-body">
+        <div>
           <h3 class="diferencial-titulo">Feedback e orientações claras</h3>
           <p class="diferencial-texto">
             Ao final da avaliação, você recebe feedback detalhado, orientações
@@ -1074,7 +1111,7 @@ footer a:hover { color: white; }
 
       <div class="diferencial-card">
         <div class="diferencial-numero">3</div>
-        <div class="diferencial-body">
+        <div>
           <h3 class="diferencial-titulo">Formação especializada em voz</h3>
           <p class="diferencial-texto">
             Pós-graduação em Voz e Disfagia, Formação Integrada em Voz pelo CEV
@@ -1086,7 +1123,7 @@ footer a:hover { color: white; }
 
       <div class="diferencial-card">
         <div class="diferencial-numero">4</div>
-        <div class="diferencial-body">
+        <div>
           <h3 class="diferencial-titulo">Atendimento domiciliar e online</h3>
           <p class="diferencial-texto">
             Você escolhe: no conforto da sua casa em Anápolis ou online de qualquer
@@ -1099,7 +1136,7 @@ footer a:hover { color: white; }
 
     <div class="diferenciais-cta">
       <a href="https://wa.me/556298814511?text=Quero%20conversar%20com%20o%20Filipe" class="btn-whatsapp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Quero conversar com o Filipe
       </a>
     </div>
@@ -1113,7 +1150,7 @@ footer a:hover { color: white; }
 <section id="agendar">
   <div class="container">
     <div class="agendar-grid">
-      <!-- FOTO — Filipe com tablet/prancheta (foto azul escuro) -->
+      <!-- Substituir src pela foto com tablet/prancheta -->
       <div class="agendar-foto">
         <img src="foto-agendar.jpg" alt="Atendimento domiciliar Filipe Silvestre">
       </div>
@@ -1127,7 +1164,7 @@ footer a:hover { color: white; }
           cuidado de uma clínica especializada.
         </p>
         <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20uma%20consulta" class="btn-whatsapp">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Agendar uma consulta
         </a>
       </div>
@@ -1151,12 +1188,11 @@ footer a:hover { color: white; }
     </div>
 
     <div class="avaliacao-grid">
-      <!-- FOTO/VÍDEO — imagem da avaliação vocal (foto com logo azul neon) -->
-      <!-- Substituir por imagem real ou embed YouTube quando tiver vídeo -->
+      <!-- Substituir src pela foto da avaliação vocal ou embed YouTube -->
       <div class="avaliacao-imagem">
         <img src="foto-avaliacao-vocal.jpg" alt="Avaliação vocal com Voxmetria">
-        <!-- Quando tiver vídeo YouTube, substituir por:
-        <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+        <!-- EMBED YOUTUBE AQUI quando disponível:
+        <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID"
                 title="Avaliação vocal Filipe Silvestre"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
@@ -1185,68 +1221,62 @@ footer a:hover { color: white; }
      SEÇÃO 7 — CASOS REAIS
 ============================================= -->
 <section id="casos-reais">
-  <div class="container">
+  <div class="container casos-inner">
     <div class="casos-header">
       <span class="secao-label">Casos reais</span>
       <h2 class="titulo-secao">Casos reais dos meus atendimentos</h2>
-      <p class="subtitulo-secao" style="margin: 0 auto;">Veja transformações reais de pacientes que confiaram no meu trabalho</p>
+      <p class="subtitulo-secao">Veja transformações reais de pacientes que confiaram no meu trabalho</p>
       <div class="divisor"></div>
     </div>
 
     <!-- Vídeos de Voz -->
     <div class="casos-grid">
       <div class="caso-card">
-        <!-- VÍDEO YOUTUBE — embed aqui quando disponível -->
+        <!-- EMBED YOUTUBE AQUI -->
         <div class="caso-video">
-          <div>
-            <div class="play-btn"></div>
-            <div class="video-label">Vídeo em breve</div>
-          </div>
+          <div class="play-btn"></div>
           <span class="video-badge">VOZ</span>
+          <span class="video-label">Vídeo em breve</span>
         </div>
         <div class="caso-legenda">Recuperação vocal pós-cirurgia</div>
       </div>
 
       <div class="caso-card">
-        <!-- VÍDEO YOUTUBE — embed aqui quando disponível -->
+        <!-- EMBED YOUTUBE AQUI -->
         <div class="caso-video">
-          <div>
-            <div class="play-btn"></div>
-            <div class="video-label">Vídeo em breve</div>
-          </div>
+          <div class="play-btn"></div>
           <span class="video-badge">VOZ</span>
+          <span class="video-label">Vídeo em breve</span>
         </div>
         <div class="caso-legenda">Muda vocal incompleta — Mudança significativa da voz já durante a primeira avaliação</div>
       </div>
     </div>
 
-    <!-- Vídeo extra de Voz (muda vocal) -->
-    <div style="max-width: 380px; margin: 28px auto 56px;">
+    <!-- Vídeo extra de Voz -->
+    <div style="max-width: 360px; margin: 24px auto 56px;">
       <div class="caso-card">
+        <!-- EMBED YOUTUBE AQUI -->
         <div class="caso-video">
-          <div>
-            <div class="play-btn"></div>
-            <div class="video-label">Vídeo em breve</div>
-          </div>
+          <div class="play-btn"></div>
           <span class="video-badge">VOZ</span>
+          <span class="video-label">Vídeo em breve</span>
         </div>
         <div class="caso-legenda">Muda vocal incompleta — antes e depois. Paciente que sofria bullying pela voz fina, hoje com voz natural recuperada.</div>
       </div>
     </div>
 
     <!-- Disfagia -->
-    <div style="text-align:center; margin-bottom: 32px;">
+    <div class="disfagia-titulo">
       <span class="secao-label">Disfagia</span>
-      <h3 class="titulo-secao" style="font-size:28px;">Atendimento em disfagia</h3>
+      <h3 class="titulo-secao">Atendimento em disfagia</h3>
     </div>
-    <div class="casos-grid" style="max-width:380px;">
+    <div style="max-width: 360px; margin: 0 auto;">
       <div class="caso-card">
+        <!-- EMBED YOUTUBE AQUI -->
         <div class="caso-video">
-          <div>
-            <div class="play-btn"></div>
-            <div class="video-label">Vídeo em breve</div>
-          </div>
+          <div class="play-btn"></div>
           <span class="video-badge">DISFAGIA</span>
+          <span class="video-label">Vídeo em breve</span>
         </div>
         <div class="caso-legenda">Terapia humanizada — paciente com Alzheimer canta comigo nos intervalos da terapia de disfagia</div>
       </div>
@@ -1263,15 +1293,15 @@ footer a:hover { color: white; }
   <div class="contato-inner">
     <span class="secao-label" style="margin: 0 auto 16px; display: table;">Contato</span>
     <h2 class="titulo-secao">Vamos conversar?</h2>
-    <p class="subtitulo-secao">Entre em contato pelo canal que preferir. Respondo rapidinho.</p>
-    <div class="divisor" style="margin: 16px auto 32px;"></div>
+    <p class="subtitulo-secao" style="margin: 0 auto 0;">Entre em contato pelo canal que preferir. Respondo rapidinho.</p>
+    <div class="divisor"></div>
 
     <div class="contato-infos">
       <div class="contato-item">
         📱 <a href="https://wa.me/556298814511">(62) 98814-5511</a>
       </div>
       <div class="contato-item">
-        📷 <a href="https://instagram.com/filipesilvestrefono" target="_blank">@filipesilvestrefono</a>
+        📷 <a href="https://instagram.com/filipesilvestrefono" target="_blank" rel="noopener">@filipesilvestrefono</a>
       </div>
       <div class="contato-item">
         📍 Anápolis/GO
@@ -1287,7 +1317,7 @@ footer a:hover { color: white; }
     </div>
 
     <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20uma%20avaliação" class="btn-whatsapp" style="margin: 0 auto; display: table;">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Agendar avaliação
     </a>
   </div>
@@ -1304,6 +1334,21 @@ footer a:hover { color: white; }
   </div>
   <p>© 2026 Filipe Silvestre Fonoaudiologia | CNPJ 60.994.445/0001-66 | CRFA 5-13357</p>
 </footer>
+
+
+<script>
+function toggleMenu() {
+  var drawer = document.getElementById('navDrawer');
+  drawer.classList.toggle('aberto');
+}
+// Fechar drawer ao clicar fora
+document.addEventListener('click', function(e) {
+  var header = document.querySelector('header');
+  if (!header.contains(e.target)) {
+    document.getElementById('navDrawer').classList.remove('aberto');
+  }
+});
+</script>
 
 </body>
 </html>
