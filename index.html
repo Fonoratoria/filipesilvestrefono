@@ -6,12 +6,12 @@
 <meta name="description" content="Fonoaudiólogo em Anápolis/GO. Atendimento domiciliar e online em Anápolis em Voz, Disfagia e Comunicação. CRFA 5-13357.">
 <link rel="canonical" href="https://filipesilvestrefono.com/">
 <title>Fonoaudiólogo em Anápolis GO | Voz, Disfagia, Reabilitação | Filipe Silvestre</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect fill='%23006EB4' width='48' height='48'/><text x='50%' y='50%' font-size='24' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'>FS</text></svg>">
+<link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:title" content="Filipe Silvestre — Fonoaudiólogo | Anápolis/GO">
 <meta property="og:description" content="Atendimento humanizado em voz, disfagia e comunicação. Domiciliar e online. CRFA 5-13357.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fonoratoria.github.io/filipesilvestrefono/">
-<meta property="og:image" content="https://fonoratoria.github.io/filipesilvestrefono/og-image.png">
+<meta property="og:image" content="https://fonoratoria.github.io/filipesilvestrefono/foto-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -222,19 +222,12 @@ nav {
 
 .nav-marca {
   display: flex;
-  flex-direction: column;
-  line-height: 1.2;
+  align-items: center;
 }
-.nav-marca-nome {
-  font-family: 'Sora', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--grafite);
-}
-.nav-marca-crfa {
-  font-size: 11px;
-  color: var(--cinza-suave);
-  letter-spacing: 0.5px;
+.nav-logo {
+  height: 46px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
@@ -885,6 +878,14 @@ footer {
 }
 footer a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
 footer a:hover { color: white; }
+.footer-logo {
+  height: 88px;
+  width: auto;
+  margin: 0 auto 28px;
+  background: white;
+  padding: 16px 24px;
+  border-radius: var(--raio);
+}
 .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
 
 /* =============================================
@@ -953,10 +954,9 @@ footer a:hover { color: white; }
 ============================================= -->
 <header>
   <nav>
-    <div class="nav-marca">
-      <span class="nav-marca-nome">Filipe Silvestre</span>
-      <span class="nav-marca-crfa">Fonoaudiólogo · CRFa 5-13357</span>
-    </div>
+    <a href="#hero" class="nav-marca" aria-label="Filipe Silvestre — Fonoaudiólogo">
+      <img src="logo.png" alt="Filipe Silvestre Fonoaudiólogo" class="nav-logo">
+    </a>
 
     <ul class="nav-links">
       <li><a href="#hero" class="ativo">Início</a></li>
@@ -1369,6 +1369,7 @@ footer a:hover { color: white; }
      RODAPÉ
 ============================================= -->
 <footer>
+  <img src="logo.png" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
   <div class="footer-links">
     <a href="#">Termos e Condições</a>
     <a href="#">Política de Privacidade</a>
