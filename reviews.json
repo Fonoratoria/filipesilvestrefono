@@ -4,24 +4,73 @@
   "total": 25,
   "depoimentos": [
     {
+      "nome": "Neide Luiza",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Minha experiência foi ótima, só tenho a agradecer. Dr. Filipe Silvestre, um excelente profissional! Cheguei sem voz e, com os exercícios e a dedicação dele, minha voz já voltou!",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Maria Angela Lemos",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Atendimento muito bom! É um profissional muito capacitado, que sempre trata os pacientes de forma integral. Fez toda a diferença na recuperação da minha mãe.",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Andrea Cremonez",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Excelente profissional, cuida da minha mãe com muita atenção e paciência! Continue assim com os idosos!",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Amanda Júlia",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Profissional excepcional, entendeu exatamente o que eu estava precisando! Eu, que canto, achei incrível, amei muito. Muito obrigada!",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Schneider Caixeta",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Estou tendo um ótimo acompanhamento com o Filipe, especificamente para a prática do canto. Profissional dedicado e atencioso.",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Rafael Batista",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Serviço de altíssima qualidade! Super atencioso e com domínio no que fala. Gratidão!",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Ketyanne Rodrigues",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Ótimo profissional, dedicado, atencioso e muito atento aos detalhes.",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Valéria Paixão",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "É tão gratificante ver um profissional como o Filipe, que trabalha com alegria, carisma e amor sempre.",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Luana Batista do Nascimento",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Um ótimo profissional, muito dedicado, que faz um serviço atencioso buscando dar o auxílio necessário e a melhor experiência aos seus pacientes. Excelente!",
+      "fonte": "Google"
+    },
+    {
       "nome": "Liziara Jorge",
       "foto": "",
       "estrelas": 5,
       "texto": "Excelente profissional, super recomendo!",
-      "fonte": "Google"
-    },
-    {
-      "nome": "Juliana Moura",
-      "foto": "",
-      "estrelas": 5,
-      "texto": "Excelente profissional!",
-      "fonte": "Google"
-    },
-    {
-      "nome": "Viviane Eugenia",
-      "foto": "",
-      "estrelas": 5,
-      "texto": "Excelente profissional, super indico!",
       "fonte": "Google"
     }
   ]
