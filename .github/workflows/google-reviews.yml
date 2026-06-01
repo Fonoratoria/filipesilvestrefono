@@ -25,6 +25,7 @@ jobs:
       - name: Buscar avaliações do Google
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_QUERY: ${{ secrets.GOOGLE_QUERY }}
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
         run: node scripts/fetch-google-reviews.mjs
 
