@@ -762,6 +762,24 @@ nav {
   border: none;
 }
 
+/* Vídeo YouTube Shorts 9:16 */
+.caso-video-wrap {
+  position: relative;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  background: #141414;
+}
+.caso-video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.caso-video-wrap .video-badge {
+  z-index: 2;
+}
+
 .play-btn {
   width: 64px; height: 64px;
   background: white;
@@ -1273,36 +1291,47 @@ footer a:hover { color: white; }
     <!-- Vídeos de Voz -->
     <div class="casos-grid">
       <div class="caso-card">
-        <!-- EMBED YOUTUBE AQUI -->
-        <div class="caso-video">
-          <div class="play-btn"></div>
+        <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <span class="video-label">Vídeo em breve</span>
+          <iframe src="https://www.youtube.com/embed/KZ7eVkGxGrg"
+                  title="Antes e depois: muda vocal em uma única sessão"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="caso-legenda">Recuperação vocal pós-cirurgia</div>
+        <div class="caso-legenda">Antes e depois: muda vocal em uma única sessão</div>
       </div>
 
       <div class="caso-card">
-        <!-- EMBED YOUTUBE AQUI -->
-        <div class="caso-video">
-          <div class="play-btn"></div>
+        <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <span class="video-label">Vídeo em breve</span>
+          <iframe src="https://www.youtube.com/embed/XpACJmcLa8E"
+                  title="Exercício de respiração para voz"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="caso-legenda">Muda vocal incompleta — Mudança significativa da voz já durante a primeira avaliação</div>
+        <div class="caso-legenda">Exercício de respiração para voz</div>
       </div>
-    </div>
 
-    <!-- Vídeo extra de Voz -->
-    <div style="max-width: 360px; margin: 24px auto 56px;">
       <div class="caso-card">
-        <!-- EMBED YOUTUBE AQUI -->
-        <div class="caso-video">
-          <div class="play-btn"></div>
+        <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <span class="video-label">Vídeo em breve</span>
+          <iframe src="https://www.youtube.com/embed/BBi3X4pvkqQ"
+                  title="Antes e depois: muda vocal a longo prazo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="caso-legenda">Muda vocal incompleta — antes e depois. Paciente que sofria bullying pela voz fina, hoje com voz natural recuperada.</div>
+        <div class="caso-legenda">Antes e depois: muda vocal a longo prazo</div>
+      </div>
+
+      <div class="caso-card">
+        <div class="caso-video-wrap">
+          <span class="video-badge">VOZ</span>
+          <iframe src="https://www.youtube.com/embed/MNyc9bjgXQs"
+                  title="Análise acústica: antes e depois — paciente com disfonia"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="caso-legenda">Análise acústica: antes e depois — paciente com disfonia</div>
       </div>
     </div>
 
@@ -1311,13 +1340,14 @@ footer a:hover { color: white; }
       <span class="secao-label">Disfagia</span>
       <h3 class="titulo-secao">Atendimento em disfagia</h3>
     </div>
-    <div style="max-width: 360px; margin: 0 auto;">
+    <div style="max-width: 380px; margin: 0 auto;">
       <div class="caso-card">
-        <!-- EMBED YOUTUBE AQUI -->
-        <div class="caso-video">
-          <div class="play-btn"></div>
+        <div class="caso-video-wrap">
           <span class="video-badge">DISFAGIA</span>
-          <span class="video-label">Vídeo em breve</span>
+          <iframe src="https://www.youtube.com/embed/0oX-SYRfUKA"
+                  title="Terapia humanizada em disfagia"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="caso-legenda">Terapia humanizada — paciente com Alzheimer canta comigo nos intervalos da terapia de disfagia</div>
       </div>
