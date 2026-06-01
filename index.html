@@ -405,6 +405,24 @@ nav {
 .hero-badge-google .nota { font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 800; color: var(--grafite); }
 .hero-badge-google .reviews { font-size: 11px; color: var(--cinza-suave); }
 
+/* Selo de Especialista em Voz — destaque principal do hero */
+.selo-especialista {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  box-shadow: 0 8px 22px rgba(0,110,180,0.28);
+  margin-bottom: 18px;
+}
+.selo-especialista svg { width: 19px; height: 19px; fill: #fff; flex-shrink: 0; }
+
 .hero-conteudo {
   display: flex;
   flex-direction: column;
@@ -1161,7 +1179,7 @@ footer a:hover { color: white; }
 <header>
   <nav>
     <a href="#hero" class="nav-marca" aria-label="Filipe Silvestre — Fonoaudiólogo">
-      <img src="logo.png" alt="Filipe Silvestre Fonoaudiólogo" class="nav-logo">
+      <img src="logo.jpg" alt="Filipe Silvestre Fonoaudiólogo" class="nav-logo">
     </a>
 
     <ul class="nav-links">
@@ -1191,13 +1209,15 @@ footer a:hover { color: white; }
      SEÇÃO 1 — HERO
 ============================================= -->
 <section id="hero">
-  <div class="hero-foto">
-    <!-- Substituir src pela foto principal (jaleco, braços cruzados) -->
-    <img src="foto-hero.jpg" alt="Filipe Silvestre, fonoaudiólogo especialista em voz em Anápolis GO" fetchpriority="high" decoding="async">
+  <div class="hero-foto">    <img src="foto-hero.jpg" alt="Filipe Silvestre, fonoaudiólogo especialista em voz em Anápolis GO" fetchpriority="high" decoding="async">
   </div>
 
   <div class="hero-conteudo">
-    <p class="secao-label">Fonoaudiólogo · Especialista em Voz · Anápolis/GO</p>
+    <span class="selo-especialista">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></svg>
+      Especialista em Voz · CFFa
+    </span>
+    <p class="secao-label">Anápolis/GO · Atendimento domiciliar e online</p>
     <h1 class="hero-headline">
       <span>Vozes que ressoam.</span>
       <span>Refeições sem medo.</span>
@@ -1288,16 +1308,12 @@ footer a:hover { color: white; }
           Vozes que ressoam. Esse é o meu propósito: despertar o potencial
           comunicativo de cada pessoa, com resultados reais e duradouros.
         </p>
-      </div>
-      <!-- Substituir src pela foto casual (colete, fundo flores) -->
-      <div class="sobre-foto">
+      </div>      <div class="sobre-foto">
         <img src="foto-sobre.jpg" alt="Filipe Silvestre fonoaudiólogo atendimento domiciliar Anápolis" loading="lazy">
       </div>
     </div>
 
-    <div class="formacao-grid">
-      <!-- Substituir src pela foto lendo livro VOZ -->
-      <div class="formacao-foto">
+    <div class="formacao-grid">      <div class="formacao-foto">
         <img src="foto-formacao.jpg" alt="Formação fonoaudiologia voz Filipe Silvestre" loading="lazy">
       </div>
       <div>
@@ -1311,7 +1327,7 @@ footer a:hover { color: white; }
           <li>Reabilitação física e neurológica — Centro CERIII (Vila São José Bento Cottolengo)</li>
           <li>Ministrante de treinamentos em comunicação e oratória</li>
           <li>Aprimoramentos contínuos em Voz e Disfagia</li>
-          <li>CRFA 5-13357</li>
+          <li>CRFa 5-13357</li>
         </ul>
       </div>
     </div>
@@ -1397,9 +1413,7 @@ footer a:hover { color: white; }
 ============================================= -->
 <section id="agendar">
   <div class="container">
-    <div class="agendar-grid">
-      <!-- Substituir src pela foto com tablet/prancheta -->
-      <div class="agendar-foto">
+    <div class="agendar-grid">      <div class="agendar-foto">
         <img src="foto-agendar.jpg" alt="Atendimento fonoaudiológico domiciliar Anápolis GO" loading="lazy">
       </div>
       <div>
@@ -1435,9 +1449,7 @@ footer a:hover { color: white; }
       </p>
     </div>
 
-    <div class="avaliacao-grid">
-      <!-- Substituir src pela foto da avaliação vocal ou embed YouTube -->
-      <div class="avaliacao-imagem">
+    <div class="avaliacao-grid">      <div class="avaliacao-imagem">
         <img src="foto-avaliacao-vocal.jpg" alt="Avaliação acústica vocal Voxmetria Anápolis" loading="lazy">
         <!-- EMBED YOUTUBE AQUI quando disponível:
         <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID"
@@ -1483,7 +1495,7 @@ footer a:hover { color: white; }
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
           <button class="caso-facade" data-id="KZ7eVkGxGrg" aria-label="Assistir: Antes e depois muda vocal em uma única sessão">
-            <img src="https://i.ytimg.com/vi/KZ7eVkGxGrg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/KZ7eVkGxGrg/hqdefault.jpg'" alt="" loading="lazy">
+            <img src="https://i.ytimg.com/vi/KZ7eVkGxGrg/maxresdefault.jpg" alt="" loading="lazy">
             <span class="caso-play"></span>
           </button>
         </div>
@@ -1494,7 +1506,7 @@ footer a:hover { color: white; }
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
           <button class="caso-facade" data-id="XpACJmcLa8E" aria-label="Assistir: Exercício de respiração para voz">
-            <img src="https://i.ytimg.com/vi/XpACJmcLa8E/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/XpACJmcLa8E/hqdefault.jpg'" alt="" loading="lazy">
+            <img src="https://i.ytimg.com/vi/XpACJmcLa8E/maxresdefault.jpg" alt="" loading="lazy">
             <span class="caso-play"></span>
           </button>
         </div>
@@ -1505,7 +1517,7 @@ footer a:hover { color: white; }
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
           <button class="caso-facade" data-id="BBi3X4pvkqQ" aria-label="Assistir: Antes e depois muda vocal a longo prazo">
-            <img src="https://i.ytimg.com/vi/BBi3X4pvkqQ/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/BBi3X4pvkqQ/hqdefault.jpg'" alt="" loading="lazy">
+            <img src="https://i.ytimg.com/vi/BBi3X4pvkqQ/maxresdefault.jpg" alt="" loading="lazy">
             <span class="caso-play"></span>
           </button>
         </div>
@@ -1516,7 +1528,7 @@ footer a:hover { color: white; }
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
           <button class="caso-facade" data-id="MNyc9bjgXQs" aria-label="Assistir: Análise acústica antes e depois">
-            <img src="https://i.ytimg.com/vi/MNyc9bjgXQs/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/MNyc9bjgXQs/hqdefault.jpg'" alt="" loading="lazy">
+            <img src="https://i.ytimg.com/vi/MNyc9bjgXQs/maxresdefault.jpg" alt="" loading="lazy">
             <span class="caso-play"></span>
           </button>
         </div>
@@ -1534,7 +1546,7 @@ footer a:hover { color: white; }
         <div class="caso-video-wrap">
           <span class="video-badge">DISFAGIA</span>
           <button class="caso-facade" data-id="0oX-SYRfUKA" aria-label="Assistir: Terapia humanizada em disfagia">
-            <img src="https://i.ytimg.com/vi/0oX-SYRfUKA/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/0oX-SYRfUKA/hqdefault.jpg'" alt="" loading="lazy">
+            <img src="https://i.ytimg.com/vi/0oX-SYRfUKA/maxresdefault.jpg" alt="" loading="lazy">
             <span class="caso-play"></span>
           </button>
         </div>
@@ -1606,12 +1618,12 @@ footer a:hover { color: white; }
      RODAPÉ
 ============================================= -->
 <footer>
-  <img src="logo.png" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
+  <img src="logo.jpg" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
   <div class="footer-links">
     <a href="#">Termos e Condições</a>
     <a href="#">Política de Privacidade</a>
   </div>
-  <p>© 2026 Filipe Silvestre Fonoaudiologia | CNPJ 60.994.445/0001-66 | CRFA 5-13357</p>
+  <p>© 2026 Filipe Silvestre Fonoaudiologia | CNPJ 60.994.445/0001-66 | CRFa 5-13357</p>
 </footer>
 
 
@@ -1696,21 +1708,25 @@ document.querySelectorAll('.caso-facade').forEach(function(botao) {
   });
 });
 
-// ---- Capas dos vídeos: usa maxresdefault (HD). Se o vídeo não tiver, o YouTube devolve
-//      um placeholder cinza 120x90 (status 200, então onerror não dispara). Detecta pela
-//      largura e cai pro hqdefault (que sempre existe). ----
+// ---- Capas dos vídeos: tenta a melhor resolução disponível no YouTube. ----
+//  Quando uma resolução não existe, o YouTube devolve um placeholder cinza 120x90
+//  (status 200, então onerror não dispara) — detectamos pela largura natural e seguimos
+//  a cadeia: maxresdefault (HD) -> oardefault (vertical nativo p/ Shorts) -> sddefault -> hqdefault.
 (function () {
-  function fallback(img) {
-    var m = img.src.match(/\/vi\/([^/]+)\//);
-    if (m && img.src.indexOf('hqdefault') === -1) {
-      img.src = 'https://i.ytimg.com/vi/' + m[1] + '/hqdefault.jpg';
-    }
+  var CHAIN = ['oardefault', 'sddefault', 'hqdefault'];
+  function idDe(img)  { var m = img.src.match(/\/vi\/([^/]+)\//);       return m ? m[1] : null; }
+  function varDe(img) { var m = img.src.match(/\/vi\/[^/]+\/([^.?]+)/); return m ? m[1] : ''; }
+  function proxima(img) {
+    var id = idDe(img); if (!id) return;
+    var atual = varDe(img);
+    var prox = (atual === 'maxresdefault') ? CHAIN[0] : CHAIN[CHAIN.indexOf(atual) + 1];
+    if (prox) img.src = 'https://i.ytimg.com/vi/' + id + '/' + prox + '.jpg';
   }
+  function avalia(img) { if (img.naturalWidth && img.naturalWidth <= 120) proxima(img); }
   document.querySelectorAll('.caso-facade img').forEach(function (img) {
-    function check() { if (img.naturalWidth && img.naturalWidth <= 120) fallback(img); }
-    img.addEventListener('error', function () { fallback(img); });
-    img.addEventListener('load', check);
-    if (img.complete) check();
+    img.addEventListener('load', function () { avalia(img); });
+    img.addEventListener('error', function () { proxima(img); });
+    if (img.complete) avalia(img);
   });
 })();
 
