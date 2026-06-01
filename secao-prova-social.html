@@ -473,24 +473,24 @@ button:focus-visible{
   //    (Estes são EXEMPLOS — substitua pelos relatos reais dos seus pacientes.)
   var DEPOIMENTOS = [
     {
-      nome: "Maria S.",
+      nome: "Liziara Jorge",
       foto: "",                 // URL da foto OU "" para usar as iniciais
       estrelas: 5,              // de 1 a 5
-      texto: "Voltei a dar aula sem dor de garganta no fim do dia. Atendimento atencioso e muito cuidadoso.",
+      texto: "Excelente profissional, super recomendo!",
       fonte: "Google"
     },
     {
-      nome: "Carlos R.",
+      nome: "Juliana Moura",
       foto: "",
       estrelas: 5,
-      texto: "Profissional experiente e humano. Saí da avaliação entendendo o que estava acontecendo com a minha voz.",
+      texto: "Excelente profissional!",
       fonte: "Google"
     },
     {
-      nome: "Ana P.",
+      nome: "Viviane Eugenia",
       foto: "",
       estrelas: 5,
-      texto: "Acompanhamento individualizado do começo ao fim. Senti diferença na minha comunicação no dia a dia.",
+      texto: "Excelente profissional, super indico!",
       fonte: "Google"
     }
   ];
@@ -665,7 +665,7 @@ button:focus-visible{
   function atualizaSubtitulo(media, total){
     var el = document.getElementById('depo-subtitulo');
     if (!el || !media || !total) return;
-    var nota = (Math.round(media * 10) / 10).toString().replace('.', ',');
+    var nota = Number(media).toFixed(1).replace('.', ',');
     el.textContent = 'Nota ' + nota + ' · ' + total + ' avaliações no Google.';
   }
 

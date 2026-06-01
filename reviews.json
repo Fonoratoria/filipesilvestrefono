@@ -1,6 +1,28 @@
 {
-  "atualizadoEm": null,
-  "media": null,
-  "total": null,
-  "depoimentos": []
+  "atualizadoEm": "2026-06-01",
+  "media": 5.0,
+  "total": 25,
+  "depoimentos": [
+    {
+      "nome": "Liziara Jorge",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Excelente profissional, super recomendo!",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Juliana Moura",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Excelente profissional!",
+      "fonte": "Google"
+    },
+    {
+      "nome": "Viviane Eugenia",
+      "foto": "",
+      "estrelas": 5,
+      "texto": "Excelente profissional, super indico!",
+      "fonte": "Google"
+    }
+  ]
 }
