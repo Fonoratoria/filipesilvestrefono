@@ -1696,6 +1696,24 @@ document.querySelectorAll('.caso-facade').forEach(function(botao) {
   });
 });
 
+// ---- Capas dos vídeos: usa maxresdefault (HD). Se o vídeo não tiver, o YouTube devolve
+//      um placeholder cinza 120x90 (status 200, então onerror não dispara). Detecta pela
+//      largura e cai pro hqdefault (que sempre existe). ----
+(function () {
+  function fallback(img) {
+    var m = img.src.match(/\/vi\/([^/]+)\//);
+    if (m && img.src.indexOf('hqdefault') === -1) {
+      img.src = 'https://i.ytimg.com/vi/' + m[1] + '/hqdefault.jpg';
+    }
+  }
+  document.querySelectorAll('.caso-facade img').forEach(function (img) {
+    function check() { if (img.naturalWidth && img.naturalWidth <= 120) fallback(img); }
+    img.addEventListener('error', function () { fallback(img); });
+    img.addEventListener('load', check);
+    if (img.complete) check();
+  });
+})();
+
 // ---- Google Ads / Analytics: cada clique no WhatsApp vira conversão (só dispara se houver ID) ----
 document.addEventListener('click', function (e) {
   var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
