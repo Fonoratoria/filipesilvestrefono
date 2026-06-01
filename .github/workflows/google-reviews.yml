@@ -1,0 +1,42 @@
+name: Atualizar avaliações do Google
+
+# Roda automaticamente 1x por dia (09:10 UTC ≈ 06:10 em Brasília)
+# e também pode ser rodado manualmente pelo botão "Run workflow".
+on:
+  schedule:
+    - cron: '10 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Buscar avaliações do Google
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: node scripts/fetch-google-reviews.mjs
+
+      - name: Salvar reviews.json se mudou
+        run: |
+          if [ -n "$(git status --porcelain reviews.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add reviews.json
+            git commit -m "Atualiza avaliacoes do Google (automatico)"
+            git push
+            echo "reviews.json atualizado e enviado."
+          else
+            echo "Nenhuma mudanca nas avaliacoes."
+          fi

@@ -392,7 +392,7 @@ button:focus-visible{
     <div class="bloco" id="bloco-depoimentos">
       <span class="selo">Depoimentos</span>
       <h2 class="titulo">Quem já foi atendido</h2>
-      <p class="subtitulo">Relatos de pacientes — coletados no Google.</p>
+      <p class="subtitulo" id="depo-subtitulo">Relatos de pacientes — coletados no Google.</p>
 
       <div class="depo-grid" id="depo-grid" aria-live="polite">
         <!-- Cards inseridos pelo JS a partir do array DEPOIMENTOS -->
@@ -455,6 +455,11 @@ button:focus-visible{
 
   // 1) WhatsApp — número com 12 dígitos (sem o "9" extra). Confirme o número!
   var WHATSAPP_URL = "https://wa.me/556298814511?text=Ol%C3%A1%2C%20Filipe.%20Vi%20seu%20site%20e%20quero%20avaliar%20minha%20voz.";
+
+  // 1.1) Avaliações automáticas do Google (geradas pelo robô do GitHub em reviews.json).
+  //      Deixe como está. Se as avaliações reais existirem, elas têm prioridade
+  //      sobre os exemplos do array DEPOIMENTOS abaixo.
+  var REVIEWS_JSON_URL = "https://fonoratoria.github.io/filipesilvestrefono/reviews.json";
 
   // 2) Vídeo Antes × Depois.
   //    POSTER_URL = imagem da capa (vertical 9:16 fica melhor).
@@ -644,14 +649,45 @@ button:focus-visible{
   }
 
   var grid = document.getElementById('depo-grid');
-  if (grid && Array.isArray(DEPOIMENTOS)){
+
+  function renderDepoimentos(lista){
+    if (!grid || !Array.isArray(lista)) return;
+    grid.innerHTML = '';
     var frag = document.createDocumentFragment();
-    DEPOIMENTOS.forEach(function(d){
+    lista.forEach(function(d){
       var card = montaCard(d);
       if (card) frag.appendChild(card);
     });
     grid.appendChild(frag);
   }
+
+  // Atualiza o subtítulo com a nota média / total quando vier do Google
+  function atualizaSubtitulo(media, total){
+    var el = document.getElementById('depo-subtitulo');
+    if (!el || !media || !total) return;
+    var nota = (Math.round(media * 10) / 10).toString().replace('.', ',');
+    el.textContent = 'Nota ' + nota + ' · ' + total + ' avaliações no Google.';
+  }
+
+  // 1) Mostra já os exemplos (fallback) pra nunca ficar vazio.
+  renderDepoimentos(DEPOIMENTOS);
+
+  // 2) Tenta buscar as avaliações reais do Google (reviews.json). Se houver, substitui.
+  (function carregarGoogle(){
+    if (!REVIEWS_JSON_URL || !window.fetch) return;
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var t = ctrl ? setTimeout(function(){ ctrl.abort(); }, 6000) : null;
+    fetch(REVIEWS_JSON_URL, { cache: 'no-store', signal: ctrl ? ctrl.signal : undefined })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(dados){
+        if (t) clearTimeout(t);
+        if (dados && Array.isArray(dados.depoimentos) && dados.depoimentos.length){
+          renderDepoimentos(dados.depoimentos);
+          atualizaSubtitulo(dados.media, dados.total);
+        }
+      })
+      .catch(function(){ /* mantém os exemplos se falhar */ });
+  })();
 
 })();
 </script>
