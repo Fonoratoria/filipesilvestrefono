@@ -780,6 +780,52 @@ nav {
   z-index: 2;
 }
 
+/* Capa própria (esconde título, canal e foto do YouTube até clicar) */
+.caso-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: #141414;
+  display: block;
+}
+.caso-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.caso-facade .caso-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 66px;
+  height: 66px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
+}
+.caso-facade .caso-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  width: 0; height: 0;
+  border-left: 19px solid var(--azul);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+.caso-facade:hover .caso-play {
+  background: #fff;
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
 .play-btn {
   width: 64px; height: 64px;
   background: white;
@@ -1293,10 +1339,10 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <iframe src="https://www.youtube.com/embed/KZ7eVkGxGrg"
-                  title="Antes e depois: muda vocal em uma única sessão"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen loading="lazy"></iframe>
+          <button class="caso-facade" data-id="KZ7eVkGxGrg" aria-label="Assistir: Antes e depois muda vocal em uma única sessão">
+            <img src="https://i.ytimg.com/vi/KZ7eVkGxGrg/hqdefault.jpg" alt="" loading="lazy">
+            <span class="caso-play"></span>
+          </button>
         </div>
         <div class="caso-legenda">Antes e depois: muda vocal em uma única sessão</div>
       </div>
@@ -1304,10 +1350,10 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <iframe src="https://www.youtube.com/embed/XpACJmcLa8E"
-                  title="Exercício de respiração para voz"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen loading="lazy"></iframe>
+          <button class="caso-facade" data-id="XpACJmcLa8E" aria-label="Assistir: Exercício de respiração para voz">
+            <img src="https://i.ytimg.com/vi/XpACJmcLa8E/hqdefault.jpg" alt="" loading="lazy">
+            <span class="caso-play"></span>
+          </button>
         </div>
         <div class="caso-legenda">Exercício de respiração para voz</div>
       </div>
@@ -1315,10 +1361,10 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <iframe src="https://www.youtube.com/embed/BBi3X4pvkqQ"
-                  title="Antes e depois: muda vocal a longo prazo"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen loading="lazy"></iframe>
+          <button class="caso-facade" data-id="BBi3X4pvkqQ" aria-label="Assistir: Antes e depois muda vocal a longo prazo">
+            <img src="https://i.ytimg.com/vi/BBi3X4pvkqQ/hqdefault.jpg" alt="" loading="lazy">
+            <span class="caso-play"></span>
+          </button>
         </div>
         <div class="caso-legenda">Antes e depois: muda vocal a longo prazo</div>
       </div>
@@ -1326,10 +1372,10 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <iframe src="https://www.youtube.com/embed/MNyc9bjgXQs"
-                  title="Análise acústica: antes e depois — paciente com disfonia"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen loading="lazy"></iframe>
+          <button class="caso-facade" data-id="MNyc9bjgXQs" aria-label="Assistir: Análise acústica antes e depois">
+            <img src="https://i.ytimg.com/vi/MNyc9bjgXQs/hqdefault.jpg" alt="" loading="lazy">
+            <span class="caso-play"></span>
+          </button>
         </div>
         <div class="caso-legenda">Análise acústica: antes e depois — paciente com disfonia</div>
       </div>
@@ -1344,10 +1390,10 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">DISFAGIA</span>
-          <iframe src="https://www.youtube.com/embed/0oX-SYRfUKA"
-                  title="Terapia humanizada em disfagia"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen loading="lazy"></iframe>
+          <button class="caso-facade" data-id="0oX-SYRfUKA" aria-label="Assistir: Terapia humanizada em disfagia">
+            <img src="https://i.ytimg.com/vi/0oX-SYRfUKA/hqdefault.jpg" alt="" loading="lazy">
+            <span class="caso-play"></span>
+          </button>
         </div>
         <div class="caso-legenda">Terapia humanizada — paciente com Alzheimer canta comigo nos intervalos da terapia de disfagia</div>
       </div>
@@ -1419,6 +1465,19 @@ document.addEventListener('click', function(e) {
   if (!header.contains(e.target)) {
     document.getElementById('navDrawer').classList.remove('aberto');
   }
+});
+
+// Vídeos: carrega o player do YouTube só ao clicar (esconde título, canal e foto)
+document.querySelectorAll('.caso-facade').forEach(function(botao) {
+  botao.addEventListener('click', function() {
+    var id = botao.getAttribute('data-id');
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    iframe.title = 'Vídeo';
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframe.setAttribute('allowfullscreen', '');
+    botao.parentNode.replaceChild(iframe, botao);
+  });
 });
 </script>
 
