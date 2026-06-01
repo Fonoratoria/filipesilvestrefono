@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultados & Prova Social — Filipe Silvestre Fonoaudiologia</title>
+
+<!-- Google Fonts: Manrope (com fallback de sistema) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================================
+   DESIGN TOKENS
+============================================================= */
+:root{
+  --azul:#006EB4;       /* títulos, CTA */
+  --turquesa:#46C8BE;   /* acentos, estrelas, detalhes */
+  --grafite:#141414;    /* texto */
+  --cinza:#5b6b73;      /* texto secundário */
+  --bg:#ffffff;
+  --bg-suave:#F5FAFC;
+  --borda:#e8eef1;
+  --raio:16px;
+  --sombra:0 8px 30px rgba(20,20,20,.06);
+  --maxw:720px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  font-family:'Manrope', -apple-system, "Segoe UI", Roboto, sans-serif;
+  color:var(--grafite);
+  background:var(--bg);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+
+/* Container fluido — funciona dentro do iframe do Wix */
+.secao{
+  width:100%;
+  padding:48px 18px;
+  background:var(--bg);
+}
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+}
+
+/* Bloco padrão */
+.bloco{ margin-bottom:56px; }
+.bloco:last-of-type{ margin-bottom:0; }
+
+/* Selo / label */
+.selo{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--azul);
+  background:rgba(0,110,180,.08);
+  padding:6px 14px;
+  border-radius:20px;
+  margin-bottom:14px;
+}
+.selo::before{
+  content:"";
+  width:6px; height:6px;
+  background:var(--turquesa);
+  border-radius:50%;
+  flex-shrink:0;
+}
+
+.titulo{
+  font-size:clamp(24px, 6vw, 32px);
+  font-weight:800;
+  line-height:1.2;
+  color:var(--grafite);
+  margin-bottom:12px;
+}
+.titulo .az{ color:var(--azul); }
+
+.subtitulo{
+  font-size:16px;
+  color:var(--cinza);
+  margin-bottom:26px;
+  max-width:560px;
+}
+
+/* =============================================================
+   BLOCO 1 — VÍDEO ANTES × DEPOIS (facade)
+============================================================= */
+.video-card{
+  position:relative;
+  width:100%;
+  max-width:380px;
+  margin:0 auto;
+  aspect-ratio:9/16;
+  border-radius:var(--raio);
+  overflow:hidden;
+  background:#141414;
+  box-shadow:var(--sombra);
+}
+.video-facade{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:0;
+  border:none;
+  cursor:pointer;
+  background:#141414;
+  display:block;
+}
+.video-facade img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.video-facade .play{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:70px; height:70px;
+  background:rgba(255,255,255,.95);
+  border-radius:50%;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);
+  transition:transform .2s, background .2s;
+}
+.video-facade .play::after{
+  content:"";
+  position:absolute;
+  top:50%; left:54%;
+  transform:translate(-50%,-50%);
+  width:0; height:0;
+  border-left:20px solid var(--azul);
+  border-top:13px solid transparent;
+  border-bottom:13px solid transparent;
+}
+.video-facade:hover .play,
+.video-facade:focus-visible .play{
+  background:#fff;
+  transform:translate(-50%,-50%) scale(1.07);
+}
+.video-card iframe,
+.video-card video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+  background:#000;
+}
+
+/* Badges sobre o vídeo */
+.video-badge{
+  position:absolute;
+  z-index:2;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.8px;
+  padding:6px 11px;
+  border-radius:8px;
+}
+.video-badge.topo{
+  top:12px; left:12px;
+  background:#fff;
+  color:var(--grafite);
+}
+.video-badge.dur{
+  bottom:12px; right:12px;
+  background:rgba(20,20,20,.72);
+  color:#fff;
+  letter-spacing:.4px;
+}
+
+/* Card legenda do caso — borda esquerda turquesa */
+.caso-legenda{
+  margin:22px auto 0;
+  max-width:380px;
+  background:var(--bg-suave);
+  border:1px solid var(--borda);
+  border-left:4px solid var(--turquesa);
+  border-radius:12px;
+  padding:16px 18px;
+  font-size:14.5px;
+  color:var(--grafite);
+}
+.caso-legenda .lgpd{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  font-style:italic;
+  color:var(--cinza);
+}
+
+/* =============================================================
+   BLOCO 2 — DEPOIMENTOS
+============================================================= */
+.depo-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+.depo-card{
+  background:var(--bg);
+  border:1px solid var(--borda);
+  border-radius:var(--raio);
+  padding:22px;
+  box-shadow:var(--sombra);
+}
+.depo-top{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:12px;
+}
+.depo-avatar{
+  width:48px; height:48px;
+  border-radius:50%;
+  flex-shrink:0;
+  object-fit:cover;
+  background:var(--azul);
+  color:#fff;
+  font-weight:800;
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-transform:uppercase;
+}
+.depo-id{ min-width:0; }
+.depo-nome{
+  font-weight:700;
+  font-size:15px;
+  color:var(--grafite);
+}
+.depo-estrelas{
+  display:flex;
+  gap:2px;
+  margin-top:2px;
+  font-size:14px;
+  line-height:1;
+  color:var(--turquesa);
+}
+.depo-estrelas .vazia{ color:#d8e0e4; }
+.depo-texto{
+  font-size:15px;
+  color:var(--grafite);
+  font-style:normal;
+  line-height:1.6;
+}
+.depo-fonte{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:14px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--cinza);
+}
+.depo-fonte svg{ width:14px; height:14px; flex-shrink:0; }
+
+.depo-lgpd{
+  margin-top:18px;
+  font-size:12px;
+  color:var(--cinza);
+  text-align:center;
+}
+
+/* =============================================================
+   BLOCO 3 — CTA
+============================================================= */
+.cta-bloco{
+  text-align:center;
+  background:var(--bg-suave);
+  border:1px solid var(--borda);
+  border-radius:var(--raio);
+  padding:36px 22px;
+}
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:54px;
+  background:var(--azul);
+  color:#fff;
+  font-weight:800;
+  font-size:16px;
+  padding:15px 34px;
+  border-radius:50px;
+  box-shadow:0 6px 22px rgba(0,110,180,.28);
+  transition:transform .2s, box-shadow .2s, background .2s;
+}
+.cta-btn:hover{
+  background:#005a93;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(0,110,180,.34);
+}
+.cta-btn svg{ width:21px; height:21px; fill:#fff; flex-shrink:0; }
+.cta-micro{
+  margin-top:14px;
+  font-size:13.5px;
+  color:var(--cinza);
+}
+
+/* =============================================================
+   RODAPÉ DA SEÇÃO
+============================================================= */
+.secao-rodape{
+  margin-top:48px;
+  text-align:center;
+}
+.secao-rodape img{
+  height:34px;
+  width:auto;
+  margin:0 auto 12px;
+  opacity:.9;
+}
+.secao-rodape p{
+  font-size:12px;
+  color:var(--cinza);
+}
+
+/* =============================================================
+   ACESSIBILIDADE
+============================================================= */
+a:focus-visible,
+button:focus-visible{
+  outline:3px solid var(--turquesa);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+/* =============================================================
+   DESKTOP (progressivo)
+============================================================= */
+@media (min-width:680px){
+  .secao{ padding:64px 24px; }
+  .depo-grid{ grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<section class="secao" aria-label="Resultados e prova social">
+  <div class="wrap">
+
+    <!-- =========================================================
+         BLOCO 1 — VÍDEO ANTES × DEPOIS
+    ========================================================== -->
+    <div class="bloco" id="bloco-video">
+      <span class="selo">Caso real · Avaliação acústica</span>
+      <h2 class="titulo">Da rouquidão à <span class="az">voz estável</span>.</h2>
+      <p class="subtitulo">Os números mostram o que o ouvido já percebia: evolução consistente ao longo do processo terapêutico.</p>
+
+      <div class="video-card">
+        <span class="video-badge topo">ANTES × DEPOIS</span>
+        <span class="video-badge dur" id="video-duracao">0:45</span>
+        <!-- O player só carrega ao clicar (facade) — definido no JS -->
+        <button class="video-facade" id="video-facade" aria-label="Reproduzir vídeo do caso: análise acústica antes e depois">
+          <img id="video-poster" src="" alt="Capa do vídeo da avaliação acústica vocal" width="380" height="676" loading="lazy">
+          <span class="play" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="caso-legenda">
+        Parâmetros como Jitter, Shimmer e Proporção Harmônico-Ruído saíram da zona de alteração e migraram para a normalidade.
+        <span class="lgpd">Imagem e dados utilizados com autorização da paciente.</span>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         BLOCO 2 — DEPOIMENTOS
+    ========================================================== -->
+    <div class="bloco" id="bloco-depoimentos">
+      <span class="selo">Depoimentos</span>
+      <h2 class="titulo">Quem já foi atendido</h2>
+      <p class="subtitulo">Relatos de pacientes — coletados no Google.</p>
+
+      <div class="depo-grid" id="depo-grid" aria-live="polite">
+        <!-- Cards inseridos pelo JS a partir do array DEPOIMENTOS -->
+      </div>
+
+      <p class="depo-lgpd">Depoimentos publicados com autorização dos pacientes.</p>
+
+      <!-- INTEGRAÇÃO FUTURA — Avaliações do Google (Meu Negócio)
+           Opção recomendada para leigo: widget de terceiros (Trustindex / Elfsight / EmbedSocial),
+             cola um <script> aqui e some os depoimentos manuais.
+           Opção via código: Google Places API (place_id) — exige chave de API e backend (CORS),
+             não fazer no front puro. Deixar o container abaixo pronto para receber.
+      -->
+      <div id="google-reviews-mount" data-place-id="COLAR_PLACE_ID_AQUI" hidden></div>
+      <script>
+        // function initGoogleReviews(){ /* preencher quando ativar */ }
+      </script>
+    </div>
+
+    <!-- =========================================================
+         BLOCO 3 — CTA
+    ========================================================== -->
+    <div class="bloco">
+      <div class="cta-bloco">
+        <!-- GOOGLE ADS: quando a conversão estiver criada, colar aqui o gtag config (AW-XXXX)
+             e o send_to no trackConversion(). Hoje só dispara dataLayer. -->
+        <!-- O href já está completo: funciona mesmo se o JS falhar -->
+        <a id="cta-whatsapp"
+           class="cta-btn"
+           href="https://wa.me/556298814511?text=Ol%C3%A1%2C%20Filipe.%20Vi%20seu%20site%20e%20quero%20avaliar%20minha%20voz."
+           target="_blank" rel="noopener"
+           aria-label="Avaliar minha voz — conversar no WhatsApp">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Avaliar minha voz
+        </a>
+        <p class="cta-micro">Conversa direta no WhatsApp, sem compromisso.</p>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         RODAPÉ DA SEÇÃO (discreto)
+    ========================================================== -->
+    <div class="secao-rodape">
+      <img src="https://fonoratoria.github.io/filipesilvestrefono/logo.png" alt="Filipe Silvestre Fonoaudiólogo" height="34" width="120" loading="lazy"
+           onerror="this.style.display='none'">
+      <p>Filipe Silvestre · Fonoaudiólogo · CRFA 5-13357 · Anápolis, GO</p>
+    </div>
+
+  </div>
+</section>
+
+
+<script defer>
+(function(){
+  "use strict";
+
+  /* =============================================================
+     CONSTANTES EDITÁVEIS  (mexa só aqui)
+  ============================================================= */
+
+  // 1) WhatsApp — número com 12 dígitos (sem o "9" extra). Confirme o número!
+  var WHATSAPP_URL = "https://wa.me/556298814511?text=Ol%C3%A1%2C%20Filipe.%20Vi%20seu%20site%20e%20quero%20avaliar%20minha%20voz.";
+
+  // 2) Vídeo Antes × Depois.
+  //    POSTER_URL = imagem da capa (vertical 9:16 fica melhor).
+  //    VIDEO_URL  = link do YouTube (embed) OU um arquivo .mp4 hospedado.
+  var POSTER_URL = "https://fonoratoria.github.io/filipesilvestrefono/foto-avaliacao-vocal.jpg";
+  var VIDEO_URL  = "https://www.youtube-nocookie.com/embed/MNyc9bjgXQs";
+  var VIDEO_DURACAO = "0:45"; // texto do selo de duração (opcional)
+
+  // 3) DEPOIMENTOS — EDITE AQUI.
+  //    Para adicionar um depoimento, copie um objeto e altere os campos.
+  //    (Estes são EXEMPLOS — substitua pelos relatos reais dos seus pacientes.)
+  var DEPOIMENTOS = [
+    {
+      nome: "Maria S.",
+      foto: "",                 // URL da foto OU "" para usar as iniciais
+      estrelas: 5,              // de 1 a 5
+      texto: "Voltei a dar aula sem dor de garganta no fim do dia. Atendimento atencioso e muito cuidadoso.",
+      fonte: "Google"
+    },
+    {
+      nome: "Carlos R.",
+      foto: "",
+      estrelas: 5,
+      texto: "Profissional experiente e humano. Saí da avaliação entendendo o que estava acontecendo com a minha voz.",
+      fonte: "Google"
+    },
+    {
+      nome: "Ana P.",
+      foto: "",
+      estrelas: 5,
+      texto: "Acompanhamento individualizado do começo ao fim. Senti diferença na minha comunicação no dia a dia.",
+      fonte: "Google"
+    }
+  ];
+
+  /* =============================================================
+     A PARTIR DAQUI NÃO PRECISA MEXER
+  ============================================================= */
+
+  // ----- CTA: aplica a URL central e o rastreamento -----
+  function trackConversion(){
+    try{
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'cta_whatsapp', secao: 'prova_social' });
+      // Quando o Google Ads estiver pronto, descomente e preencha:
+      // if (typeof window.gtag === 'function') {
+      //   window.gtag('event', 'conversion', { send_to: 'AW-XXXXXXX/XXXX' });
+      // }
+    }catch(e){ /* nunca bloquear o clique */ }
+  }
+
+  var cta = document.getElementById('cta-whatsapp');
+  if (cta){
+    if (WHATSAPP_URL) cta.setAttribute('href', WHATSAPP_URL);
+    cta.addEventListener('click', function(){ trackConversion(); });
+  }
+
+  // ----- VÍDEO: poster + facade (carrega só ao clicar) -----
+  var poster = document.getElementById('video-poster');
+  if (poster && POSTER_URL){
+    poster.src = POSTER_URL;
+    poster.addEventListener('error', function(){
+      // fallback: fundo sólido da marca se a capa não carregar
+      poster.style.display = 'none';
+    });
+  }
+  var durEl = document.getElementById('video-duracao');
+  if (durEl && VIDEO_DURACAO) durEl.textContent = VIDEO_DURACAO;
+
+  var facade = document.getElementById('video-facade');
+  if (facade){
+    facade.addEventListener('click', function(){
+      if (!VIDEO_URL) return;
+      var ehYoutube = /youtube|youtu\.be/i.test(VIDEO_URL);
+      var card = facade.parentNode;
+      var player;
+      if (ehYoutube){
+        var sep = VIDEO_URL.indexOf('?') >= 0 ? '&' : '?';
+        player = document.createElement('iframe');
+        player.src = VIDEO_URL + sep + 'autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        player.title = 'Vídeo do caso — análise acústica';
+        player.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        player.setAttribute('allowfullscreen', '');
+      } else {
+        player = document.createElement('video');
+        player.src = VIDEO_URL;
+        player.controls = true;
+        player.autoplay = true;
+        player.playsInline = true;
+        player.setAttribute('playsinline', '');
+      }
+      facade.parentNode.replaceChild(player, facade);
+    });
+  }
+
+  // ----- DEPOIMENTOS: render defensivo -----
+  function iniciais(nome){
+    if (!nome) return '?';
+    var partes = String(nome).trim().split(/\s+/);
+    var ini = partes[0].charAt(0) + (partes.length > 1 ? partes[partes.length - 1].charAt(0) : '');
+    return ini.toUpperCase() || '?';
+  }
+
+  function montaEstrelas(n){
+    var q = parseInt(n, 10);
+    if (isNaN(q)) q = 5;
+    q = Math.max(1, Math.min(5, q));
+    var box = document.createElement('div');
+    box.className = 'depo-estrelas';
+    box.setAttribute('aria-label', q + ' de 5 estrelas');
+    for (var i = 1; i <= 5; i++){
+      var s = document.createElement('span');
+      s.textContent = '★';
+      if (i > q) s.className = 'vazia';
+      s.setAttribute('aria-hidden', 'true');
+      box.appendChild(s);
+    }
+    return box;
+  }
+
+  function seloGoogle(fonte){
+    var span = document.createElement('span');
+    span.className = 'depo-fonte';
+    if (/google/i.test(fonte || '')){
+      span.innerHTML = '<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        + '<path fill="#FFC107" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/>'
+        + '<path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/>'
+        + '<path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.6 26.8 36.5 24 36.5c-5.2 0-9.6-3.5-11.2-8.3l-6.5 5C9.5 39.6 16.2 44 24 44z"/>'
+        + '<path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.6l6.2 5.2C41 35.3 44 30 44 24c0-1.3-.1-2.7-.4-4z"/></svg>';
+    }
+    span.appendChild(document.createTextNode(fonte || 'Google'));
+    return span;
+  }
+
+  function montaCard(d){
+    // Defensivo: sem texto não faz sentido um depoimento -> ignora
+    if (!d || !d.texto) return null;
+
+    var card = document.createElement('article');
+    card.className = 'depo-card';
+
+    var top = document.createElement('div');
+    top.className = 'depo-top';
+
+    // Avatar: foto OU iniciais
+    var avatar;
+    if (d.foto){
+      avatar = document.createElement('img');
+      avatar.className = 'depo-avatar';
+      avatar.src = d.foto;
+      avatar.alt = 'Foto de ' + (d.nome || 'paciente');
+      avatar.width = 48; avatar.height = 48;
+      avatar.loading = 'lazy';
+      avatar.addEventListener('error', function(){
+        var fb = document.createElement('div');
+        fb.className = 'depo-avatar';
+        fb.textContent = iniciais(d.nome);
+        if (avatar.parentNode) avatar.parentNode.replaceChild(fb, avatar);
+      });
+    } else {
+      avatar = document.createElement('div');
+      avatar.className = 'depo-avatar';
+      avatar.textContent = iniciais(d.nome);
+      avatar.setAttribute('aria-hidden', 'true');
+    }
+    top.appendChild(avatar);
+
+    var idBox = document.createElement('div');
+    idBox.className = 'depo-id';
+    var nome = document.createElement('div');
+    nome.className = 'depo-nome';
+    nome.textContent = d.nome || 'Paciente';
+    idBox.appendChild(nome);
+    idBox.appendChild(montaEstrelas(d.estrelas));
+    top.appendChild(idBox);
+
+    card.appendChild(top);
+
+    var texto = document.createElement('blockquote');
+    texto.className = 'depo-texto';
+    texto.textContent = d.texto;
+    card.appendChild(texto);
+
+    card.appendChild(seloGoogle(d.fonte));
+
+    return card;
+  }
+
+  var grid = document.getElementById('depo-grid');
+  if (grid && Array.isArray(DEPOIMENTOS)){
+    var frag = document.createDocumentFragment();
+    DEPOIMENTOS.forEach(function(d){
+      var card = montaCard(d);
+      if (card) frag.appendChild(card);
+    });
+    grid.appendChild(frag);
+  }
+
+})();
+</script>
+
+</body>
+</html>
