@@ -9,6 +9,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<!-- =====================================================================
+     GOOGLE ADS — tag global + conversão "Clique WhatsApp Site"
+     Conta 659-336-4323 · send_to = AW-16875706438/HIp0CN2uzKMcEMaw--4-
+===================================================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16875706438"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'AW-16875706438');
+
+  /* DISPARO DA CONVERSÃO
+     ONDE:  qualquer clique em link wa.me (nesta página é o CTA "Falar com o Filipe" do resultado).
+     POR QUÊ: clicar no WhatsApp é a ação de lead — é o que a conversão "Clique WhatsApp Site" mede.
+     Listener único e delegado + trava window.__convWhatsAtiva => nunca duplica no mesmo clique. */
+  if (!window.__convWhatsAtiva) {
+    window.__convWhatsAtiva = true;
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+      if (a) gtag('event', 'conversion', { 'send_to': 'AW-16875706438/HIp0CN2uzKMcEMaw--4-' });
+    });
+  }
+</script>
+
 <style>
 /* =====================================================================
    IDENTIDADE VISUAL — as mesmas cores/raios do site principal
@@ -340,6 +364,10 @@
       html += '<button class="triador-refazer" type="button" data-acao="refazer">↺ Refazer triagem</button>';
       html += '</div>';
       corpo.innerHTML = html;
+      // INSIGHT (NÃO é conversão): registra que o paciente concluiu a triagem.
+      // A conversão "Clique WhatsApp Site" só dispara quando ele clica no botão do WhatsApp
+      // (listener global no <head>). Aqui é só um evento de Analytics pra entender o funil.
+      if (typeof gtag === 'function') gtag('event', 'triagem_concluida', { tipo: tipo });
     }
 
     // Um único "ouvinte" de clique cobre opções, voltar e refazer

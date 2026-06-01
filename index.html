@@ -88,8 +88,10 @@
      Enquanto GADS_ID estiver vazio, NADA é carregado (site fica limpo).
 ===================================================================== -->
 <script>
-  window.GADS_ID = '';          /* <-- cole aqui seu ID (AW-... ou G-...) */
-  window.GADS_CONVERSAO = '';   /* <-- (opcional) rótulo de conversão do Google Ads */
+  /* ATIVO desde 2026-06-01 — Google Ads, conversão "Clique WhatsApp Site" (conta 659-336-4323).
+     send_to final = GADS_ID + '/' + GADS_CONVERSAO = AW-16875706438/HIp0CN2uzKMcEMaw--4- */
+  window.GADS_ID = 'AW-16875706438';              /* ID de conversão do Google Ads */
+  window.GADS_CONVERSAO = 'HIp0CN2uzKMcEMaw--4-'; /* rótulo da conversão */
 </script>
 <script>
   (function () {
@@ -1730,23 +1732,29 @@ document.querySelectorAll('.caso-facade').forEach(function(botao) {
   });
 })();
 
-// ---- Google Ads / Analytics: cada clique no WhatsApp vira conversão (só dispara se houver ID) ----
-document.addEventListener('click', function (e) {
-  var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
-  if (!a || typeof window.gtag !== 'function') return;
-  var msg = '';
-  try { msg = decodeURIComponent((a.href.split('text=')[1] || '')).toLowerCase(); } catch (x) {}
-  var servico = /disfagia|degluti|engolir/.test(msg) ? 'disfagia'
-              : /comunica|fala|linguagem/.test(msg) ? 'comunicacao'
-              : /voz|vocal/.test(msg)               ? 'voz'
-              : 'agendar';
-  // Evento sempre enviado (aparece no Google Analytics)
-  gtag('event', 'whatsapp_click', { servico: servico });
-  // Conversão do Google Ads — só dispara se você tiver preenchido GADS_CONVERSAO
-  if (window.GADS_CONVERSAO && window.GADS_ID) {
-    gtag('event', 'conversion', { send_to: window.GADS_ID + '/' + window.GADS_CONVERSAO });
-  }
-});
+// ---- Google Ads: clique no WhatsApp dispara a conversão "Clique WhatsApp Site" ----
+//  ONDE:  qualquer link wa.me da página (listener único e delegado no documento).
+//  POR QUÊ: clicar no WhatsApp é a ação de lead que queremos medir.
+//  O evento 'whatsapp_click' (com o serviço) é só INSIGHT no Analytics — NÃO é conversão.
+//  window.__convWhatsAtiva garante UM só listener => nunca dispara conversão duplicada
+//  no mesmo clique, mesmo que esta página seja combinada com outra que também rastreie.
+if (!window.__convWhatsAtiva) {
+  window.__convWhatsAtiva = true;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    var msg = '';
+    try { msg = decodeURIComponent((a.href.split('text=')[1] || '')).toLowerCase(); } catch (x) {}
+    var servico = /disfagia|degluti|engolir/.test(msg) ? 'disfagia'
+                : /comunica|fala|linguagem/.test(msg) ? 'comunicacao'
+                : /voz|vocal/.test(msg)               ? 'voz'
+                : 'agendar';
+    gtag('event', 'whatsapp_click', { servico: servico });   // insight (não-conversão)
+    if (window.GADS_CONVERSAO && window.GADS_ID) {            // CONVERSÃO "Clique WhatsApp Site"
+      gtag('event', 'conversion', { send_to: window.GADS_ID + '/' + window.GADS_CONVERSAO });
+    }
+  });
+}
 </script>
 
 </body>
