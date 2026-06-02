@@ -113,6 +113,15 @@
     document.head.appendChild(s);
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
+    // LGPD — Modo de Consentimento v2: nega cookies de anúncio/análise até o usuário ACEITAR no banner.
+    var consentido = false;
+    try { consentido = localStorage.getItem('cookieConsent') === 'aceito'; } catch (e) {}
+    gtag('consent', 'default', {
+      'ad_storage':         consentido ? 'granted' : 'denied',
+      'ad_user_data':       consentido ? 'granted' : 'denied',
+      'ad_personalization': consentido ? 'granted' : 'denied',
+      'analytics_storage':  consentido ? 'granted' : 'denied'
+    });
     gtag('js', new Date());
     gtag('config', id);
   })();
@@ -1182,6 +1191,30 @@ footer a:hover { color: white; }
   .titulo-secao { font-size: 24px; }
 }
 /* =====================================================================
+   BANNER DE COOKIES (LGPD)
+===================================================================== */
+#cookie-banner{
+  position:fixed; left:16px; right:16px; bottom:16px; z-index:9999;
+  max-width:560px; margin:0 auto; background:#fff;
+  border:1px solid rgba(0,110,180,.15); border-radius:14px;
+  box-shadow:0 10px 40px rgba(0,0,0,.18); padding:18px 20px;
+  font-size:14px; line-height:1.55; color:var(--cinza-texto); display:none;
+}
+#cookie-banner.mostrar{ display:block; animation:surgeCk .3s ease; }
+@keyframes surgeCk{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+#cookie-banner p{ margin:0 0 12px; }
+#cookie-banner a{ color:var(--azul); font-weight:600; }
+#cookie-banner .ck-botoes{ display:flex; gap:10px; flex-wrap:wrap; }
+#cookie-banner button{
+  flex:1; min-width:120px; min-height:44px; border-radius:10px; cursor:pointer;
+  font-family:'Sora',sans-serif; font-weight:700; font-size:14px; border:none;
+  transition:transform .1s, opacity .15s;
+}
+#cookie-banner button:active{ transform:scale(.98); }
+#cookie-banner .ck-aceitar{ background:var(--azul); color:#fff; }
+#cookie-banner .ck-rejeitar{ background:#eef3f6; color:var(--grafite); }
+
+/* =====================================================================
    SEÇÃO TRIAGEM (Voz/Deglutição) — estilos do mini-questionário
 ===================================================================== */
 .triagem-bloco {
@@ -1804,8 +1837,8 @@ footer a:hover { color: white; }
 <footer>
   <img src="logo.jpg" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
   <div class="footer-links">
-    <a href="#">Termos e Condições</a>
-    <a href="#">Política de Privacidade</a>
+    <a href="privacidade.html">Política de Privacidade</a>
+    <a href="cookies.html">Política de Cookies</a>
   </div>
   <p>© 2026 Filipe Silvestre Fonoaudiologia | CNPJ 60.994.445/0001-66 | CRFa 5-13357</p>
 </footer>
@@ -2089,6 +2122,34 @@ if (!window.__convWhatsAtiva) {
   });
 
 })();
+</script>
+
+<!-- =============================================
+     BANNER DE COOKIES (LGPD) — controla o Modo de Consentimento do Google
+============================================= -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos cookies para melhorar sua experiência e medir resultados de anúncios. Você pode aceitar ou rejeitar. Saiba mais na <a href="cookies.html">Política de Cookies</a>.</p>
+  <div class="ck-botoes">
+    <button type="button" class="ck-rejeitar" onclick="cookieConsent(false)">Rejeitar</button>
+    <button type="button" class="ck-aceitar" onclick="cookieConsent(true)">Aceitar</button>
+  </div>
+</div>
+<script>
+  // Mostra o banner só se ainda não houve escolha; ao aceitar, libera os cookies no Consent Mode.
+  (function () {
+    var escolha = null;
+    try { escolha = localStorage.getItem('cookieConsent'); } catch (e) {}
+    if (!escolha) { var b = document.getElementById('cookie-banner'); if (b) b.classList.add('mostrar'); }
+  })();
+  function cookieConsent(aceitou) {
+    try { localStorage.setItem('cookieConsent', aceitou ? 'aceito' : 'rejeitado'); } catch (e) {}
+    if (aceitou && typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted','analytics_storage':'granted'
+      });
+    }
+    var b = document.getElementById('cookie-banner'); if (b) b.classList.remove('mostrar');
+  }
 </script>
 
 </body>
