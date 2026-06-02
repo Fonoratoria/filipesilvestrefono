@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fonoratoria.github.io/filipesilvestrefono/sitemap.xml
+Sitemap: https://filipesilvestrefono.com/sitemap.xml
