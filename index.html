@@ -102,6 +102,7 @@
      send_to final = GADS_ID + '/' + GADS_CONVERSAO = AW-16875706438/HIp0CN2uzKMcEMaw--4- */
   window.GADS_ID = 'AW-16875706438';              /* ID de conversão do Google Ads */
   window.GADS_CONVERSAO = 'HIp0CN2uzKMcEMaw--4-'; /* rótulo da conversão */
+  window.GA4_ID = 'G-MN1L658BS9';                 /* Google Analytics 4 */
 </script>
 <script>
   (function () {
@@ -124,6 +125,7 @@
     });
     gtag('js', new Date());
     gtag('config', id);
+    if (window.GA4_ID) gtag('config', window.GA4_ID);
   })();
 </script>
 
