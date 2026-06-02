@@ -451,6 +451,21 @@ nav {
 }
 .selo-especialista svg { width: 19px; height: 19px; fill: #fff; flex-shrink: 0; }
 
+/* Selo "5,0 no Google" no hero — prova social acima da dobra */
+.hero-google{
+  position:absolute; left:16px; bottom:16px; z-index:2;
+  display:inline-flex; align-items:center; gap:8px;
+  background:#fff; border:1px solid rgba(0,0,0,.07); box-shadow:0 6px 20px rgba(0,0,0,.18);
+  padding:8px 13px; border-radius:50px;
+  font-size:13px; color:var(--cinza-texto); transition:transform .15s, box-shadow .15s;
+}
+.hero-google:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.24); }
+@media (max-width:480px){ .hero-google{ font-size:12px; padding:7px 11px; } }
+.hero-google .hg-g{ width:16px; height:16px; flex-shrink:0; }
+.hero-google .hg-estrelas{ color:#fbbc05; letter-spacing:1px; font-size:13px; }
+.hero-google .hg-nota{ font-family:'Sora',sans-serif; font-weight:800; color:var(--grafite); font-size:15px; }
+.hero-google strong{ color:var(--grafite); }
+
 .hero-conteudo {
   display: flex;
   flex-direction: column;
@@ -1393,7 +1408,15 @@ footer a:hover { color: white; }
      SEÇÃO 1 — HERO
 ============================================= -->
 <section id="hero">
-  <div class="hero-foto">    <img src="foto-hero.jpg" alt="Filipe Silvestre, fonoaudiólogo em Anápolis GO" fetchpriority="high" decoding="async">
+  <div class="hero-foto">
+    <img src="foto-hero.jpg" alt="Filipe Silvestre, fonoaudiólogo em Anápolis GO" fetchpriority="high" decoding="async">
+    <!-- Prova social SOBRE a foto (acima da dobra no celular e no desktop). Nº sincronizado com reviews.json -->
+    <a class="hero-google" href="#avaliacoes" aria-label="Nota 5,0 no Google — ver avaliações">
+      <svg class="hg-g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.6 26.8 36.5 24 36.5c-5.2 0-9.6-3.5-11.2-8.3l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.6l6.2 5.2C41 35.3 44 30 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
+      <span class="hg-estrelas" aria-hidden="true">★★★★★</span>
+      <span class="hg-nota" id="hero-google-nota">5,0</span>
+      <span>· <strong id="hero-google-total">25</strong> avaliações no Google</span>
+    </a>
   </div>
 
   <div class="hero-conteudo">
@@ -1933,8 +1956,14 @@ document.addEventListener('click', function(e) {
       var frag = document.createDocumentFragment();
       dados.depoimentos.forEach(function(d){ var c = renderCard(d); if(c) frag.appendChild(c); });
       grid.appendChild(frag);
-      if (subtitulo && dados.media && dados.total) {
-        subtitulo.textContent = 'Nota ' + Number(dados.media).toFixed(1).replace('.', ',') + ' · ' + dados.total + ' avaliações no Google.';
+      if (dados.media) {
+        var notaFmt = Number(dados.media).toFixed(1).replace('.', ',');
+        if (subtitulo && dados.total) {
+          subtitulo.textContent = 'Nota ' + notaFmt + ' · ' + dados.total + ' avaliações no Google.';
+        }
+        // Mantém o selo do hero em sincronia com o reviews.json
+        var hgNota = document.getElementById('hero-google-nota'); if (hgNota) hgNota.textContent = notaFmt;
+        var hgTotal = document.getElementById('hero-google-total'); if (hgTotal && dados.total) hgTotal.textContent = dados.total;
       }
     })
     .catch(function(){});
