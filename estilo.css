@@ -1,0 +1,1232 @@
+/* =============================================
+   VARIÁVEIS E RESET
+============================================= */
+:root {
+  --azul: #006EB4;
+  --azul-escuro: #005a93;
+  --turquesa: #46C8BE;
+  --grafite: #141414;
+  --cinza-texto: #4a4a4a;
+  --cinza-suave: #6b6b6b;
+  --bg-suave: #F5FAFC;
+  --branco: #ffffff;
+  --sombra: 0 4px 24px rgba(0,110,180,0.10);
+  --raio: 14px;
+  --max-width: 1100px;
+  --secao-v: 96px;
+  --secao-h: 24px;
+}
+
+/* Mais respiro horizontal no desktop */
+@media (min-width: 769px) {
+  :root { --secao-h: 48px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--grafite);
+  background: var(--branco);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* =============================================
+   REFINAMENTOS — acessibilidade, âncoras e movimento
+============================================= */
+/* Compensa o header fixo (72px) ao navegar por âncoras (#sobre, #triagem, #contato…) */
+section[id] { scroll-margin-top: 84px; }
+/* Foco visível para navegação por teclado (acessibilidade) */
+a:focus-visible, button:focus-visible, .opcao:focus-visible {
+  outline: 3px solid var(--turquesa);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* =============================================
+   UTILITÁRIOS
+============================================= */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--secao-h);
+}
+
+.secao-padding {
+  padding: var(--secao-v) var(--secao-h);
+}
+
+/* Botão WhatsApp — padrão único */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--azul);
+  color: var(--branco);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(0,110,180,0.30);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.btn-whatsapp:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(0,110,180,0.35);
+}
+.btn-whatsapp svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+.btn-turquesa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--turquesa);
+  color: var(--grafite);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(70,200,190,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.btn-turquesa:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(70,200,190,0.45); }
+
+.secao-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--azul);
+  background: rgba(0,110,180,0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.secao-label::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--turquesa);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.titulo-secao {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 800;
+  color: var(--grafite);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.titulo-secao .destaque { color: var(--azul); }
+
+.subtitulo-secao {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+.divisor {
+  width: 48px;
+  height: 3px;
+  background: var(--turquesa);
+  border-radius: 2px;
+  margin: 16px 0 40px;
+}
+
+/* SVG WhatsApp reutilizável */
+.ico-whatsapp { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+/* =============================================
+   HEADER / NAV
+============================================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,110,180,0.08);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--secao-h);
+  height: 72px;
+}
+
+.nav-marca {
+  display: flex;
+  align-items: center;
+}
+.nav-logo {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cinza-texto);
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.ativo { color: var(--azul); }
+
+.nav-cta {
+  background: var(--azul);
+  color: white !important;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--azul-escuro) !important; transform: translateY(-1px); }
+
+/* Menu mobile */
+.nav-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.nav-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--grafite);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Drawer mobile */
+.nav-mobile-drawer {
+  display: none;
+  flex-direction: column;
+  background: white;
+  border-top: 1px solid rgba(0,110,180,0.08);
+  padding: 20px var(--secao-h) 24px;
+  gap: 4px;
+}
+.nav-mobile-drawer.aberto { display: flex; }
+.nav-mobile-drawer a {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cinza-texto);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: color 0.2s;
+}
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer a:hover { color: var(--azul); }
+.nav-mobile-drawer .nav-cta-mobile {
+  margin-top: 8px;
+  background: var(--azul);
+  color: white !important;
+  padding: 14px 22px;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: 700 !important;
+  border-bottom: none !important;
+}
+
+/* =============================================
+   HERO
+============================================= */
+#hero {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 56px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px var(--secao-h);
+}
+
+.hero-foto {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.13);
+}
+.hero-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Selo de Especialista em Voz — destaque principal do hero */
+.selo-especialista {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  box-shadow: 0 8px 22px rgba(0,110,180,0.28);
+  margin-bottom: 18px;
+}
+.selo-especialista svg { width: 19px; height: 19px; fill: #fff; flex-shrink: 0; }
+
+/* Selo "5,0 no Google" no hero — prova social acima da dobra */
+.hero-google{
+  position:absolute; left:16px; bottom:16px; z-index:2;
+  display:inline-flex; align-items:center; gap:8px;
+  background:#fff; border:1px solid rgba(0,0,0,.07); box-shadow:0 6px 20px rgba(0,0,0,.18);
+  padding:8px 13px; border-radius:50px;
+  font-size:13px; color:var(--cinza-texto); transition:transform .15s, box-shadow .15s;
+}
+.hero-google:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.24); }
+@media (max-width:480px){ .hero-google{ font-size:12px; padding:7px 11px; } }
+.hero-google .hg-g{ width:16px; height:16px; flex-shrink:0; }
+.hero-google .hg-estrelas{ color:#fbbc05; letter-spacing:1px; font-size:13px; }
+.hero-google .hg-nota{ font-family:'Sora',sans-serif; font-weight:800; color:var(--grafite); font-size:15px; }
+.hero-google strong{ color:var(--grafite); }
+
+.hero-conteudo {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-headline {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 800;
+  color: var(--azul);
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.hero-headline span { display: block; }
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  margin-bottom: 40px;
+}
+.hero-sub strong { color: var(--grafite); font-weight: 600; }
+
+.hero-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* =============================================
+   SEÇÃO 2 — VOCÊ SE RECONHECE?
+============================================= */
+#servicos {
+  background: var(--bg-suave);
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.servicos-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.servicos-header .subtitulo-secao { margin: 0 auto; }
+.servicos-header .divisor { margin: 16px auto 0; }
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.servico-card {
+  background: white;
+  border-radius: var(--raio);
+  padding: 40px 32px;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-top: 3px solid transparent;
+}
+.servico-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,110,180,0.15);
+}
+.servico-card:nth-child(1) { border-top-color: var(--azul); }
+.servico-card:nth-child(2) { border-top-color: var(--turquesa); }
+.servico-card:nth-child(3) { border-top-color: #9bc8e8; }
+
+.servico-numero {
+  font-family: 'Sora', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--azul);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.servico-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 16px;
+}
+
+.servico-texto {
+  font-size: 15px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.servico-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul);
+  transition: gap 0.2s;
+}
+.servico-link:hover { gap: 10px; }
+.servico-link::after { content: "→"; }
+
+/* =============================================
+   SEÇÃO 3 — SOBRE
+============================================= */
+#sobre {
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.sobre-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.sobre-foto {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
+  box-shadow: var(--sombra);
+}
+.sobre-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.sobre-texto {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.formacao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.formacao-foto {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
+  box-shadow: var(--sombra);
+}
+.formacao-foto img { width: 100%; object-fit: cover; }
+
+.formacao-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 24px;
+}
+
+.formacao-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.formacao-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--cinza-texto);
+  line-height: 1.55;
+}
+.formacao-lista li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--turquesa);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   SEÇÃO 4 — POR QUE ME ESCOLHER
+============================================= */
+#diferenciais {
+  background: var(--bg-suave);
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.diferenciais-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.diferenciais-header .subtitulo-secao { margin: 12px auto 0; }
+.diferenciais-header .divisor { margin: 16px auto 0; }
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.diferencial-card {
+  background: white;
+  border-radius: var(--raio);
+  padding: 36px;
+  box-shadow: var(--sombra);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+.diferencial-card:hover { transform: translateY(-3px); }
+
+.diferencial-numero {
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--azul);
+  line-height: 1;
+  min-width: 44px;
+  opacity: 0.25;
+}
+
+.diferencial-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 10px;
+}
+.diferencial-texto {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+}
+
+.diferenciais-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* =============================================
+   SEÇÃO 5 — AGENDE SUA AVALIAÇÃO
+============================================= */
+#agendar {
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.agendar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.agendar-foto {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8f4fb, #cde8f5);
+  box-shadow: var(--sombra);
+  aspect-ratio: 4/5;
+}
+.agendar-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.agendar-texto {
+  font-size: 17px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+/* =============================================
+   SEÇÃO 6 — AVALIAÇÃO VOCAL (Voxmetria)
+============================================= */
+#avaliacao-vocal {
+  background: var(--grafite);
+  padding: var(--secao-v) var(--secao-h);
+  position: relative;
+  overflow: hidden;
+}
+#avaliacao-vocal::before {
+  content: "";
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(70,200,190,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.avaliacao-vocal-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.avaliacao-vocal-header {
+  margin-bottom: 48px;
+}
+.avaliacao-vocal-header .secao-label {
+  background: rgba(70,200,190,0.15);
+  color: var(--turquesa);
+}
+.avaliacao-vocal-header .titulo-secao { color: white; }
+.avaliacao-vocal-header .subtitulo-secao { color: rgba(255,255,255,0.7); }
+
+.avaliacao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.avaliacao-imagem {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #006EB4, #46C8BE);
+}
+.avaliacao-imagem img { width: 100%; height: 100%; object-fit: cover; }
+
+.avaliacao-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.avaliacao-lista li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+}
+.avaliacao-lista li::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--turquesa);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   SEÇÃO 7 — CASOS REAIS
+============================================= */
+#casos-reais {
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.casos-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.casos-header .divisor { margin: 16px auto 0; }
+.casos-header .subtitulo-secao { margin: 0 auto; }
+
+.casos-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.casos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.caso-card {
+  border-radius: var(--raio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  background: white;
+}
+
+/* Placeholder 9:16 */
+.caso-video {
+  aspect-ratio: 9/16;
+  background: linear-gradient(135deg, #1a2a3a, #006EB4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+}
+.caso-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Vídeo YouTube Shorts 9:16 */
+.caso-video-wrap {
+  position: relative;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+  background: #141414;
+}
+.caso-video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+.caso-video-wrap .video-badge {
+  z-index: 2;
+}
+
+/* Capa própria (esconde título, canal e foto do YouTube até clicar) */
+.caso-facade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: #141414;
+  display: block;
+}
+.caso-facade img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.caso-facade .caso-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 66px;
+  height: 66px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
+}
+.caso-facade .caso-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  width: 0; height: 0;
+  border-left: 19px solid var(--azul);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+.caso-facade:hover .caso-play {
+  background: #fff;
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+.play-btn {
+  width: 64px; height: 64px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.play-btn::after {
+  content: "";
+  width: 0; height: 0;
+  border-left: 18px solid var(--azul);
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 4px;
+}
+.video-label {
+  position: absolute;
+  bottom: 16px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.video-badge {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: white;
+  color: var(--grafite);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.caso-legenda {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.55;
+}
+
+.disfagia-titulo {
+  text-align: center;
+  margin: 56px 0 32px;
+}
+
+/* =============================================
+   SEÇÃO 8 — AVALIAÇÕES (Google Reviews)
+============================================= */
+#avaliacoes {
+  background: var(--bg-suave);
+  padding: var(--secao-v) var(--secao-h);
+}
+.avaliacoes-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.avaliacoes-header .divisor { margin: 16px auto 0; }
+.avaliacoes-header .subtitulo-secao { margin: 0 auto; }
+
+.avaliacoes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.avaliacao-card {
+  background: var(--branco);
+  border: 1px solid rgba(0,110,180,0.10);
+  border-radius: var(--raio);
+  padding: 24px;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s;
+}
+.avaliacao-card:hover { transform: translateY(-3px); }
+
+.avaliacao-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.avaliacao-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--azul);
+  color: white;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+.avaliacao-info { min-width: 0; }
+.avaliacao-nome {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--grafite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.avaliacao-estrelas {
+  display: flex;
+  gap: 2px;
+  margin-top: 3px;
+  font-size: 13px;
+  color: var(--turquesa);
+}
+.avaliacao-texto {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+  font-style: normal;
+}
+.avaliacao-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cinza-suave);
+}
+.avaliacao-selo svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  .avaliacoes-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================================
+   SEÇÃO 9 — CONTATO
+============================================= */
+#contato {
+  background: var(--bg-suave);
+  padding: var(--secao-v) var(--secao-h);
+}
+
+.contato-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contato-inner .divisor { margin: 16px auto 40px; }
+
+.contato-infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.contato-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--cinza-texto);
+}
+.contato-item a { color: var(--azul); font-weight: 600; }
+.contato-item a:hover { text-decoration: underline; }
+
+.horario-box {
+  background: white;
+  border-radius: var(--raio);
+  padding: 28px;
+  box-shadow: var(--sombra);
+  margin-bottom: 36px;
+  text-align: left;
+}
+.horario-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--grafite);
+  margin-bottom: 10px;
+}
+.horario-texto {
+  font-size: 14px;
+  color: var(--cinza-texto);
+  line-height: 1.65;
+}
+
+/* =============================================
+   RODAPÉ
+============================================= */
+footer {
+  background: var(--grafite);
+  color: rgba(255,255,255,0.6);
+  padding: 40px var(--secao-h);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.8;
+}
+footer a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+footer a:hover { color: white; }
+.footer-logo {
+  height: 88px;
+  width: auto;
+  margin: 0 auto 28px;
+  background: white;
+  padding: 16px 24px;
+  border-radius: var(--raio);
+}
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+
+/* =============================================
+   RESPONSIVO — MOBILE
+============================================= */
+@media (max-width: 768px) {
+  :root {
+    --secao-v: 64px;
+    --secao-h: 20px;
+  }
+
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-cta-desktop { display: none; }
+  .nav-menu-btn { display: flex; }
+
+  /* Hero */
+  #hero {
+    grid-template-columns: 1fr;
+    padding: 36px var(--secao-h) 64px;
+    min-height: auto;
+    gap: 32px;
+  }
+  .hero-foto { order: -1; aspect-ratio: 3/4; }
+  .hero-headline { font-size: clamp(28px, 8vw, 38px); }
+  .hero-btns { align-items: stretch; }
+  .btn-whatsapp, .btn-turquesa { width: 100%; font-size: 15px; padding: 15px 24px; }
+
+  /* Serviços */
+  .servicos-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Sobre */
+  .sobre-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 48px; }
+  .formacao-grid { grid-template-columns: 1fr; gap: 24px; }
+
+  /* Diferenciais — garantir ordem 1,2,3,4 */
+  .diferenciais-grid { grid-template-columns: 1fr; gap: 16px; }
+  .diferencial-card:nth-child(1) { order: 1; }
+  .diferencial-card:nth-child(2) { order: 2; }
+  .diferencial-card:nth-child(3) { order: 3; }
+  .diferencial-card:nth-child(4) { order: 4; }
+
+  /* Agendar */
+  .agendar-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Avaliação vocal */
+  .avaliacao-grid { grid-template-columns: 1fr; gap: 36px; }
+
+  /* Casos reais */
+  .casos-grid { grid-template-columns: 1fr; max-width: 340px; }
+
+  /* Diferenciais cta */
+  .diferenciais-cta .btn-whatsapp { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .hero-headline { font-size: 26px; }
+  .titulo-secao { font-size: 24px; }
+}
+/* =====================================================================
+   BANNER DE COOKIES (LGPD)
+===================================================================== */
+#cookie-banner{
+  position:fixed; left:16px; right:16px; bottom:16px; z-index:9999;
+  max-width:560px; margin:0 auto; background:#fff;
+  border:1px solid rgba(0,110,180,.15); border-radius:14px;
+  box-shadow:0 10px 40px rgba(0,0,0,.18); padding:18px 20px;
+  font-size:14px; line-height:1.55; color:var(--cinza-texto); display:none;
+}
+#cookie-banner.mostrar{ display:block; animation:surgeCk .3s ease; }
+@keyframes surgeCk{ from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+#cookie-banner p{ margin:0 0 12px; }
+#cookie-banner a{ color:var(--azul); font-weight:600; }
+#cookie-banner .ck-botoes{ display:flex; gap:10px; flex-wrap:wrap; }
+#cookie-banner button{
+  flex:1; min-width:120px; min-height:44px; border-radius:10px; cursor:pointer;
+  font-family:'Sora',sans-serif; font-weight:700; font-size:14px; border:none;
+  transition:transform .1s, opacity .15s;
+}
+#cookie-banner button:active{ transform:scale(.98); }
+#cookie-banner .ck-aceitar{ background:var(--azul); color:#fff; }
+#cookie-banner .ck-rejeitar{ background:#eef3f6; color:var(--grafite); }
+
+/* =====================================================================
+   BOTÃO FLUTUANTE DE WHATSAPP (conversão sempre à mão, ótimo no celular)
+===================================================================== */
+.whats-fab{
+  position:fixed; right:18px; bottom:18px; z-index:900;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:58px; height:58px; border-radius:50%;
+  background:linear-gradient(135deg,#1FA97E,#25D366);
+  box-shadow:0 8px 24px rgba(31,169,126,.45);
+  transition:transform .18s, box-shadow .18s;
+}
+.whats-fab svg{ width:30px; height:30px; fill:#fff; }
+.whats-fab:hover{ transform:scale(1.08); box-shadow:0 12px 30px rgba(31,169,126,.55); }
+.whats-fab::after{
+  content:"Fale no WhatsApp"; position:absolute; right:70px; white-space:nowrap;
+  background:var(--grafite); color:#fff; font-family:'Sora',sans-serif; font-size:12px; font-weight:600;
+  padding:7px 12px; border-radius:8px; opacity:0; transform:translateX(6px); pointer-events:none;
+  transition:opacity .2s, transform .2s;
+}
+.whats-fab:hover::after{ opacity:1; transform:translateX(0); }
+@media (max-width:768px){ .whats-fab::after{ display:none; } }
+
+/* =====================================================================
+   SEÇÃO TRIAGEM (Voz/Deglutição) — estilos do mini-questionário
+===================================================================== */
+.triagem-bloco {
+  --verde-whats: #1FA97E;   /* verde-turquesa do botão de WhatsApp */
+  background: var(--bg-suave);
+  padding: var(--secao-v) var(--secao-h);
+}
+.triagem-bloco *, .triagem-bloco *::before, .triagem-bloco *::after { box-sizing: border-box; }
+
+/* Cabeçalho da seção */
+.triagem-cabecalho { max-width: 880px; margin: 0 auto 28px; text-align: center; }
+.triagem-cabecalho h2 {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(24px, 5vw, 32px); color: var(--grafite); margin: 0 0 10px;
+}
+.triagem-cabecalho p { color: var(--cinza-texto); font-size: 16px; margin: 0 auto; max-width: 620px; line-height: 1.6; }
+
+/* Grade dos dois triadores (2 colunas no desktop, 1 no celular) */
+.triadores {
+  max-width: 880px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+}
+@media (max-width: 720px) { .triadores { grid-template-columns: 1fr; } }
+
+/* Cartão de cada triador */
+.triador {
+  background: var(--branco); border-radius: var(--raio);
+  box-shadow: var(--sombra); padding: 26px 22px;
+  display: flex; flex-direction: column;
+}
+.triador-topo { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.triador-icone {
+  width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+}
+.triador-icone svg { width: 28px; height: 28px; fill: #fff; }
+.triador-topo h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 19px; margin: 0; }
+.triador-topo span { font-size: 13px; color: var(--cinza-suave); }
+
+/* Barrinha de progresso (3 traços) */
+.triador-progresso { display: flex; gap: 6px; margin-bottom: 18px; }
+.triador-progresso i {
+  height: 6px; flex: 1; border-radius: 6px; background: #e3eef4; transition: background .25s;
+}
+.triador-progresso i.atual { background: var(--turquesa); }
+.triador-progresso i.feito { background: var(--azul); }
+
+/* Corpo (perguntas e resultado entram aqui via JS) */
+.triador-corpo { flex: 1; }
+.triador-num { font-size: 12px; font-weight: 600; letter-spacing: .4px; text-transform: uppercase; color: var(--azul); margin: 0 0 8px; }
+.triador-pergunta { font-family: 'Sora', sans-serif; font-weight: 600; font-size: 18px; line-height: 1.4; margin: 0 0 18px; }
+
+/* Opções de resposta = botões GRANDES, fáceis no dedo */
+.triador-opcoes { display: flex; flex-direction: column; gap: 12px; }
+.opcao {
+  width: 100%; min-height: 56px; padding: 14px 18px;
+  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--grafite);
+  background: var(--branco); border: 2px solid #dce8ef; border-radius: 14px;
+  cursor: pointer; text-align: left; transition: border-color .15s, background .15s, transform .1s;
+}
+.opcao:hover { border-color: var(--turquesa); background: #f3fbfa; }
+.opcao:active { transform: scale(0.98); }
+
+/* Voltar / refazer */
+.triador-voltar, .triador-refazer {
+  margin-top: 16px; background: none; border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--cinza-suave);
+}
+.triador-voltar:hover, .triador-refazer:hover { color: var(--azul); }
+
+/* Resultado */
+.resultado { animation: surge .3s ease; }
+@keyframes surge { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.resultado-tag {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .3px;
+  padding: 5px 12px; border-radius: 50px; margin-bottom: 12px;
+}
+.resultado.tom-atencao .resultado-tag { background: #fff3e0; color: #b5651d; }  /* laranja suave: vale avaliar */
+.resultado.tom-leve   .resultado-tag { background: #e6f7f4; color: #138a73; }  /* verde suave: preventivo */
+.resultado-titulo { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; line-height: 1.4; margin: 0 0 10px; }
+.resultado-texto { font-size: 15px; line-height: 1.65; color: var(--cinza-texto); margin: 0 0 14px; }
+
+/* Frase educativa (o que a avaliação inclui) */
+.resultado-edu {
+  font-size: 13.5px; line-height: 1.6; color: var(--grafite);
+  background: var(--bg-suave); border-left: 3px solid var(--turquesa);
+  padding: 12px 14px; border-radius: 8px; margin: 0 0 18px;
+}
+
+/* Botão CTA verde-turquesa do WhatsApp */
+.btn-whats {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 56px; padding: 16px 20px;
+  font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: #fff; text-decoration: none;
+  background: linear-gradient(135deg, var(--verde-whats), var(--turquesa));
+  border-radius: 14px; box-shadow: 0 8px 22px rgba(31,169,126,0.32);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-whats:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(31,169,126,0.40); }
+.btn-whats svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+/* Aviso legal (sem diagnóstico) */
+.triagem-aviso {
+  max-width: 880px; margin: 24px auto 0; text-align: center;
+  font-size: 12.5px; line-height: 1.6; color: var(--cinza-suave);
+}
