@@ -1100,6 +1100,14 @@ nav {
 @media (max-width: 768px) {
   .avaliacoes-grid { grid-template-columns: 1fr; }
 }
+.btn-ver-google{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#fff; border:1px solid rgba(0,110,180,0.25); color:var(--azul);
+  font-family:'Sora',sans-serif; font-weight:700; font-size:14px;
+  padding:13px 22px; border-radius:50px; text-decoration:none; box-shadow:var(--sombra);
+  transition:transform .15s, box-shadow .15s;
+}
+.btn-ver-google:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.12); }
 
 /* =============================================
    SEÇÃO 9 — CONTATO
@@ -1871,6 +1879,9 @@ footer a:hover { color: white; }
     <div class="avaliacoes-grid" id="avaliacoes-grid">
       <!-- Cards inseridos pelo JS via reviews.json -->
     </div>
+    <div style="text-align:center;margin-top:32px">
+      <a id="ver-google-btn" href="https://www.google.com/search?q=Filipe+Silvestre+Fonoaudi%C3%B3logo+An%C3%A1polis%2FGO" target="_blank" rel="noopener" class="btn-ver-google" style="display:none">Ver todas as avaliações no Google ★</a>
+    </div>
   </div>
 </section>
 
@@ -1983,10 +1994,21 @@ document.addEventListener('click', function(e) {
     .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(dados){
       if (!dados || !Array.isArray(dados.depoimentos) || !dados.depoimentos.length) return;
+      var MAX_CARDS = 6; // mostra só as primeiras (página leve, principalmente no celular)
       grid.innerHTML = '';
       var frag = document.createDocumentFragment();
-      dados.depoimentos.forEach(function(d){ var c = renderCard(d); if(c) frag.appendChild(c); });
+      dados.depoimentos.slice(0, MAX_CARDS).forEach(function(d){ var c = renderCard(d); if(c) frag.appendChild(c); });
       grid.appendChild(frag);
+      // Botão "ver todas no Google" — só se tiver mais do que o exibido
+      var btn = document.getElementById('ver-google-btn');
+      if (btn) {
+        if (dados.total && dados.total > MAX_CARDS) {
+          btn.textContent = 'Ver todas as ' + dados.total + ' avaliações no Google ★';
+          btn.style.display = 'inline-flex';
+        } else {
+          btn.style.display = 'none';
+        }
+      }
       if (dados.media) {
         var notaFmt = Number(dados.media).toFixed(1).replace('.', ',');
         if (subtitulo && dados.total) {
@@ -2253,9 +2275,11 @@ if (!window.__convWhatsAtiva) {
 <style>
 #iaf-fab{position:fixed;left:18px;bottom:18px;z-index:901;display:inline-flex;align-items:center;gap:8px;
   background:#0e5a8a;color:#fff;border:none;border-radius:30px;padding:12px 16px;cursor:pointer;
-  font-family:'Sora',sans-serif;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(14,90,138,.4);transition:transform .18s}
+  font-family:'Sora',sans-serif;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(14,90,138,.4);
+  opacity:0;visibility:hidden;transition:transform .18s, opacity .3s, visibility .3s}
+#iaf-fab.iaf-show{opacity:1;visibility:visible}
 #iaf-fab:hover{transform:scale(1.05)}
-#iaf-fab .iaf-dot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 0 3px rgba(37,211,102,.35)}
+#iaf-fab .iaf-ic{font-size:18px;line-height:1}
 #iaf-panel{position:fixed;left:18px;bottom:84px;z-index:902;width:340px;max-width:calc(100vw - 36px);
   height:480px;max-height:calc(100vh - 120px);background:#fff;border-radius:18px;box-shadow:0 16px 50px rgba(0,0,0,.25);
   display:none;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif}
@@ -2276,11 +2300,16 @@ if (!window.__convWhatsAtiva) {
 #iaf-inp:focus{border-color:#0e5a8a}
 #iaf-send{background:#0e5a8a;color:#fff;border:none;border-radius:12px;padding:0 16px;font-weight:600;cursor:pointer}
 #iaf-send:disabled{opacity:.5;cursor:default}
-@media (max-width:480px){#iaf-panel{height:72vh}#iaf-fab span.iaf-txt{display:inline}}
+@media (max-width:600px){
+  #iaf-fab{padding:0;width:54px;height:54px;border-radius:50%;justify-content:center;gap:0}
+  #iaf-fab .iaf-txt{display:none}
+  #iaf-fab .iaf-ic{font-size:24px}
+  #iaf-panel{height:72vh;bottom:78px}
+}
 </style>
 
 <button id="iaf-fab" aria-label="Tirar dúvida com a assistente">
-  <span class="iaf-dot"></span><span class="iaf-txt">Tirar dúvida</span>
+  <span class="iaf-ic" aria-hidden="true">💬</span><span class="iaf-txt">Tirar dúvida</span>
 </button>
 
 <div id="iaf-panel" role="dialog" aria-label="Assistente do Filipe">
@@ -2358,6 +2387,11 @@ if (!window.__convWhatsAtiva) {
   document.getElementById('iaf-close').addEventListener('click',fechar);
   btn.addEventListener('click',enviar);
   inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); enviar(); } });
+
+  // A bolinha só aparece depois de rolar um pouco — assim o topo (hero) fica limpo.
+  function revelar(){ if(window.scrollY>300){ fab.classList.add('iaf-show'); window.removeEventListener('scroll',revelar); } }
+  window.addEventListener('scroll',revelar,{passive:true});
+  revelar();
 })();
 </script>
 
