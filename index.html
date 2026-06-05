@@ -2245,5 +2245,121 @@ if (!window.__convWhatsAtiva) {
   }
 </script>
 
+<!-- ============================================================
+     ASSISTENTE IA (triagem) — bolinha OPCIONAL no canto esquerdo.
+     Não mexe nos botões diretos de WhatsApp. Conversa com o backend
+     (Apps Script), que guarda a chave do Claude escondida. Modelo Haiku.
+============================================================ -->
+<style>
+#iaf-fab{position:fixed;left:18px;bottom:18px;z-index:901;display:inline-flex;align-items:center;gap:8px;
+  background:#0e5a8a;color:#fff;border:none;border-radius:30px;padding:12px 16px;cursor:pointer;
+  font-family:'Sora',sans-serif;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(14,90,138,.4);transition:transform .18s}
+#iaf-fab:hover{transform:scale(1.05)}
+#iaf-fab .iaf-dot{width:8px;height:8px;border-radius:50%;background:#25D366;box-shadow:0 0 0 3px rgba(37,211,102,.35)}
+#iaf-panel{position:fixed;left:18px;bottom:84px;z-index:902;width:340px;max-width:calc(100vw - 36px);
+  height:480px;max-height:calc(100vh - 120px);background:#fff;border-radius:18px;box-shadow:0 16px 50px rgba(0,0,0,.25);
+  display:none;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif}
+#iaf-panel.iaf-open{display:flex}
+#iaf-head{background:#0e5a8a;color:#fff;padding:13px 16px;display:flex;align-items:center;justify-content:space-between}
+#iaf-head b{font-size:15px}#iaf-head small{opacity:.85;font-size:11px;display:block;margin-top:1px}
+#iaf-close{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1}
+#iaf-msgs{flex:1;overflow-y:auto;padding:14px;background:#f6f8fa;display:flex;flex-direction:column;gap:10px}
+.iaf-b{max-width:86%;padding:9px 12px;border-radius:14px;font-size:13.5px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
+.iaf-ai{background:#fff;border:1px solid #e6eaee;color:#1f2937;align-self:flex-start;border-bottom-left-radius:4px}
+.iaf-u{background:#0e5a8a;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.iaf-typing{align-self:flex-start;color:#9aa4b2;font-size:13px;padding:2px 6px}
+#iaf-cta{display:none;padding:0 14px 12px;background:#f6f8fa}
+#iaf-cta a{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;
+  font-weight:700;font-size:14px;padding:12px;border-radius:12px}
+#iaf-foot{display:flex;gap:8px;padding:10px;border-top:1px solid #eef1f4;background:#fff}
+#iaf-inp{flex:1;border:1px solid #e6eaee;border-radius:12px;padding:10px 12px;font-size:13.5px;outline:none;font-family:inherit}
+#iaf-inp:focus{border-color:#0e5a8a}
+#iaf-send{background:#0e5a8a;color:#fff;border:none;border-radius:12px;padding:0 16px;font-weight:600;cursor:pointer}
+#iaf-send:disabled{opacity:.5;cursor:default}
+@media (max-width:480px){#iaf-panel{height:72vh}#iaf-fab span.iaf-txt{display:inline}}
+</style>
+
+<button id="iaf-fab" aria-label="Tirar dúvida com a assistente">
+  <span class="iaf-dot"></span><span class="iaf-txt">Tirar dúvida</span>
+</button>
+
+<div id="iaf-panel" role="dialog" aria-label="Assistente do Filipe">
+  <div id="iaf-head">
+    <div><b>Assistente do Filipe</b><small>Tire sua dúvida sobre fono 💬</small></div>
+    <button id="iaf-close" aria-label="Fechar">×</button>
+  </div>
+  <div id="iaf-msgs"></div>
+  <div id="iaf-cta"><a id="iaf-wa" href="#" target="_blank" rel="noopener">💬 Falar no WhatsApp</a></div>
+  <div id="iaf-foot">
+    <input id="iaf-inp" type="text" placeholder="Escreva sua dúvida…" autocomplete="off">
+    <button id="iaf-send" type="button">Enviar</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var EXEC='https://script.google.com/macros/s/AKfycbxEj3uFJdDpQt3KDd_cF6KO7N3469W0ie6ypxBeA-ehVf1EIwrsRnApsbDCP6pGn58E4Q/exec';
+  var TOKEN='fono_3Jb9Kp2Qw7Zx5Tn8Rv4Lc6Yd1Hs0Mg';
+  var WA='556298814511';
+  var MODEL='claude-haiku-4-5';
+  var SYS="Voce e a assistente virtual do site do fonoaudiologo Filipe Silvestre (Anapolis-GO, atendimento domiciliar). Voce ajuda visitantes com duvidas de fonoaudiologia: voz e rouquidao, disfagia (dificuldade para engolir), fala e linguagem, e fono infantil. Seja acolhedora e breve: no maximo 3 ou 4 linhas, em portugues do Brasil. Faca no maximo UMA pergunta por vez. Escreva em TEXTO SIMPLES: nao use markdown, asteriscos, negrito nem listas numeradas. NAO de diagnostico nem prescricao: oriente e incentive a avaliacao com o Filipe. Fale somente de fonoaudiologia e do atendimento do Filipe; se perguntarem outro assunto, redirecione gentilmente. Assim que entender o que a pessoa precisa (ou se ela quiser agendar), finalize a sua resposta com UMA linha exatamente neste formato: [[WHATSAPP: mensagem curta em primeira pessoa que a pessoa enviaria ao Filipe resumindo o caso]]. Nao comente nem explique esse marcador.";
+  var MAX_PERGUNTAS=14;
+
+  var fab=document.getElementById('iaf-fab'), panel=document.getElementById('iaf-panel');
+  var msgsEl=document.getElementById('iaf-msgs'), inp=document.getElementById('iaf-inp'), btn=document.getElementById('iaf-send');
+  var ctaBox=document.getElementById('iaf-cta'), waLink=document.getElementById('iaf-wa');
+  var msgs=[], busy=false, abriu=false, perguntas=0;
+
+  function bolha(role,texto){
+    var d=document.createElement('div'); d.className='iaf-b '+(role==='u'?'iaf-u':'iaf-ai'); d.textContent=texto;
+    msgsEl.appendChild(d); msgsEl.scrollTop=msgsEl.scrollHeight;
+  }
+  function typing(on){
+    var t=document.getElementById('iaf-typ');
+    if(on){ if(!t){ t=document.createElement('div'); t.id='iaf-typ'; t.className='iaf-typing'; t.textContent='digitando…'; msgsEl.appendChild(t);} }
+    else if(t){ t.remove(); }
+    msgsEl.scrollTop=msgsEl.scrollHeight;
+  }
+  function setCTA(texto){
+    waLink.href='https://wa.me/'+WA+'?text='+encodeURIComponent(texto);
+    ctaBox.style.display='block';
+  }
+
+  function abrir(){
+    panel.classList.add('iaf-open');
+    if(!abriu){ abriu=true; bolha('ai','Oi! 👋 Sou a assistente do Filipe. Me conta o que voce esta sentindo ou qual a sua duvida (voz, engolir, fala, fono infantil...) que eu te oriento.'); inp.focus(); }
+  }
+  function fechar(){ panel.classList.remove('iaf-open'); }
+
+  async function enviar(){
+    var t=inp.value.trim(); if(!t||busy) return;
+    inp.value=''; bolha('u',t); msgs.push({role:'user',content:t}); perguntas++;
+    if(perguntas>MAX_PERGUNTAS){
+      bolha('ai','Pra te ajudar melhor, vamos continuar no WhatsApp 👇');
+      setCTA('Ola Filipe! Vim pelo site e quero agendar/conversar.'); return;
+    }
+    busy=true; btn.disabled=true; typing(true);
+    try{
+      var res=await fetch(EXEC,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({token:TOKEN,action:'ai',model:MODEL,system:SYS,messages:msgs,max_tokens:400})});
+      var r=await res.json();
+      var txt=(r&&r.ok&&r.text)?r.text:'Tive um probleminha aqui. Pode tentar de novo? Ou fale direto no WhatsApp 👇';
+      var m=txt.match(/\[\[WHATSAPP:\s*([\s\S]*?)\]\]/i);
+      if(m){ setCTA(m[1].trim()); txt=txt.replace(m[0],'').trim(); }
+      if(!r||!r.ok) setCTA('Ola Filipe! Vim pelo site e quero tirar uma duvida/agendar.');
+      typing(false); bolha('ai',txt); if(r&&r.ok&&r.text) msgs.push({role:'assistant',content:txt});
+    }catch(e){
+      typing(false); bolha('ai','Estou sem conexao agora. Fale direto no WhatsApp 👇');
+      setCTA('Ola Filipe! Vim pelo site e quero agendar.');
+    }finally{ busy=false; btn.disabled=false; inp.focus(); }
+  }
+
+  fab.addEventListener('click',function(){ panel.classList.contains('iaf-open')?fechar():abrir(); });
+  document.getElementById('iaf-close').addEventListener('click',fechar);
+  btn.addEventListener('click',enviar);
+  inp.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); enviar(); } });
+})();
+</script>
+
 </body>
 </html>
