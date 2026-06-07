@@ -1,0 +1,44 @@
+# REGRAS DO PROJETO — Site Institucional (lidas automaticamente pelo Cline)
+
+> Site profissional do Filipe Silvestre Fonoaudiólogo. Editado por DOIS
+> assistentes: você (Cline) e o Claude Code. Mexem nos MESMOS arquivos.
+
+## 📖 ANTES DE MEXER
+1. `ESTADO-ATUAL.md` → estado atual + últimas mudanças (cérebro compartilhado)
+2. `CLAUDE.md`       → contexto técnico do site
+
+## ✍️ DEPOIS DE MEXER — OBRIGATÓRIO (o combinado!)
+Sempre que terminar uma alteração, ANTES de commitar:
+→ Atualize o `ESTADO-ATUAL.md` com uma linha no topo do changelog:
+   **[DATA] — [Cline] — o que mudou (arquivos + resumo)**
+Assim o outro assistente sabe o que você fez, mesmo num chat novo sem memória.
+
+## 🤝 TRABALHANDO JUNTO COM O CLAUDE
+- Quem salva por último vence → nunca edite o mesmo arquivo ao mesmo tempo.
+- Antes de trocar de assistente: commit + push do que estiver pronto.
+
+## 🚦 INFO ESSENCIAL
+- Produção: https://filipesilvestrefono.com (domínio próprio, já migrado)
+- Hospedagem: GitHub Pages (deploy auto a cada push)
+- GitHub: https://github.com/Fonoratoria/filipesilvestrefono
+- Estrutura: index.html (HTML+CSS+JS inline) + voz.html + disfagia.html
+  (landings usam estilo.css) + privacidade.html + cookies.html
+- Rastreamento: GA4 G-MN1L658BS9 + Clarity x0so945ueq + Google Ads AW-16875706438
+
+## ⚠️ CUIDADOS
+- O index.html tem CSS INLINE próprio; as landings (voz/disfagia) usam estilo.css.
+  Se mudar visual pra valer nas 3 páginas, edite NOS DOIS lugares.
+- COMPLIANCE CFFa — PROIBIDO usar: "melhor", "100%", "cura", "garantido",
+  "único", "milagre", "avaliação gratuita". Use: especializado, experiente,
+  humanizado, individualizado.
+- Dados oficiais: WhatsApp wa.me/556298814511 · exibido (62) 9881-4511 ·
+  CRFa 5-13357 · CNPJ 60.994.445/0001-66 · Instagram @filipesilvestrefono
+
+## 🚀 PUBLICAR
+1. Editar a página
+2. Atualizar ESTADO-ATUAL.md
+3. `git add . && git commit -m "..." && git push`
+4. GitHub Pages atualiza em ~1 min.
+
+## 👤 O FILIPE
+Fonoaudiólogo, LEIGO em código. Quer tudo FEITO por você, explicado simples.
