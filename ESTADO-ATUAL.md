@@ -37,6 +37,11 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-16 — [Claude]** — Voz no eixo SINTOMA (descoberta de marketing 16/06:
+  paciente busca sintoma, não especialidade). `voz.html`: meta description + og,
+  subtítulo do hero e card 1 agora puxam os termos de maior busca (voz rouca,
+  pigarro constante, voz falhando). `index.html`: card "Voz" da home idem.
+  Compliance CFFa mantido. SEO/conteúdo só — sem mudança de layout.
 - **2026-06-07 — [Claude]** — Criado o sistema de "cérebro compartilhado":
   `.clinerules` (regras p/ o Cline), `CLAUDE.md` (p/ o Claude) e este
   `ESTADO-ATUAL.md`. Objetivo: os dois assistentes lerem e atualizarem o mesmo
