@@ -387,9 +387,35 @@
     <div class="divisor"></div>
 
     <div class="contato-infos">
-      <div class="contato-item">📱 <a href="https://wa.me/556298814511">(62) 9881-4511</a></div>
-      <div class="contato-item">📷 <a href="https://instagram.com/filipesilvestrefono" target="_blank" rel="noopener">@filipesilvestrefono</a></div>
-      <div class="contato-item">📍 Anápolis/GO</div>
+      <a class="contato-item" href="https://wa.me/556298814511?text=Ol%C3%A1%20Filipe!%20Vim%20pela%20p%C3%A1gina%20de%20Voz%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20vocal." aria-label="Falar no WhatsApp: (62) 9881-4511">
+        <span class="contato-ico">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </span>
+        <span class="contato-dados">
+          <span class="contato-rotulo">WhatsApp</span>
+          <span class="contato-valor">(62) 9881-4511</span>
+        </span>
+      </a>
+
+      <a class="contato-item" href="https://instagram.com/filipesilvestrefono" target="_blank" rel="noopener" aria-label="Instagram: @filipesilvestrefono">
+        <span class="contato-ico">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm10 1.4a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
+        </span>
+        <span class="contato-dados">
+          <span class="contato-rotulo">Instagram</span>
+          <span class="contato-valor">@filipesilvestrefono</span>
+        </span>
+      </a>
+
+      <div class="contato-item">
+        <span class="contato-ico">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        </span>
+        <span class="contato-dados">
+          <span class="contato-rotulo">Atendimento</span>
+          <span class="contato-valor">Anápolis/GO · domiciliar e online</span>
+        </span>
+      </div>
     </div>
 
     <div class="horario-box">
@@ -439,6 +465,25 @@ document.addEventListener('click', function(e) {
     document.getElementById('navDrawer').classList.remove('aberto');
   }
 });
+
+// ---- Revelação suave dos blocos ao rolar (UX) — mesmo padrão do index ----
+(function(){
+  var SEL = '.servicos-header, .servicos-grid, .avaliacao-vocal-header, .avaliacao-grid,'
+          + ' .diferenciais-header, .diferenciais-grid, .casos-header, .casos-grid, .contato-inner';
+  var alvos = [].slice.call(document.querySelectorAll(SEL));
+  if (!alvos.length) return;
+  var reduz = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduz || !('IntersectionObserver' in window)) return;
+  alvos.forEach(function(el){ el.classList.add('reveal-init'); });
+  function revela(el){ el.classList.add('is-visible'); }
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  alvos.forEach(function(el){ var r = el.getBoundingClientRect(); if (r.top < vh * 0.92 && r.bottom > 0) revela(el); });
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ if (e.isIntersecting){ revela(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  alvos.forEach(function(el){ if (!el.classList.contains('is-visible')) io.observe(el); });
+  setTimeout(function(){ alvos.forEach(revela); }, 3000);
+})();
 
 // Vídeos: carrega o player do YouTube só ao clicar (mesmo do index)
 document.querySelectorAll('.caso-facade').forEach(function(botao) {

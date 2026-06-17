@@ -332,7 +332,8 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 24px;
   list-style: none;
 }
 .nav-links a {
@@ -1127,19 +1128,48 @@ nav {
 .contato-infos {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  gap: 14px;
   margin-bottom: 40px;
+  text-align: left;
 }
+/* Chips de contato com ícone da marca (padrão visual do site = SVG, não emoji) */
 .contato-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  color: var(--cinza-texto);
+  gap: 14px;
+  background: var(--branco);
+  border: 1px solid rgba(0,110,180,0.10);
+  border-radius: var(--raio);
+  padding: 16px 18px;
+  box-shadow: var(--sombra);
+  transition: transform .15s, box-shadow .15s, border-color .15s;
 }
-.contato-item a { color: var(--azul); font-weight: 600; }
-.contato-item a:hover { text-decoration: underline; }
+a.contato-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,110,180,0.14);
+  border-color: rgba(0,110,180,0.25);
+}
+.contato-ico {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+}
+.contato-ico svg { width: 23px; height: 23px; fill: #fff; }
+.contato-dados { display: flex; flex-direction: column; line-height: 1.3; }
+.contato-rotulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--cinza-suave);
+}
+.contato-valor { font-size: 15px; font-weight: 600; color: var(--grafite); }
+a.contato-item .contato-valor { color: var(--azul); }
 
 .horario-box {
   background: white;
@@ -1396,6 +1426,89 @@ footer a:hover { color: white; }
   max-width: 880px; margin: 24px auto 0; text-align: center;
   font-size: 12.5px; line-height: 1.6; color: var(--cinza-suave);
 }
+
+/* =====================================================================
+   FAIXA DE CREDIBILIDADE (logo abaixo do hero)
+===================================================================== */
+.credibilidade {
+  background: var(--bg-suave);
+  border-top: 1px solid rgba(0,110,180,0.06);
+  border-bottom: 1px solid rgba(0,110,180,0.06);
+}
+.credibilidade-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px var(--secao-h);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px 30px;
+}
+.cred-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cinza-texto);
+}
+.cred-item svg { width: 18px; height: 18px; fill: var(--azul); flex-shrink: 0; }
+@media (max-width: 768px) {
+  .credibilidade-inner { gap: 12px 20px; padding: 16px var(--secao-h); }
+  .cred-item { font-size: 12px; }
+}
+
+/* =====================================================================
+   BLOCO INSTAGRAM (canal principal de conteúdo)
+===================================================================== */
+.instagram-bloco {
+  background: var(--branco);
+  border-top: 1px solid rgba(0,110,180,0.06);
+  padding: var(--secao-v) var(--secao-h);
+}
+.instagram-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.ig-icone {
+  width: 64px; height: 64px; border-radius: 18px;
+  margin: 0 auto 22px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  box-shadow: 0 10px 28px rgba(0,110,180,0.25);
+}
+.ig-icone svg { width: 34px; height: 34px; fill: #fff; }
+.instagram-inner .secao-label { display: table; }
+.btn-instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--azul);
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(0,110,180,0.30);
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+.btn-instagram:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(0,110,180,0.35);
+}
+.btn-instagram svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+
+/* =====================================================================
+   REVELAÇÃO SUAVE AO ROLAR (UX)
+   A classe .reveal-init é adicionada via JS — quem está sem JS vê tudo
+   normalmente. Só anima para quem NÃO pediu "menos movimento".
+===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-init { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal-init.is-visible { opacity: 1; transform: none; }
+}
 </style>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","x0so945ueq");</script>
 </head>
@@ -1415,6 +1528,8 @@ footer a:hover { color: white; }
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#servicos">Serviços</a></li>
       <li><a href="#triagem">Triagem</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
+      <li><a href="#contato">Contato</a></li>
       <li><a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="nav-cta nav-cta-desktop">Agendar</a></li>
     </ul>
 
@@ -1429,6 +1544,7 @@ footer a:hover { color: white; }
     <a href="#sobre" onclick="toggleMenu()">Sobre</a>
     <a href="#servicos" onclick="toggleMenu()">Serviços</a>
     <a href="#triagem" onclick="toggleMenu()">Triagem</a>
+    <a href="#avaliacoes" onclick="toggleMenu()">Avaliações</a>
     <a href="#contato" onclick="toggleMenu()">Contato</a>
     <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="nav-cta-mobile">Agendar pelo WhatsApp</a>
   </div>
@@ -1473,6 +1589,31 @@ footer a:hover { color: white; }
       </a>
       <p class="hero-exclusivo">Atendimento exclusivo, com hora marcada e agendamento antecipado.</p>
     </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+     FAIXA DE CREDIBILIDADE — credenciais logo abaixo do hero
+============================================= -->
+<section class="credibilidade" aria-label="Credenciais e formação">
+  <div class="credibilidade-inner">
+    <span class="cred-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1L3 5v6c0 5.25 3.84 10.17 9 11 5.16-.83 9-5.75 9-11V5l-9-4zm-1.5 15L7 12.5l1.4-1.4 2.1 2.1 4.6-4.6L16.5 10 10.5 16z"/></svg>
+      CRFa 5-13357
+    </span>
+    <span class="cred-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+      Graduação — UnB
+    </span>
+    <span class="cred-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+      Avaliação acústica (Voxmetria)
+    </span>
+    <span class="cred-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Domiciliar e online
+    </span>
   </div>
 </section>
 
@@ -1885,6 +2026,28 @@ footer a:hover { color: white; }
 
 
 <!-- =============================================
+     SEÇÃO — INSTAGRAM (canal principal de conteúdo)
+============================================= -->
+<section id="instagram" class="instagram-bloco" aria-label="Instagram">
+  <div class="container instagram-inner">
+    <span class="ig-icone" aria-hidden="true">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm10 1.4a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
+    </span>
+    <span class="secao-label" style="margin: 0 auto 14px;">Conteúdo no Instagram</span>
+    <h2 class="titulo-secao">Acompanhe o dia a dia</h2>
+    <p class="subtitulo-secao" style="margin: 0 auto 28px;">
+      Dicas de voz, orientações sobre deglutição e bastidores reais dos atendimentos —
+      é por lá que eu compartilho mais de perto. Vem comigo em <strong>@filipesilvestrefono</strong>.
+    </p>
+    <a href="https://instagram.com/filipesilvestrefono" target="_blank" rel="noopener" class="btn-instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm10 1.4a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
+      Seguir @filipesilvestrefono
+    </a>
+  </div>
+</section>
+
+
+<!-- =============================================
      SEÇÃO 9 — CONTATO
 ============================================= -->
 <section id="contato">
@@ -1895,14 +2058,34 @@ footer a:hover { color: white; }
     <div class="divisor"></div>
 
     <div class="contato-infos">
+      <a class="contato-item" href="https://wa.me/556298814511?text=Ol%C3%A1%20Filipe%2C%20vim%20pelo%20site%20e%20quero%20agendar" aria-label="Falar no WhatsApp: (62) 9881-4511">
+        <span class="contato-ico">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </span>
+        <span class="contato-dados">
+          <span class="contato-rotulo">WhatsApp</span>
+          <span class="contato-valor">(62) 9881-4511</span>
+        </span>
+      </a>
+
+      <a class="contato-item" href="https://instagram.com/filipesilvestrefono" target="_blank" rel="noopener" aria-label="Instagram: @filipesilvestrefono">
+        <span class="contato-ico">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm10 1.4a1.1 1.1 0 100 2.2 1.1 1.1 0 000-2.2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/></svg>
+        </span>
+        <span class="contato-dados">
+          <span class="contato-rotulo">Instagram</span>
+          <span class="contato-valor">@filipesilvestrefono</span>
+        </span>
+      </a>
+
       <div class="contato-item">
-        📱 <a href="https://wa.me/556298814511">(62) 9881-4511</a>
-      </div>
-      <div class="contato-item">
-        📷 <a href="https://instagram.com/filipesilvestrefono" target="_blank" rel="noopener">@filipesilvestrefono</a>
-      </div>
-      <div class="contato-item">
-        📍 Anápolis/GO
+        <span class="contato-ico">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        </span>
+        <span class="contato-dados">
+          <span class="contato-rotulo">Atendimento</span>
+          <span class="contato-valor">Anápolis/GO · domiciliar e online</span>
+        </span>
       </div>
     </div>
 
@@ -1947,6 +2130,32 @@ document.addEventListener('click', function(e) {
     document.getElementById('navDrawer').classList.remove('aberto');
   }
 });
+
+// ---- Revelação suave dos blocos ao rolar (UX) ----
+//  Adiciona .reveal-init via JS (sem JS = tudo visível) e revela quando entra na tela.
+//  Não roda para quem pediu "menos movimento" nem em navegadores sem IntersectionObserver.
+(function(){
+  var SEL = '.servicos-header, .servicos-grid, .triagem-cabecalho, .triadores,'
+          + ' .sobre-grid, .formacao-grid, .diferenciais-header, .diferenciais-grid,'
+          + ' .agendar-grid, .avaliacao-vocal-header, .avaliacao-grid,'
+          + ' .casos-header, .casos-grid, .avaliacoes-header, .instagram-inner, .contato-inner';
+  var alvos = [].slice.call(document.querySelectorAll(SEL));
+  if (!alvos.length) return;
+  var reduz = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduz || !('IntersectionObserver' in window)) return;  // mantém tudo visível
+  alvos.forEach(function(el){ el.classList.add('reveal-init'); });
+  function revela(el){ el.classList.add('is-visible'); }
+  // 1) Revela já o que estiver visível no carregamento (não espera o observer)
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  alvos.forEach(function(el){ var r = el.getBoundingClientRect(); if (r.top < vh * 0.92 && r.bottom > 0) revela(el); });
+  // 2) Observer revela o restante conforme a pessoa rola
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ if (e.isIntersecting){ revela(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  alvos.forEach(function(el){ if (!el.classList.contains('is-visible')) io.observe(el); });
+  // 3) Failsafe: se o observer não disparar (renderer/aba em 2º plano), garante visibilidade em 3s
+  setTimeout(function(){ alvos.forEach(revela); }, 3000);
+})();
 
 // ---- Avaliações do Google (carrega de reviews.json) ----
 (function(){

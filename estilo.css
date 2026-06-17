@@ -961,19 +961,55 @@ nav {
 .contato-infos {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  gap: 14px;
   margin-bottom: 40px;
+  text-align: left;
 }
+/* Chips de contato com ícone da marca (padrão visual do site = SVG, não emoji) */
 .contato-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  color: var(--cinza-texto);
+  gap: 14px;
+  background: var(--branco);
+  border: 1px solid rgba(0,110,180,0.10);
+  border-radius: var(--raio);
+  padding: 16px 18px;
+  box-shadow: var(--sombra);
+  transition: transform .15s, box-shadow .15s, border-color .15s;
 }
-.contato-item a { color: var(--azul); font-weight: 600; }
-.contato-item a:hover { text-decoration: underline; }
+a.contato-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,110,180,0.14);
+  border-color: rgba(0,110,180,0.25);
+}
+.contato-ico {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+}
+.contato-ico svg { width: 23px; height: 23px; fill: #fff; }
+.contato-dados { display: flex; flex-direction: column; line-height: 1.3; }
+.contato-rotulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--cinza-suave);
+}
+.contato-valor { font-size: 15px; font-weight: 600; color: var(--grafite); }
+a.contato-item .contato-valor { color: var(--azul); }
+
+/* Revelação suave ao rolar (UX) — .reveal-init é adicionada via JS;
+   sem JS tudo aparece. Só anima para quem não pediu "menos movimento". */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-init { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal-init.is-visible { opacity: 1; transform: none; }
+}
 
 .horario-box {
   background: white;

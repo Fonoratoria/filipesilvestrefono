@@ -37,6 +37,15 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-17 — [Claude]** — Passe de UX/UI (sem mudar o sistema de design).
+  `index.html`: (1) seção Contato com chips de ícone SVG da marca no lugar dos
+  emojis; (2) revelação suave ao rolar (fade-up) em ~15 blocos, com fallback
+  sem-JS + failsafe de 3s + respeito a prefers-reduced-motion; (3) faixa de
+  credibilidade abaixo do hero (CRFa · UnB · Voxmetria · domiciliar/online);
+  (4) bloco "Acompanhe no Instagram" antes do Contato; (5) menu desktop+mobile
+  com "Avaliações" e "Contato". `estilo.css`: chips de contato + revelação (vale
+  nas landings). `voz.html` e `disfagia.html`: chips de contato + revelação.
+  Compliance CFFa mantido (sem "especialista" — só reativa em 20/06).
 - **2026-06-16 — [Claude]** — Voz no eixo SINTOMA (descoberta de marketing 16/06:
   paciente busca sintoma, não especialidade). `voz.html`: meta description + og,
   subtítulo do hero e card 1 agora puxam os termos de maior busca (voz rouca,
