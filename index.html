@@ -473,6 +473,24 @@ nav {
   flex-direction: column;
 }
 
+/* Assinatura/tagline da marca no hero — kicker acima do headline (NÃO é o H1) */
+.hero-assinatura {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  color: var(--azul);
+  margin-bottom: 10px;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-assinatura {
+    background: linear-gradient(135deg, var(--azul), var(--turquesa));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 .hero-headline {
   font-family: 'Sora', sans-serif;
   font-size: clamp(30px, 4vw, 50px);
@@ -1208,10 +1226,18 @@ footer a:hover { color: white; }
 .footer-logo {
   height: 88px;
   width: auto;
-  margin: 0 auto 28px;
+  margin: 0 auto 16px;
   background: white;
   padding: 16px 24px;
   border-radius: var(--raio);
+}
+.footer-assinatura {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 24px;
 }
 .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
 
@@ -1566,14 +1592,15 @@ footer a:hover { color: white; }
       Especialista em Voz · CFFa
     </span>
     -->
+    <p class="hero-assinatura">Vozes que ressoam</p>
     <p class="secao-label">Anápolis/GO · Atendimento domiciliar e online</p>
     <h1 class="hero-headline">
-      <span>Vozes que ressoam.</span>
+      <span>Sua voz firme, sem rouquidão nem cansaço.</span>
       <span>Refeições sem medo.</span>
       <span>Palavras que reconectam.</span>
     </h1>
     <p class="hero-sub">
-      Atendimento fonoaudiológico humanizado em <strong>Anápolis e online.</strong><br><!-- ESPECIALISTA — REATIVAR APÓS 20/06: "Fonoaudiólogo especialista em voz, com atendimento humanizado em Anápolis e online." -->
+      Atendimento fonoaudiológico humanizado — <strong>em casa, no consultório ou online.</strong><br><!-- ESPECIALISTA — REATIVAR APÓS 20/06: "Fonoaudiólogo especialista em voz, com atendimento humanizado em Anápolis e online." -->
       Voz, deglutição e comunicação.
     </p>
     <a class="hero-google" href="#avaliacoes" aria-label="Nota 5,0 no Google — ver avaliações">
@@ -2110,6 +2137,7 @@ footer a:hover { color: white; }
 ============================================= -->
 <footer>
   <img src="logo.jpg" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
+  <p class="footer-assinatura">Vozes que ressoam.</p>
   <div class="footer-links">
     <a href="privacidade.html">Política de Privacidade</a>
     <a href="cookies.html">Política de Cookies</a>

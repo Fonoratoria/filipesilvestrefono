@@ -37,6 +37,13 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-17 — [Claude]** — Correção de marca no hero (`index.html`). A tagline
+  "Vozes que ressoam" tinha virado headline; voltou a ser ASSINATURA (kicker do
+  hero, no gradiente da marca) — regra do Filipe: tagline principal nunca some.
+  Headline agora é de CONVERSÃO no eixo sintoma: "Sua voz firme, sem rouquidão
+  nem cansaço. / Refeições sem medo. / Palavras que reconectam." Subtítulo
+  recupera o diferencial domiciliar ("em casa, no consultório ou online").
+  Assinatura também no rodapé. NÃO usar "Vozes que ressoam" como H1 de novo.
 - **2026-06-17 — [Claude]** — Passe de UX/UI (sem mudar o sistema de design).
   `index.html`: (1) seção Contato com chips de ícone SVG da marca no lugar dos
   emojis; (2) revelação suave ao rolar (fade-up) em ~15 blocos, com fallback
