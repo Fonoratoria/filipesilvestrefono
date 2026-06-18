@@ -6,7 +6,7 @@
 
 ---
 
-## 📍 ONDE O PROJETO ESTÁ AGORA (atualizado 2026-06-07)
+## 📍 ONDE O PROJETO ESTÁ AGORA (atualizado 2026-06-18)
 
 - **No ar:** https://filipesilvestrefono.com (domínio próprio, migração concluída).
 - **Hospedagem:** GitHub Pages (deploy auto a cada push). Wix já cancelado.
@@ -36,6 +36,27 @@
 
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
+
+- **2026-06-18 — [Claude]** — 🎨 Passe de COERÊNCIA DE MARCA (conferido contra o
+  Manual de Marca oficial em `OneDrive/Desktop/Minha marca/`). (1) LOGO: o site
+  usava `logo.jpg` (achatada, sem transparência) no header E no rodapé escuro
+  (com gambiarra de caixa branca). Trocado: header → `logo.png` (transparente,
+  texto grafite — versão `FOto sem fundo logo.png` da pasta da marca);
+  rodapé → `logo-rodape.png` (transparente com texto BRANCO, gerada a partir de
+  `Fundo Preto.jpeg` via PowerShell/System.Drawing, preto→transparente +
+  auto-crop) — agora segue a regra do manual "fundo escuro = logo com tipografia
+  branca". `.footer-logo` perdeu o `background:white`+padding. nav-logo 46→52px,
+  footer 88→96px. Aplicado nas 5 páginas (index, voz, disfagia, cookies,
+  privacidade) + `estilo.css`. ZERO refs a `logo.jpg`. (2) DEGRADÊ DA MARCA
+  (azul→turquesa) nos CTAs de maior conversão: novo utilitário `.btn-grad`
+  (hover desliza o gradiente) no CTA do hero e no CTA final de Contato; `.divisor`
+  virou gradiente (era turquesa chapado), 48→56px; `.btn-whats` da triagem deixou
+  de ser verde-WhatsApp aleatório e virou o gradiente da marca (index + estilo.css).
+  (3) Azul OFF-BRAND corrigido: assistente de IA (`#iaf-*`) usava `#0e5a8a`;
+  trocado pelo azul oficial `#006EB4` (fab, head, input focus, botão, sombra).
+  FAB verde do WhatsApp (direita) mantido de propósito (convenção universal).
+  Verificado no preview: header nítido sem caixa, rodapé com logo branca no escuro,
+  CTA do hero com degradê, IA azul-marca, console limpo, landings 200 OK.
 
 - **2026-06-17 — [Claude]** — Correção de marca no hero (`index.html`). A tagline
   "Vozes que ressoam" tinha virado headline; voltou a ser ASSINATURA (kicker do

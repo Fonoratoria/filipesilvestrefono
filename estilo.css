@@ -150,9 +150,9 @@ a:focus-visible, button:focus-visible, .opcao:focus-visible {
 }
 
 .divisor {
-  width: 48px;
+  width: 56px;
   height: 3px;
-  background: var(--turquesa);
+  background: linear-gradient(90deg, var(--azul), var(--turquesa));
   border-radius: 2px;
   margin: 16px 0 40px;
 }
@@ -1046,12 +1046,9 @@ footer {
 footer a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
 footer a:hover { color: white; }
 .footer-logo {
-  height: 88px;
+  height: 96px;
   width: auto;
   margin: 0 auto 28px;
-  background: white;
-  padding: 16px 24px;
-  border-radius: var(--raio);
 }
 .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
 
@@ -1254,11 +1251,11 @@ footer a:hover { color: white; }
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; min-height: 56px; padding: 16px 20px;
   font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: #fff; text-decoration: none;
-  background: linear-gradient(135deg, var(--verde-whats), var(--turquesa));
-  border-radius: 14px; box-shadow: 0 8px 22px rgba(31,169,126,0.32);
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  border-radius: 14px; box-shadow: 0 8px 22px rgba(0,110,180,0.30);
   transition: transform .15s, box-shadow .15s;
 }
-.btn-whats:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(31,169,126,0.40); }
+.btn-whats:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,110,180,0.40); }
 .btn-whats svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
 
 /* Aviso legal (sem diagnóstico) */

@@ -229,6 +229,22 @@ a:focus-visible, button:focus-visible, .opcao:focus-visible {
 }
 .btn-whatsapp svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
 
+/* Degradê da marca (azul → turquesa) — reservado para os CTAs de maior conversão */
+.btn-grad {
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  background-size: 140% 140%;
+  background-position: 0% 50%;
+  box-shadow: 0 8px 26px rgba(0,110,180,0.32);
+  transition: transform 0.2s, box-shadow 0.2s, background-position 0.5s;
+}
+.btn-grad:hover {
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  background-size: 140% 140%;
+  background-position: 100% 50%;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(0,110,180,0.42);
+}
+
 .btn-turquesa {
   display: inline-flex;
   align-items: center;
@@ -288,9 +304,9 @@ a:focus-visible, button:focus-visible, .opcao:focus-visible {
 }
 
 .divisor {
-  width: 48px;
+  width: 56px;
   height: 3px;
-  background: var(--turquesa);
+  background: linear-gradient(90deg, var(--azul), var(--turquesa));
   border-radius: 2px;
   margin: 16px 0 40px;
 }
@@ -325,7 +341,7 @@ nav {
   align-items: center;
 }
 .nav-logo {
-  height: 46px;
+  height: 52px;
   width: auto;
   display: block;
 }
@@ -1224,12 +1240,9 @@ footer {
 footer a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
 footer a:hover { color: white; }
 .footer-logo {
-  height: 88px;
+  height: 96px;
   width: auto;
-  margin: 0 auto 16px;
-  background: white;
-  padding: 16px 24px;
-  border-radius: var(--raio);
+  margin: 0 auto 18px;
 }
 .footer-assinatura {
   font-family: 'Sora', sans-serif;
@@ -1440,11 +1453,11 @@ footer a:hover { color: white; }
   display: flex; align-items: center; justify-content: center; gap: 10px;
   width: 100%; min-height: 56px; padding: 16px 20px;
   font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: #fff; text-decoration: none;
-  background: linear-gradient(135deg, var(--verde-whats), var(--turquesa));
-  border-radius: 14px; box-shadow: 0 8px 22px rgba(31,169,126,0.32);
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  border-radius: 14px; box-shadow: 0 8px 22px rgba(0,110,180,0.30);
   transition: transform .15s, box-shadow .15s;
 }
-.btn-whats:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(31,169,126,0.40); }
+.btn-whats:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,110,180,0.40); }
 .btn-whats svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
 
 /* Aviso legal (sem diagnóstico) */
@@ -1546,7 +1559,7 @@ footer a:hover { color: white; }
 <header>
   <nav>
     <a href="#hero" class="nav-marca" aria-label="Filipe Silvestre — Fonoaudiólogo">
-      <img src="logo.jpg" alt="Filipe Silvestre Fonoaudiólogo" class="nav-logo">
+      <img src="logo.png" alt="Filipe Silvestre Fonoaudiólogo" class="nav-logo">
     </a>
 
     <ul class="nav-links">
@@ -1610,7 +1623,7 @@ footer a:hover { color: white; }
       <span>· <strong id="hero-google-total">25</strong> avaliações no Google</span>
     </a>
     <div class="hero-btns">
-      <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="btn-whatsapp">
+      <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="btn-whatsapp btn-grad">
         <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Agendar pelo WhatsApp
       </a>
@@ -2124,7 +2137,7 @@ footer a:hover { color: white; }
       </div>
     </div>
 
-    <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20uma%20avaliação" class="btn-whatsapp" style="margin: 0 auto; display: table;">
+    <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20uma%20avaliação" class="btn-whatsapp btn-grad" style="margin: 0 auto; display: table;">
       <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Agendar avaliação
     </a>
@@ -2136,7 +2149,7 @@ footer a:hover { color: white; }
      RODAPÉ
 ============================================= -->
 <footer>
-  <img src="logo.jpg" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
+  <img src="logo-rodape.png" alt="Filipe Silvestre Fonoaudiólogo" class="footer-logo">
   <p class="footer-assinatura">Vozes que ressoam.</p>
   <div class="footer-links">
     <a href="privacidade.html">Política de Privacidade</a>
@@ -2509,8 +2522,8 @@ if (!window.__convWhatsAtiva) {
 ============================================================ -->
 <style>
 #iaf-fab{position:fixed;left:18px;bottom:18px;z-index:901;display:inline-flex;align-items:center;gap:8px;
-  background:#0e5a8a;color:#fff;border:none;border-radius:30px;padding:12px 16px;cursor:pointer;
-  font-family:'Sora',sans-serif;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(14,90,138,.4);
+  background:#006EB4;color:#fff;border:none;border-radius:30px;padding:12px 16px;cursor:pointer;
+  font-family:'Sora',sans-serif;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(0,110,180,.4);
   opacity:0;visibility:hidden;transition:transform .18s, opacity .3s, visibility .3s}
 #iaf-fab.iaf-show{opacity:1;visibility:visible}
 #iaf-fab:hover{transform:scale(1.05)}
@@ -2519,21 +2532,21 @@ if (!window.__convWhatsAtiva) {
   height:480px;max-height:calc(100vh - 120px);background:#fff;border-radius:18px;box-shadow:0 16px 50px rgba(0,0,0,.25);
   display:none;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif}
 #iaf-panel.iaf-open{display:flex}
-#iaf-head{background:#0e5a8a;color:#fff;padding:13px 16px;display:flex;align-items:center;justify-content:space-between}
+#iaf-head{background:#006EB4;color:#fff;padding:13px 16px;display:flex;align-items:center;justify-content:space-between}
 #iaf-head b{font-size:15px}#iaf-head small{opacity:.85;font-size:11px;display:block;margin-top:1px}
 #iaf-close{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1}
 #iaf-msgs{flex:1;overflow-y:auto;padding:14px;background:#f6f8fa;display:flex;flex-direction:column;gap:10px}
 .iaf-b{max-width:86%;padding:9px 12px;border-radius:14px;font-size:13.5px;line-height:1.45;white-space:pre-wrap;word-wrap:break-word}
 .iaf-ai{background:#fff;border:1px solid #e6eaee;color:#1f2937;align-self:flex-start;border-bottom-left-radius:4px}
-.iaf-u{background:#0e5a8a;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.iaf-u{background:#006EB4;color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .iaf-typing{align-self:flex-start;color:#9aa4b2;font-size:13px;padding:2px 6px}
 #iaf-cta{display:none;padding:0 14px 12px;background:#f6f8fa}
 #iaf-cta a{display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;text-decoration:none;
   font-weight:700;font-size:14px;padding:12px;border-radius:12px}
 #iaf-foot{display:flex;gap:8px;padding:10px;border-top:1px solid #eef1f4;background:#fff}
 #iaf-inp{flex:1;border:1px solid #e6eaee;border-radius:12px;padding:10px 12px;font-size:13.5px;outline:none;font-family:inherit}
-#iaf-inp:focus{border-color:#0e5a8a}
-#iaf-send{background:#0e5a8a;color:#fff;border:none;border-radius:12px;padding:0 16px;font-weight:600;cursor:pointer}
+#iaf-inp:focus{border-color:#006EB4}
+#iaf-send{background:#006EB4;color:#fff;border:none;border-radius:12px;padding:0 16px;font-weight:600;cursor:pointer}
 #iaf-send:disabled{opacity:.5;cursor:default}
 @media (max-width:600px){
   #iaf-fab{padding:0;width:54px;height:54px;border-radius:50%;justify-content:center;gap:0}
