@@ -40,5 +40,12 @@ Assim o outro assistente sabe o que você fez, mesmo num chat novo sem memória.
 3. `git add . && git commit -m "..." && git push`
 4. GitHub Pages atualiza em ~1 min.
 
+## 💾 MEMÓRIA EXTERNA — GOOGLE DRIVE
+Quando você tiver uma informação importante pra salvar na memória (decisão de projeto,
+preferência do Filipe, contexto novo), você **não consegue salvar no Drive sozinho**.
+→ Diga ao Filipe o que quer salvar (resumo curto).
+→ Ele leva até o Claude Code, que salva na pasta MEMORIA.md do Drive.
+Isso garante que o Claude.ai (chat/projetos) também vai ler depois.
+
 ## 👤 O FILIPE
 Fonoaudiólogo, LEIGO em código. Quer tudo FEITO por você, explicado simples.

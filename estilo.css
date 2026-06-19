@@ -300,6 +300,7 @@ nav {
 /* Selo de Especialista em Voz — destaque principal do hero */
 .selo-especialista {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 9px;
   background: linear-gradient(135deg, var(--azul), var(--turquesa));
@@ -312,8 +313,20 @@ nav {
   border-radius: 50px;
   box-shadow: 0 8px 22px rgba(0,110,180,0.28);
   margin-bottom: 18px;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+.selo-especialista:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,110,180,0.34); }
 .selo-especialista svg { width: 19px; height: 19px; fill: #fff; flex-shrink: 0; }
+.selo-verificar {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.35);
+}
 
 /* Selo "5,0 no Google" no hero — prova social acima da dobra */
 .hero-google{

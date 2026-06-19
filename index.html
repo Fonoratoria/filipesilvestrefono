@@ -12,7 +12,7 @@
      selo do hero, hero-sub, Sobre, item da Formação e card 3 de Diferenciais.
      Versões originais também estão no histórico do git (commits de 2026-06-01).
 ============================================================ -->
-<meta name="description" content="Fonoaudiólogo em Anápolis/GO. Atendimento domiciliar e online em voz, disfagia e comunicação. Avaliação vocal completa. CRFa 5-13357.">
+<meta name="description" content="Fonoaudiólogo especialista em voz (título do CFFa) em Anápolis/GO. Atendimento domiciliar e online em voz, disfagia e comunicação. Avaliação vocal completa. CRFa 5-13357.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Filipe Silvestre">
 <meta name="theme-color" content="#006EB4">
@@ -24,10 +24,9 @@
 <meta name="geo.position" content="-16.3281;-48.9531">
 <meta name="ICBM" content="-16.3281, -48.9531">
 
-<title>Fonoaudiólogo em Anápolis/GO | Voz, Disfagia e Comunicação | Filipe Silvestre</title>
-<!-- ESPECIALISTA — REATIVAR APÓS 20/06: <title>Fonoaudiólogo Especialista em Voz em Anápolis/GO | Filipe Silvestre</title> -->
+<title>Fonoaudiólogo Especialista em Voz em Anápolis/GO | Filipe Silvestre</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta property="og:title" content="Filipe Silvestre — Fonoaudiólogo | Anápolis/GO"><!-- ESPECIALISTA — REATIVAR APÓS 20/06: og:title com "Fonoaudiólogo Especialista em Voz" -->
+<meta property="og:title" content="Filipe Silvestre — Fonoaudiólogo Especialista em Voz | Anápolis/GO">
 <meta property="og:description" content="Atendimento humanizado em voz, disfagia e comunicação. Domiciliar e online em Anápolis. CRFa 5-13357.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -39,7 +38,7 @@
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "MedicalBusiness"],
   "name": "Filipe Silvestre Fonoaudiologia",
-  "description": "Fonoaudiólogo em Anápolis/GO, com atendimento em voz, disfagia e comunicação. Atendimento domiciliar e online. CRFa 5-13357.",
+  "description": "Fonoaudiólogo especialista em Voz (título do Conselho Federal de Fonoaudiologia) em Anápolis/GO, com atendimento em voz, disfagia e comunicação. Atendimento domiciliar e online. CRFa 5-13357.",
   "image": "https://filipesilvestrefono.com/foto-hero.jpg",
   "telephone": "+55 62 9881-4511",
   "url": "https://filipesilvestrefono.com/",
@@ -71,12 +70,21 @@
     "https://instagram.com/filipesilvestrefono",
     "https://filipesilvestrefono.com"
   ],
-  "knowsAbout": ["Fonoaudiologia", "Voz", "Disfagia", "Comunicação", "Reabilitação vocal", "Avaliação vocal", "Coach vocal"],
-  "hasCredential": "CRFa 5-13357",
+  "knowsAbout": ["Fonoaudiologia", "Voz", "Disfagia", "Comunicação", "Reabilitação vocal", "Avaliação vocal", "Coach vocal", "Especialista em Voz"],
+  "hasCredential": [
+    { "@type": "EducationalOccupationalCredential", "credentialCategory": "Registro profissional", "name": "CRFa 5-13357" },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "Título de Especialista",
+      "name": "Especialista em Voz",
+      "identifier": "11109/26",
+      "recognizedBy": { "@type": "Organization", "name": "Conselho Federal de Fonoaudiologia (CFFa)", "url": "https://fonoaudiologia.org.br/" }
+    }
+  ],
   "founder": {
     "@type": "Person",
     "name": "Filipe Silvestre",
-    "jobTitle": "Fonoaudiólogo",
+    "jobTitle": "Fonoaudiólogo — Especialista em Voz (CFFa)",
     "knowsLanguage": "pt-BR"
   },
   "makesOffer": [
@@ -455,6 +463,7 @@ nav {
 /* Selo de Especialista em Voz — destaque principal do hero */
 .selo-especialista {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 9px;
   background: linear-gradient(135deg, var(--azul), var(--turquesa));
@@ -467,8 +476,97 @@ nav {
   border-radius: 50px;
   box-shadow: 0 8px 22px rgba(0,110,180,0.28);
   margin-bottom: 18px;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
+.selo-especialista:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,110,180,0.34); }
 .selo-especialista svg { width: 19px; height: 19px; fill: #fff; flex-shrink: 0; }
+.selo-verificar {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* Item de destaque na lista de Formação — o título de especialista */
+.formacao-destaque {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0,110,180,0.07), rgba(70,200,190,0.07));
+  border: 1px solid rgba(0,110,180,0.16);
+  border-radius: 12px;
+  padding: 12px 16px !important;
+  margin-bottom: 10px;
+}
+.formacao-destaque strong { color: var(--azul); }
+
+/* Selo oficial verificável — Especialista em Voz (CFFa). Aprimoramento de marca: credencial clicável. */
+.cred-oficial {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 4px 0 40px;
+  padding: 22px 26px;
+  background: #fff;
+  border: 1px solid rgba(0,110,180,0.14);
+  border-radius: 18px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 10px 30px rgba(0,110,180,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.cred-oficial::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--azul), var(--turquesa));
+}
+.cred-oficial:hover { transform: translateY(-3px); box-shadow: 0 16px 42px rgba(0,110,180,0.16); }
+.cred-selo {
+  flex-shrink: 0;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--azul), var(--turquesa));
+  box-shadow: 0 8px 22px rgba(0,110,180,0.30);
+}
+.cred-selo svg { width: 30px; height: 30px; fill: #fff; }
+.cred-info { flex: 1 1 240px; display: flex; flex-direction: column; gap: 2px; }
+.cred-cat {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--turquesa);
+}
+.cred-titulo {
+  font-family: 'Sora', sans-serif;
+  font-size: 21px; font-weight: 700;
+  color: var(--grafite);
+  line-height: 1.15;
+}
+.cred-org { font-size: 14px; color: var(--cinza-texto); }
+.cred-verificar {
+  flex-shrink: 0;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600; font-size: 13px;
+  color: var(--azul);
+  background: rgba(0,110,180,0.07);
+  padding: 9px 16px;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: background .2s ease;
+}
+.cred-oficial:hover .cred-verificar { background: rgba(0,110,180,0.14); }
+@media (max-width: 560px) {
+  .cred-oficial { gap: 14px; padding: 18px; }
+  .cred-verificar { width: 100%; text-align: center; }
+}
 
 /* Selo "5,0 no Google" no hero — prova social ao lado do texto, acima do botão */
 .hero-google{
@@ -1599,12 +1697,11 @@ footer a:hover { color: white; }
   </div>
 
   <div class="hero-conteudo">
-    <!-- ESPECIALISTA — REATIVAR APÓS 20/06: descomentar o selo abaixo quando o CFFa publicar o título
-    <span class="selo-especialista">
+    <a class="selo-especialista" href="https://fonoaudiologia.org.br/especialista/filipe-silva-silvestre-de-paiva/" target="_blank" rel="noopener" aria-label="Especialista em Voz pelo CFFa — verificar no Conselho Federal de Fonoaudiologia">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></svg>
       Especialista em Voz · CFFa
-    </span>
-    -->
+      <span class="selo-verificar">Verificar ↗</span>
+    </a>
     <p class="hero-assinatura">Vozes que ressoam</p>
     <p class="secao-label">Anápolis/GO · Atendimento domiciliar e online</p>
     <h1 class="hero-headline">
@@ -1613,7 +1710,7 @@ footer a:hover { color: white; }
       <span>Palavras que reconectam.</span>
     </h1>
     <p class="hero-sub">
-      Atendimento fonoaudiológico humanizado — <strong>em casa, no consultório ou online.</strong><br><!-- ESPECIALISTA — REATIVAR APÓS 20/06: "Fonoaudiólogo especialista em voz, com atendimento humanizado em Anápolis e online." -->
+      <strong>Fonoaudiólogo especialista em voz</strong>, com atendimento humanizado — <strong>em casa, no consultório ou online.</strong><br>
       Voz, deglutição e comunicação.
     </p>
     <a class="hero-google" href="#avaliacoes" aria-label="Nota 5,0 no Google — ver avaliações">
@@ -1785,7 +1882,8 @@ footer a:hover { color: white; }
         <h2 class="titulo-secao">Quem sou eu?</h2>
         <div class="divisor"></div>
         <p class="sobre-texto">
-          Sou fonoaudiólogo com atendimento domiciliar
+          Sou fonoaudiólogo <strong>especialista em Voz</strong>, com título reconhecido
+          pelo Conselho Federal de Fonoaudiologia (CFFa), e atendimento domiciliar
           e online em Anápolis/GO. Com zelo, originalidade e visão, ofereço um cuidado
           humanizado e baseado em evidências — no conforto da sua própria casa.
         </p>
@@ -1798,13 +1896,25 @@ footer a:hover { color: white; }
       </div>
     </div>
 
+    <a class="cred-oficial" href="https://fonoaudiologia.org.br/especialista/filipe-silva-silvestre-de-paiva/" target="_blank" rel="noopener" aria-label="Título de Especialista em Voz pelo CFFa — verificar no site do Conselho Federal de Fonoaudiologia">
+      <span class="cred-selo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></svg>
+      </span>
+      <span class="cred-info">
+        <span class="cred-cat">Título oficial · CFFa</span>
+        <span class="cred-titulo">Especialista em Voz</span>
+        <span class="cred-org">Conselho Federal de Fonoaudiologia · Título nº 11109/26</span>
+      </span>
+      <span class="cred-verificar">Verificar no Conselho ↗</span>
+    </a>
+
     <div class="formacao-grid">      <div class="formacao-foto">
         <img src="foto-formacao.jpg" alt="Formação fonoaudiologia voz Filipe Silvestre" loading="lazy">
       </div>
       <div>
         <h3 class="formacao-titulo">Formação</h3>
         <ul class="formacao-lista">
-          <!-- ESPECIALISTA — REATIVAR APÓS 20/06: <li><strong>Especialista em Voz — Conselho Federal de Fonoaudiologia (CFFa)</strong></li> -->
+          <li class="formacao-destaque"><strong>Especialista em Voz</strong> — Conselho Federal de Fonoaudiologia (CFFa) · Título nº 11109/26</li>
           <li>Graduação em Fonoaudiologia — Universidade de Brasília (UnB)</li>
           <li>Pós-graduação em Voz e Disfagia</li>
           <li>FIV — Formação Integrada em Voz (CEV) | Coach Vocal</li>
@@ -1861,12 +1971,11 @@ footer a:hover { color: white; }
       <div class="diferencial-card">
         <div class="diferencial-numero">3</div>
         <div>
-          <!-- ESPECIALISTA — REATIVAR APÓS 20/06: título "Especialista em Voz" + texto "Título de especialista em Voz pelo Conselho Federal de Fonoaudiologia (CFFa), pós-graduação em Voz e Disfagia e Formação Integrada em Voz pelo CEV (Coach Vocal). Conhecimento técnico aplicado a cada paciente." -->
-          <h3 class="diferencial-titulo">Formação especializada em voz</h3>
+          <h3 class="diferencial-titulo">Especialista em Voz</h3>
           <p class="diferencial-texto">
-            Pós-graduação em Voz e Disfagia, Formação Integrada em Voz pelo CEV
-            (Coach Vocal) e aprimoramento contínuo. Conhecimento técnico aplicado
-            a cada paciente.
+            Título de especialista em Voz pelo Conselho Federal de Fonoaudiologia
+            (CFFa), pós-graduação em Voz e Disfagia e Formação Integrada em Voz pelo
+            CEV (Coach Vocal). Conhecimento técnico aplicado a cada paciente.
           </p>
         </div>
       </div>

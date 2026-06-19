@@ -6,7 +6,7 @@
 
 ---
 
-## 📍 ONDE O PROJETO ESTÁ AGORA (atualizado 2026-06-18)
+## 📍 ONDE O PROJETO ESTÁ AGORA (atualizado 2026-06-19)
 
 - **No ar:** https://filipesilvestrefono.com (domínio próprio, migração concluída).
 - **Hospedagem:** GitHub Pages (deploy auto a cada push). Wix já cancelado.
@@ -24,9 +24,10 @@
 - Selo "5,0 no Google" no hero + botão flutuante de WhatsApp.
 
 ### ⚠️ PENDÊNCIAS / LEMBRETES
-1. **Especialista em Voz — reativar após 20/06/2026:** buscar no index.html a marca
-   `ESPECIALISTA — REATIVAR APÓS 20/06` (vários pontos) + adicionar o nº do título
-   quando o Filipe informar. (Há lembrete remoto agendado.)
+1. ~~**Especialista em Voz — reativar após 20/06/2026.**~~ ✅ **CONCLUÍDO em
+   2026-06-19:** título oficial saiu no CFFa (nº **11109/26**, Especialidade Voz,
+   página pública confirmada). TODOS os marcadores `ESPECIALISTA — REATIVAR APÓS
+   20/06` foram ativados no index.html + voz.html. Não há mais marcador pendente.
 2. Reviews automático do Google: robô pronto (`scripts/`), mas depende de chave da
    Places API com faturamento — Filipe não quis ativar. Hoje as avaliações são
    editadas manualmente em `reviews.json`.
@@ -36,6 +37,32 @@
 
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
+
+- **2026-06-19 — [Claude]** — 🏅 ATIVAÇÃO DO TÍTULO DE ESPECIALISTA EM VOZ (CFFa
+  nº 11109/26). O Filipe recebeu a autorização oficial (página pública no
+  fonoaudiologia.org.br confirmada). Ativados TODOS os pontos que estavam
+  comentados como `ESPECIALISTA — REATIVAR APÓS 20/06`. **`index.html`:** title
+  ("Fonoaudiólogo Especialista em Voz em Anápolis/GO…"), meta description,
+  og:title, schema JSON-LD (description + jobTitle "Fonoaudiólogo — Especialista
+  em Voz (CFFa)" + `hasCredential` virou array com EducationalOccupationalCredential
+  contendo identifier 11109/26 e recognizedBy CFFa), selo do hero (era `<span>`
+  comentado → agora `<a class="selo-especialista">` CLICÁVEL que leva à página
+  oficial do CFFa, com badge "Verificar ↗"), hero-sub ("Fonoaudiólogo especialista
+  em voz, …"), texto do Sobre, 1º item da lista de Formação (`.formacao-destaque`
+  com o nº do título) e card 3 de Diferenciais (título "Especialista em Voz").
+  **APRIMORAMENTO de marca:** novo card `.cred-oficial` na seção Sobre — selo
+  oficial verificável (degradê azul→turquesa, ícone de verificado, "TÍTULO OFICIAL
+  · CFFA / Especialista em Voz / Título nº 11109/26", botão "Verificar no Conselho
+  ↗" linkando o CFFa). CSS novo no `<style>` inline: link/hover do selo,
+  `.selo-verificar`, `.formacao-destaque`, `.cred-oficial` + filhos + responsivo.
+  **`voz.html`:** title, meta description, schema `hasCredential` (array com o
+  título) e selo verificável no hero. **`estilo.css`:** selo virou link
+  (hover/transition) + `.selo-verificar` + `align-self:flex-start` (pílula
+  compacta, não estica). Verificado no preview: title novo, selo compacto (352px)
+  clicável, card de credencial renderizando com link correto pro CFFa, Sobre/
+  Formação/Diferenciais com o título, console SEM erros. Compliance CFFa mantido
+  (agora PODE usar "especialista" — é título oficial). ZERO marcadores
+  `REATIVAR APÓS 20/06` restantes.
 
 - **2026-06-18 — [Claude]** — 🎨 Passe de COERÊNCIA DE MARCA (conferido contra o
   Manual de Marca oficial em `OneDrive/Desktop/Minha marca/`). (1) LOGO: o site
