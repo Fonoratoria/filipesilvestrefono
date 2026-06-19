@@ -38,6 +38,17 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-19 — [Claude]** — 🎨 ARTE "ESPECIALISTA EM VOZ" (post Instagram
+  1080x1350) criada e GUARDADA. Molde editável: **`_arte-especialista.html`** na
+  raiz do repo (prefixo `_` → Jekyll NÃO publica; tem no topo o comando do Chrome
+  headless pra re-exportar + dicas de Stories/trocar foto). Usa a foto
+  `fotos do site/Foto elegante sentado na cadera de blaser.jpg` (1066px — renderizar
+  em scale 1 p/ rosto nítido; só usar scale 2 com foto de alta resolução). PNG final
+  guardado em 2 lugares: `fotos do site/arte-especialista-voz.png` (repo, p/ uso no
+  site) e no Drive `04_MARKETING/Instagram e site/2026-06-19_post-especialista-em-voz.png`.
+  Marca: logo grafite (fundo claro), degradê azul→turquesa no badge/risco, CRFa
+  correto, nº do título 11109/26.
+
 - **2026-06-19 — [Claude]** — 🏅 ATIVAÇÃO DO TÍTULO DE ESPECIALISTA EM VOZ (CFFa
   nº 11109/26). O Filipe recebeu a autorização oficial (página pública no
   fonoaudiologia.org.br confirmada). Ativados TODOS os pontos que estavam
