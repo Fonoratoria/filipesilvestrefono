@@ -1592,9 +1592,34 @@ footer a:hover { color: white; }
   color: var(--cinza-texto);
 }
 .cred-item svg { width: 18px; height: 18px; fill: var(--azul); flex-shrink: 0; }
+.cred-destaque {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px var(--secao-h) 2px;
+  text-align: center;
+}
+.cred-num {
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: var(--azul);
+}
+.cred-num-label {
+  display: block;
+  margin-top: 6px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--grafite);
+}
 @media (max-width: 768px) {
   .credibilidade-inner { gap: 12px 20px; padding: 16px var(--secao-h); }
   .cred-item { font-size: 12px; }
+  .cred-num { font-size: 34px; }
+  .cred-destaque { padding-top: 18px; }
 }
 
 /* =====================================================================
@@ -1734,6 +1759,10 @@ footer a:hover { color: white; }
      FAIXA DE CREDIBILIDADE — credenciais logo abaixo do hero
 ============================================= -->
 <section class="credibilidade" aria-label="Credenciais e formação">
+  <div class="cred-destaque">
+    <span class="cred-num">+3.000</span>
+    <span class="cred-num-label">atendimentos realizados</span>
+  </div>
   <div class="credibilidade-inner">
     <span class="cred-item">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1L3 5v6c0 5.25 3.84 10.17 9 11 5.16-.83 9-5.75 9-11V5l-9-4zm-1.5 15L7 12.5l1.4-1.4 2.1 2.1 4.6-4.6L16.5 10 10.5 16z"/></svg>

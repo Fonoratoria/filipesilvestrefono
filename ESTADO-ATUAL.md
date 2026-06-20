@@ -38,6 +38,20 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-20 — [Claude]** — 📊 NÚMERO DE PROVA SOCIAL "+3.000 atendimentos
+  realizados" no `index.html`. Adicionado como DESTAQUE (bloco `.cred-destaque`:
+  `.cred-num` 44px Sora 800 azul `#006EB4` + `.cred-num-label`) no TOPO da faixa
+  `.credibilidade` (logo abaixo do hero), acima das credenciais que já existiam
+  (CRFa · UnB · Voxmetria · Domiciliar/online). Decisões com o Filipe: (1) é
+  ATENDIMENTOS (sessões), não pacientes — na fono o mesmo paciente volta muito;
+  (2) usar "+3.000" (piso honesto, número dele); (3) NÃO mostrar tempo de
+  experiência (só 3 anos de formado → evitar ar de recém-formado); (4) NÃO repetir
+  "5,0 no Google" porque já tem selo no hero → o número fica acompanhado das
+  credenciais, não solto. CSS responsivo (44→34px no mobile). Verificado no preview
+  desktop + mobile: número azul Sora, faixa coesa, credenciais reembrulham em 2
+  linhas no celular. Compliance CFFa OK (fato objetivo de experiência, sem
+  superlativo). As landings `voz.html`/`disfagia.html` NÃO têm essa faixa.
+
 - **2026-06-19 — [Claude]** — 🎨 ARTE "ESPECIALISTA EM VOZ" (post Instagram
   1080x1350) criada e GUARDADA. Molde editável: **`_arte-especialista.html`** na
   raiz do repo (prefixo `_` → Jekyll NÃO publica; tem no topo o comando do Chrome
