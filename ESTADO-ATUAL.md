@@ -38,6 +38,20 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-20 — [Claude]** — 🔎 SEO LOCAL (após Search Console no ar mostrar:
+  2º lugar em "fonoaudiólogo"/"fonoaudiologia" com 0 cliques, e 14º em
+  "fonoaudiologia anápolis"). Diagnóstico: site JÁ bem otimizado on-page (19 menções
+  a Anápolis, cidade no title/desc); gargalo do 14º é AUTORIDADE/off-page (domínio
+  novo, poucos backlinks), não conteúdo. Ajustes de baixo risco no `index.html`:
+  (1) `meta description` reescrita (146 chars, não corta) com a frase exata
+  "Fonoaudiologia em Anápolis/GO" + foco voz/disfagia + CTA "Agende pelo WhatsApp";
+  (2) `.secao-label` do hero: "Anápolis/GO · …" → "Fonoaudiologia em Anápolis/GO · …"
+  (termo exato visível acima do H1). NÃO mexi no `<title>` de propósito (já ranqueia
+  2º em "fonoaudiólogo" — não estragar o que funciona). Verificado por eval (texto +
+  146 chars, console sem erros). MAIOR alavanca recomendada = Perfil do Google/Maps
+  (próximo passo com o Filipe), depois diretórios (Doctoralia/BoaConsulta) e seguir
+  juntando avaliações. Volume ainda pequeno (~55 impressões/28d).
+
 - **2026-06-20 — [Claude]** — 📊 NÚMERO DE PROVA SOCIAL "+3.000 atendimentos
   realizados" no `index.html`. Adicionado como DESTAQUE (bloco `.cred-destaque`:
   `.cred-num` 44px Sora 800 azul `#006EB4` + `.cred-num-label`) no TOPO da faixa
