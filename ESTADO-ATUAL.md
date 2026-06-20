@@ -38,6 +38,27 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-20 — [Claude]** — 📱 REVISÃO UX MOBILE do `index.html` (regra de ouro:
+  NADA removido, só reorganizado/espaçado). Tudo em 2 blocos ADITIVOS no fim do
+  `<style>` (`@media max-width:768px`) → sobrepõem sem editar regras existentes,
+  fácil de reverter. DESKTOP intacto (verificado em 1280px: cards row, headers
+  centralizados, legenda do hero como pílula). Mudanças: (1) ESPAÇO: `--secao-h`
+  20→22px, `--secao-v` 64→72px, gaps dos grids 16→20px. (2) TIPOGRAFIA: corpo de
+  leitura ≥16px (`.servico-texto` 15→16, `.diferencial-texto` 14→16, `.contato-valor`,
+  `.horario-texto`), rodapé 13→14. (3) AGRUPAMENTO/respiro: padding interno dos cards
+  reduzido (servico 40/32→28/22, diferencial 36→26/22) p/ o texto ganhar largura;
+  `.diferencial-card` vira `flex-direction:column` (número EM CIMA → texto na largura
+  toda, acaba a quebra excessiva tipo "Anamnese clínica,"/"avaliação perceptivo-").
+  (4) TOQUE: `.servico-link` ganha padding (alvo maior, os 2 links deixam de ficar
+  colados); links do rodapé com padding. (5) ALINHAMENTO: cabeçalhos de seção à
+  ESQUERDA no mobile (servicos, diferenciais, casos, avaliacoes, avaliacao-vocal,
+  triagem) — fim do "parágrafo longo centralizado", igual à seção Sobre que já lia
+  melhor. ⚠️ A triagem é definida DEPOIS do bloco principal → precisou de um 2º
+  mini-bloco no fim do CSS p/ vencer (já feito). Hero: a legenda local
+  (`#hero .secao-label`) deixa de ser 2ª pílula maiúscula e vira legenda leve cinza
+  (menos poluição no topo; texto/SEO mantidos). Verificado no preview mobile (hero,
+  serviços, diferenciais, triagem, rodapé) + console sem erros.
+
 - **2026-06-20 — [Claude]** — 🔎 SEO LOCAL (após Search Console no ar mostrar:
   2º lugar em "fonoaudiólogo"/"fonoaudiologia" com 0 cliques, e 14º em
   "fonoaudiologia anápolis"). Diagnóstico: site JÁ bem otimizado on-page (19 menções
