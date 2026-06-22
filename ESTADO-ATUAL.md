@@ -38,6 +38,12 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-22 — [Claude]** — ✍️ `disfagia.html`: o item "Exercícios iniciais"
+  virou "Exercícios, técnicas e manobras de deglutição" (pedido do Filipe). Decisão:
+  "manobras" (de deglutição — Mendelsohn, esforço, supraglótica) fica JUNTO dos
+  exercícios (núcleo da terapia), não na linha de aparelhos/tosse. A linha-guarda-
+  chuva de recursos complementares ficou inalterada.
+
 - **2026-06-22 — [Claude]** — ⚡ Refinei a menção de recursos na `disfagia.html`:
   o `<li>` de eletroestimulação virou uma LINHA GUARDA-CHUVA (escolha do Filipe):
   "Recursos complementares, quando indicados: eletroestimulação (TENS/FES),
