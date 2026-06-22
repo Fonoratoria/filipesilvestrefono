@@ -38,6 +38,16 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-22 — [Claude]** — ⚡ Refinei a menção de recursos na `disfagia.html`:
+  o `<li>` de eletroestimulação virou uma LINHA GUARDA-CHUVA (escolha do Filipe):
+  "Recursos complementares, quando indicados: eletroestimulação (TENS/FES),
+  estimulação tátil-vibratória, bandagem elástica e técnicas para fortalecer a
+  tosse". Decisão: NÃO listar aparelho-por-aparelho (protege a marca humanizada e
+  o compliance); "ambu" foi traduzido p/ "técnicas para fortalecer a tosse"
+  (empilhamento de ar/tosse assistida) — linguagem de paciente, não de colega.
+  Massageador→"estimulação tátil-vibratória". Formação (index) mantém só o item de
+  eletroestimulação como credencial; vibração/bandagem/tosse NÃO entraram na Formação.
+
 - **2026-06-22 — [Claude]** — ⚡ ELETROESTIMULAÇÃO (TENS/FES) adicionada ao site,
   de forma DISCRETA (pedido do Filipe: "sem destaque demais, normal"). 3 pontos:
   (1) `index.html` → novo `<li>` na lista de Formação: "Eletroestimulação aplicada
