@@ -38,6 +38,16 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-22 — [Claude]** — ⚡ ELETROESTIMULAÇÃO (TENS/FES) adicionada ao site,
+  de forma DISCRETA (pedido do Filipe: "sem destaque demais, normal"). 3 pontos:
+  (1) `index.html` → novo `<li>` na lista de Formação: "Eletroestimulação aplicada
+  à fonoaudiologia (TENS e FES)" (entre "Ministrante de treinamentos…" e
+  "Aprimoramentos contínuos…"); (2) `disfagia.html` → novo `<li>` no "Como funciona":
+  "Eletroestimulação (TENS/FES) como apoio à reabilitação, quando indicada" (deixa
+  claro o uso clínico criterioso); (3) `index.html` schema JSON-LD `knowsAbout`
+  ganhou "Eletroestimulação (TENS e FES)" (invisível, só SEO). NÃO mexi em
+  hero/título/selos. Compliance CFFa OK (sem superlativo; "quando indicada" = honesto).
+
 - **2026-06-20 — [Claude]** — 📱 REVISÃO UX MOBILE do `index.html` (regra de ouro:
   NADA removido, só reorganizado/espaçado). Tudo em 2 blocos ADITIVOS no fim do
   `<style>` (`@media max-width:768px`) → sobrepõem sem editar regras existentes,
