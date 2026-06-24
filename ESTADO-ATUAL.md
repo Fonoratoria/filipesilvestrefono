@@ -38,6 +38,17 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-24 — [Claude]** — 🔎 SEO LOCAL: nova seção `#anapolis` no `index.html`
+  (antes do Contato) = bloco de conteúdo **"Fonoaudiologia em Anápolis"** (~280
+  palavras, voz+disfagia, adultos/idosos, domiciliar+online) **+ FAQ de 6 perguntas**
+  (accordion nativo `<details>`) **+ schema `FAQPage`** (JSON-LD que espelha o FAQ
+  visível). Motivo: GSC mostrou "fonoaudiologia anapolis" na posição ~14 (pág. 2) e
+  pesquisa de boas práticas 2026 aponta FAQ+schema como a maior alavanca p/ saúde
+  local (featured snippet/IA). Estilo 100% nos tokens da marca (var(--azul)/
+  --turquesa/--grafite/Sora), CSS escopado num `<style>` local (não tocou no CSS
+  principal). CFFa-ok (sem "melhor/cura/único/garantido…"). Verificado no preview:
+  renderiza, FAQ abre/fecha, 0 erro de console.
+
 - **2026-06-22 — [Claude]** — ✍️ `disfagia.html`: o item "Exercícios iniciais"
   virou "Exercícios, técnicas e manobras de deglutição" (pedido do Filipe). Decisão:
   "manobras" (de deglutição — Mendelsohn, esforço, supraglótica) fica JUNTO dos
