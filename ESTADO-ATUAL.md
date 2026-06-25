@@ -38,6 +38,7 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-25 — [Claude]** — 🏅 DESTAQUE ÉTICO do título de especialista (`index.html`). Filipe viu que na busca oficial do CFFa (Buscar Especialista → área Voz + Anápolis) aparece só ele, mas teve receio de cravar "único" (pode haver especialista de outra cidade que atende lá). DECISÃO ÉTICA/COMPLIANCE: **NÃO usar "único"** (proibido pelo CFFa + não verificável) — em vez disso reforçar o que é verdade e impressiona: o título é **certificação avançada que nem todo fono conquista** e é **verificável no cadastro oficial do CFFa**. 2 edições enxutas: (1) novo parágrafo no "Quem sou eu?" (Sobre); (2) reforço no card de diferencial nº3 ("verificável no cadastro do Conselho"). Sem novos termos proibidos (varredura feita). O hero (selo) e o cred-oficial clicável → CFFa já existiam. NÃO mexi em layout/brand.
 - **2026-06-24 — [Claude]** — 🔎 SEO LOCAL: nova seção `#anapolis` no `index.html`
   (antes do Contato) = bloco de conteúdo **"Fonoaudiologia em Anápolis"** (~280
   palavras, voz+disfagia, adultos/idosos, domiciliar+online) **+ FAQ de 6 perguntas**
