@@ -38,6 +38,27 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-28 — [Claude]** — ⚡ OTIMIZAÇÃO DE VELOCIDADE / UX (PageSpeed mobile estava
+  79/100, LCP 4,5s no 4G lento). Diagnóstico: gargalo era IMAGEM superdimensionada +
+  fontes bloqueando a renderização. NÃO mexi em layout/visual/conteúdo. **(1) Dieta de
+  imagens** (ffmpeg, Lanczos, qualidade alta — sem WebP p/ zero risco de compatibilidade,
+  sem perda visível): logo.png 1458×1190/246KB→221×180/18KB (exibido a 52px! era o maior
+  absurdo, carrega em toda página), logo-rodape.png 153→40KB, foto-avaliacao-vocal
+  385→171KB, foto-formacao 197→115KB, foto-sobre 128→77KB, foto-hero (é o LCP, mantive
+  resolução 1055×1400) só recomprimi 132→112KB, foto-agendar 160→155KB. **Total 1.401→688KB
+  (−51%, ~713KB cortados).** Originais salvos em `backup-imagens-orig/` (adicionado ao
+  `.gitignore` p/ não ir ao repo público). **(2) Fontes não-bloqueantes** nas 5 páginas
+  publicadas (index, voz, disfagia, cookies, privacidade): o `<link>` do Google Fonts virou
+  preload + `media="print" onload="this.media='all'"` + `<noscript>` fallback (destrava
+  ~1,8s do caminho crítico; Lighthouse apontava render-blocking de 750ms+). **(3)** width/height
+  explícitos nos 2 logos do index (mata o aviso "imagens sem dimensões" e trava CLS em 0).
+  Verificado no preview via eval: fontes carregam E aplicam (corpo=Inter, h1=Sora), logos
+  visíveis/nítidos (nav 64×52, footer 129×96, resolução ~3,5× p/ retina), hero completo,
+  0 erro de console. (Screenshot da ferramenta deu timeout por animação contínua da página —
+  não é erro do site, eval confirmou tudo.) **NÃO dá p/ resolver no GitHub Pages:** cache TTL
+  curto (10min) e cabeçalhos de segurança (CSP/HSTS/COOP) — só migrando p/ Cloudflare (igual o
+  app); decidido NÃO fazer agora. Estimativa: 79 → ~90+. **FALTA: publicar (git push).**
+- **2026-06-26 — [Claude]** — 📸 FOTO REAL DE ATENDIMENTO na seção "Agende sua avaliação" (`index.html`). Substituí a `foto-agendar.jpg` (antes: estúdio posado com prancheta/fundo branco) pela foto editada de atendimento real no consultório (Filipe de luva explicando a anatomia da voz no tablet ao paciente — vista de Anápolis ao fundo). Fonte: `05_BRAND\FOTOS CANDIDATAS - SITE\EDITADAS (Reve - alta resolucao)\ATENDIMENTO - explicando anatomia no tablet (luvas) - EDITADA.png` (3527×4703) → redimensionada via ffmpeg pra 1200×1600 JPG (164KB, yuvj420p). Atualizei o alt text pra SEO. Hero, Sobre, Formação (livro VOZ) e Avaliação Vocal (arte neon) mantidos. Motivo: site era 100% estúdio; faltava mostrar atendimento real (gera confiança). Filipe aprovou só não mexer no hero.
 - **2026-06-25 — [Claude]** — 🏅 DESTAQUE ÉTICO do título de especialista (`index.html`). Filipe viu que na busca oficial do CFFa (Buscar Especialista → área Voz + Anápolis) aparece só ele, mas teve receio de cravar "único" (pode haver especialista de outra cidade que atende lá). DECISÃO ÉTICA/COMPLIANCE: **NÃO usar "único"** (proibido pelo CFFa + não verificável) — em vez disso reforçar o que é verdade e impressiona: o título é **certificação avançada que nem todo fono conquista** e é **verificável no cadastro oficial do CFFa**. 2 edições enxutas: (1) novo parágrafo no "Quem sou eu?" (Sobre); (2) reforço no card de diferencial nº3 ("verificável no cadastro do Conselho"). Sem novos termos proibidos (varredura feita). O hero (selo) e o cred-oficial clicável → CFFa já existiam. NÃO mexi em layout/brand.
 - **2026-06-24 — [Claude]** — 🔎 SEO LOCAL: nova seção `#anapolis` no `index.html`
   (antes do Contato) = bloco de conteúdo **"Fonoaudiologia em Anápolis"** (~280
