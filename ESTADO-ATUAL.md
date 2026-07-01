@@ -38,6 +38,13 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-07-01 — [Claude]** — 📌 Criado `LEMBRETES.md` na raiz — lista pessoal de
+  lembretes/tarefas do Filipe (pendentes/concluídos + mini how-to). Objetivo: o
+  Filipe manda lembretes pelo chat e o Claude anota nesse arquivo; ao abrir o
+  projeto no computador ele vê a lista. Notificação com aviso que toca fica na
+  Google Agenda (opcional, quando o Filipe pedir). Arquivo é `.md`, não afeta o
+  site publicado. Branch: `claude/computer-reminders-sync-vsfshk`.
+
 - **2026-06-28 — [Claude]** — ⚡ OTIMIZAÇÃO DE VELOCIDADE / UX (PageSpeed mobile estava
   79/100, LCP 4,5s no 4G lento). Diagnóstico: gargalo era IMAGEM superdimensionada +
   fontes bloqueando a renderização. NÃO mexi em layout/visual/conteúdo. **(1) Dieta de
