@@ -38,6 +38,22 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-06-30 — [Claude]** — 🔎 AUDITORIA DO RASTREAMENTO (NENHUMA mudança de código —
+  só registro). Filipe viu no relatório de marketing "0 leads whatsapp_click" na semana
+  22–28/06 e pediu pra consertar. Rodei o site no preview (npx serve :4321) e simulei
+  cliques nos botões `wa.me`: o evento **`whatsapp_click`** (servico=agendar/voz) **E** a
+  conversão **"Clique WhatsApp Site"** (`label HIp0CN2uzKMcEMaw--4-`) DISPARAM, e os
+  requests CHEGAM ao Google (`googlesyndication ccm/collect`→200, `pagead/conversion`→204),
+  GA4 `page_view`→204, Clarity coletando, **0 erro de console**. **O CÓDIGO NÃO ESTÁ
+  QUEBRADO** — a otimização de velocidade de 28/06 NÃO afetou o rastreamento (o bloco do
+  gtag está nas linhas ~108–138, ANTES dos `<link>` de fonte das ~140–146; são coisas
+  independentes). **Causa real do "0 leads":** (1) tráfego do site caiu 24→11 sessões na
+  semana; (2) ~92% do gasto (R$181 de R$197) foi na campanha **"Domiciliar e clínica"**, que
+  leva a pessoa a ligar/WhatsApp DIRETO do anúncio SEM abrir o site (21 cliques → só 4
+  visitas) — esses leads aparecem como as **3 "conversões" no painel do Google Ads**, fora do
+  `whatsapp_click` do site. Conclusão: não se perdeu lead; eles estão no painel do Ads. NÃO
+  mexer no código que está comprovadamente funcionando.
+
 - **2026-06-28 — [Claude]** — ⚡ OTIMIZAÇÃO DE VELOCIDADE / UX (PageSpeed mobile estava
   79/100, LCP 4,5s no 4G lento). Diagnóstico: gargalo era IMAGEM superdimensionada +
   fontes bloqueando a renderização. NÃO mexi em layout/visual/conteúdo. **(1) Dieta de
