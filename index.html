@@ -1745,6 +1745,87 @@ footer a:hover { color: white; }
   .triagem-cabecalho { text-align: left; max-width: none; }
   .triagem-cabecalho p { margin-left: 0; margin-right: 0; max-width: none; }
 }
+
+/* =====================================================================
+   PASSE DE CONVERSÃO (12/08) — bloco ADITIVO, fica no fim de propósito.
+   1) As DUAS PORTAS do hero  2) cookie compacto  3) um flutuante só no celular
+===================================================================== */
+
+/* --- 1) AS DUAS PORTAS --------------------------------------------- */
+.hero-portas { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 12px; }
+
+.porta {
+  display: block; text-decoration: none; border-radius: 6px;
+  padding: 16px 48px 16px 20px; position: relative;
+  transition: transform .2s ease, box-shadow .2s ease, background-position .2s ease;
+}
+.porta-titulo { display: block; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; line-height: 1.3; }
+.porta-sub    { display: block; font-size: 13.5px; line-height: 1.4; margin-top: 4px; opacity: .85; }
+.porta::after {
+  content: '→'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+  font-size: 20px; line-height: 1; transition: transform .2s ease;
+}
+.porta:hover { box-shadow: 0 6px 20px rgba(0,110,180,.18); }
+.porta:hover::after { transform: translateY(-50%) translateX(4px); }
+
+/* Voz = porta PRINCIPAL (especialidade e prioridade) — degradê da marca */
+.porta-principal {
+  color: #fff; border: 1px solid transparent;
+  background: linear-gradient(120deg, var(--azul) 0%, var(--turquesa) 50%, var(--azul) 100%);
+  background-size: 200% 100%; background-position: 0% 0;
+}
+.porta-principal:hover { background-position: 100% 0; }
+
+/* Disfagia = porta SECUNDÁRIA — só contorno, para não competir com a Voz */
+.porta-secundaria {
+  color: var(--grafite); background: #fff;
+  border: 1px solid rgba(0,110,180,.35);
+}
+.porta-secundaria .porta-sub { opacity: .7; }
+.porta-secundaria::after { color: var(--azul); }
+
+.hero-whats-direto {
+  display: inline-block; font-size: 14px; font-weight: 600;
+  color: var(--azul); text-decoration: underline; text-underline-offset: 3px;
+  padding: 6px 0;
+}
+
+@media (max-width: 768px) {
+  .porta { padding: 14px 44px 14px 16px; }
+  .porta-titulo { font-size: 16px; }
+  .hero-portas { margin: 14px 0 6px; }
+
+  /* A foto ocupava 3/4 da largura (≈520px num aparelho de 390px) e jogava
+     título e portas para fora da primeira tela. */
+  .hero-foto { aspect-ratio: 16/9; }
+  #hero { padding-top: 16px; gap: 16px; }
+  .hero-sub { font-size: 15px; margin-bottom: 0; }
+  .hero-headline { margin-bottom: 8px; }
+}
+
+/* --- 2) COOKIE COMPACTO: barra fina, para de cobrir o hero ---------- */
+@media (max-width: 768px) {
+  #cookie-banner {
+    left: 0; right: 0; bottom: 0; max-width: none; border-radius: 0;
+    border-left: none; border-right: none; border-bottom: none;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    font-size: 12.5px; line-height: 1.4;
+    display: none;
+  }
+  #cookie-banner.mostrar { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
+  #cookie-banner p { margin: 0; flex: 1 1 auto; }
+  #cookie-banner .ck-botoes { flex: 0 0 auto; gap: 6px; flex-wrap: nowrap; }
+  #cookie-banner button { min-height: 34px; min-width: 0; font-size: 12.5px; padding: 0 12px; white-space: nowrap; }
+  /* o flutuante do WhatsApp sobe enquanto a barra estiver na tela */
+  body.ck-aberto .whats-fab { bottom: 82px; }
+}
+
+/* --- 3) UM FLUTUANTE SÓ NO CELULAR ---------------------------------- */
+/* Dois botões flutuantes disputavam o toque. No celular fica só o WhatsApp,
+   que é a conversão de verdade. No computador o assistente continua. */
+@media (max-width: 768px) {
+  #iaf-fab { display: none !important; }
+}
 </style>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","x0so945ueq");</script>
 </head>
@@ -1804,27 +1885,37 @@ footer a:hover { color: white; }
     <p class="hero-assinatura">Vozes que ressoam</p>
     <p class="secao-label">Fonoaudiologia em Anápolis/GO · Atendimento domiciliar e online</p>
     <h1 class="hero-headline">
-      <span>Sua voz firme, sem rouquidão nem cansaço.</span>
-      <span>Refeições sem medo.</span>
-      <span>Palavras que reconectam.</span>
+      <span>Sua voz está rouca,</span>
+      <span>cansada ou falhando?</span>
     </h1>
     <p class="hero-sub">
-      <strong>Fonoaudiólogo especialista em voz</strong>, com atendimento humanizado — <strong>em casa, no consultório ou online.</strong><br>
-      Voz, deglutição e comunicação.
+      <strong>Fonoaudiólogo Especialista em Voz</strong>, com atendimento humanizado —
+      <strong>em casa ou online</strong>, em Anápolis/GO.
     </p>
+
+    <!-- AS DUAS PORTAS — cada uma leva à landing do próprio caso.
+         Voz é a principal (especialidade e prioridade); disfagia é a segunda porta. -->
+    <div class="hero-portas">
+      <a href="voz.html" class="porta porta-principal">
+        <span class="porta-titulo">Minha voz está rouca ou falhando</span>
+        <span class="porta-sub">Rouquidão, pigarro, voz que cansa ou some</span>
+      </a>
+      <a href="disfagia.html" class="porta porta-secundaria">
+        <span class="porta-titulo">Alguém está engasgando para comer</span>
+        <span class="porta-sub">Dificuldade para engolir em idosos e pós-AVC</span>
+      </a>
+    </div>
+    <a class="hero-whats-direto" href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site">
+      ou falar direto no WhatsApp
+    </a>
+
     <a class="hero-google" href="#avaliacoes" aria-label="Nota 5,0 no Google — ver avaliações">
       <svg class="hg-g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20H24v8h11.3C33.6 33.1 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.7-.4-4z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.5 15.1 18.9 12 24 12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.1 6.4 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-1.9 13.5-5l-6.2-5.2C29.4 35.6 26.8 36.5 24 36.5c-5.2 0-9.6-3.5-11.2-8.3l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20H24v8h11.3c-.8 2.3-2.3 4.2-4.3 5.6l6.2 5.2C41 35.3 44 30 44 24c0-1.3-.1-2.7-.4-4z"/></svg>
       <span class="hg-estrelas" aria-hidden="true">★★★★★</span>
       <span class="hg-nota" id="hero-google-nota">5,0</span>
       <span>· <strong id="hero-google-total">25</strong> avaliações no Google</span>
     </a>
-    <div class="hero-btns">
-      <a href="https://wa.me/556298814511?text=Olá%20Filipe%2C%20quero%20agendar%20pelo%20site" class="btn-whatsapp btn-grad">
-        <svg class="ico-whatsapp" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Agendar pelo WhatsApp
-      </a>
-      <p class="hero-exclusivo">Atendimento exclusivo, com hora marcada e agendamento antecipado.</p>
-    </div>
+    <p class="hero-exclusivo">Atendimento exclusivo, com hora marcada e agendamento antecipado.</p>
   </div>
 </section>
 
@@ -1865,7 +1956,7 @@ footer a:hover { color: white; }
   <div class="container">
     <div class="servicos-header">
       <span class="secao-label">Áreas de atuação</span>
-      <h2 class="titulo-secao">Você se reconhece em<br>algum desses casos?</h2>
+      <h2 class="titulo-secao">O que está acontecendo:<br>voz rouca, engasgos ou fala difícil?</h2>
       <div class="divisor"></div>
     </div>
 
@@ -2199,12 +2290,12 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <button class="caso-facade" data-id="KZ7eVkGxGrg" aria-label="Assistir: Antes e depois muda vocal em uma única sessão">
+          <button class="caso-facade" data-id="KZ7eVkGxGrg" aria-label="Assistir: Muda vocal, a voz respondendo dentro de uma sessão">
             <img src="https://i.ytimg.com/vi/KZ7eVkGxGrg/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')">
             <span class="caso-play"></span>
           </button>
         </div>
-        <div class="caso-legenda">Antes e depois: muda vocal em uma única sessão</div>
+        <div class="caso-legenda">Muda vocal: a voz respondendo dentro de uma sessão</div>
       </div>
 
       <div class="caso-card">
@@ -2221,23 +2312,23 @@ footer a:hover { color: white; }
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <button class="caso-facade" data-id="BBi3X4pvkqQ" aria-label="Assistir: Antes e depois muda vocal a longo prazo">
+          <button class="caso-facade" data-id="BBi3X4pvkqQ" aria-label="Assistir: Muda vocal, acompanhamento ao longo do tratamento">
             <img src="https://i.ytimg.com/vi/BBi3X4pvkqQ/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')">
             <span class="caso-play"></span>
           </button>
         </div>
-        <div class="caso-legenda">Antes e depois: muda vocal a longo prazo</div>
+        <div class="caso-legenda">Muda vocal: acompanhamento ao longo do tratamento</div>
       </div>
 
       <div class="caso-card">
         <div class="caso-video-wrap">
           <span class="video-badge">VOZ</span>
-          <button class="caso-facade" data-id="MNyc9bjgXQs" aria-label="Assistir: Análise acústica antes e depois">
+          <button class="caso-facade" data-id="MNyc9bjgXQs" aria-label="Assistir: Análise acústica da voz em um caso de disfonia">
             <img src="https://i.ytimg.com/vi/MNyc9bjgXQs/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')">
             <span class="caso-play"></span>
           </button>
         </div>
-        <div class="caso-legenda">Análise acústica: antes e depois — paciente com disfonia</div>
+        <div class="caso-legenda">Análise acústica da voz em um caso de disfonia</div>
       </div>
     </div>
 
@@ -2853,7 +2944,7 @@ if (!window.__convWhatsAtiva) {
      BANNER DE COOKIES (LGPD) — controla o Modo de Consentimento do Google
 ============================================= -->
 <div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
-  <p>Usamos cookies para melhorar sua experiência e medir resultados de anúncios. Você pode aceitar ou rejeitar. Saiba mais na <a href="cookies.html">Política de Cookies</a>.</p>
+  <p>Usamos cookies para medir resultados de anúncios. Você escolhe. <a href="cookies.html">Política de Cookies</a>.</p>
   <div class="ck-botoes">
     <button type="button" class="ck-rejeitar" onclick="cookieConsent(false)">Rejeitar</button>
     <button type="button" class="ck-aceitar" onclick="cookieConsent(true)">Aceitar</button>
@@ -2864,7 +2955,10 @@ if (!window.__convWhatsAtiva) {
   (function () {
     var escolha = null;
     try { escolha = localStorage.getItem('cookieConsent'); } catch (e) {}
-    if (!escolha) { var b = document.getElementById('cookie-banner'); if (b) b.classList.add('mostrar'); }
+    if (!escolha) {
+      var b = document.getElementById('cookie-banner');
+      if (b) { b.classList.add('mostrar'); document.body.classList.add('ck-aberto'); }
+    }
   })();
   function cookieConsent(aceitou) {
     try { localStorage.setItem('cookieConsent', aceitou ? 'aceito' : 'rejeitado'); } catch (e) {}
@@ -2874,6 +2968,7 @@ if (!window.__convWhatsAtiva) {
       });
     }
     var b = document.getElementById('cookie-banner'); if (b) b.classList.remove('mostrar');
+    document.body.classList.remove('ck-aberto');
   }
 </script>
 

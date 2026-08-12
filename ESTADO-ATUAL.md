@@ -38,6 +38,42 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-08-12 — [Claude]** — 🎯 PASSE DE CONVERSÃO, a partir da auditoria do Manus
+  (`04_MARKETING/2026-08-12_Relatorio-Manus_Site-Clinica_conversao.md`). Decisão do
+  Filipe: **Voz é a especialidade e a prioridade** — as duas portas NÃO são 50/50.
+  **(1) HERO DAS DUAS PORTAS** (`index.html`): o H1 que misturava 3 públicos ("Sua voz
+  firme… Refeições sem medo… Palavras que reconectam") virou pergunta de sintoma de VOZ
+  ("Sua voz está rouca, cansada ou falhando?"), e o CTA único de WhatsApp virou 2 portas —
+  `.porta-principal` (Voz, degradê da marca) → `voz.html` e `.porta-secundaria` (disfagia,
+  só contorno) → `disfagia.html`, com o WhatsApp direto como link menor abaixo. Hierarquia
+  visual proposital: Voz domina. **(2) PRIMEIRA TELA DO CELULAR:** o `aspect-ratio` da
+  `.hero-foto` no mobile era 3/4 (≈520px num aparelho de 390px) e jogava título e ação para
+  fora da tela → virou 16/9; margens do hero apertadas. **Medido em 375×812:** H1 757→447,
+  porta de Voz inteira visível acima do cookie; em `voz.html` o CTA saiu de y=777 para
+  y=679 (cabia fora da tela, agora cabe dentro); em `disfagia.html`, de y=900 para y=626.
+  **(3) COOKIE COMPACTO:** no mobile virou barra fina colada embaixo (texto encurtado,
+  botões na mesma linha) — **231px → 74px de altura**; nova classe `body.ck-aberto` sobe o
+  `.whats-fab` enquanto a barra está na tela. **(4) UM FLUTUANTE SÓ NO CELULAR:** `#iaf-fab`
+  (assistente) escondido em ≤768px; no computador continua. **(5) "ANTES E DEPOIS" SAIU** de
+  `index.html` e `voz.html` (3 legendas + 3 aria-labels) — era violação do próprio
+  `DESIGN.md` ("nada de antes/depois") e o relatório apontou como promessa implícita. Viraram
+  descritivas ("Muda vocal: a voz respondendo dentro de uma sessão" etc.). **(6) MODALIDADE
+  UNIFORMIZADA:** o hero dizia "em casa, no consultório ou online" enquanto FAQ e rodapé
+  diziam domiciliar/online → agora **"em casa ou online"** em todo lugar (zero ocorrência de
+  "consultório" no site). **(7) CAIXA DE SEGURANÇA** em `disfagia.html` (`.caixa-seguranca`,
+  entre os sinais e o "Como funciona"): separa "me chamar para avaliar" de "procurar
+  atendimento imediato". ⚠️ **É TEXTO CLÍNICO — só o Filipe altera.** Não dá diagnóstico nem
+  conduta: só encaminha. **(8) COPY do relatório aplicada:** H1 de `voz.html`
+  ("Rouquidão, pigarro ou voz falhando?"), H1 de `disfagia.html` ("Engasgos ou comida presa
+  ao comer?"), os 3 títulos de "sinais" e os CTAs ("Falar sobre minha voz no WhatsApp",
+  "Falar sobre a dificuldade para engolir"). CSS novo é **ADITIVO no fim** dos dois arquivos
+  de estilo (inline do index + `estilo.css`), fácil de reverter. Verificado no preview em
+  375×812 e 1280×800: portas com as cores da marca e Sora, links certos, rejeitar/aceitar
+  cookie funcionando, sem rolagem horizontal, **0 erro de console**. ⚠️ **NÃO mexi no
+  telefone exibido** (Filipe mandou ignorar). ⚠️ **Achado não consertado:** as landings não
+  têm banner de cookies — quem cai direto de anúncio em `/voz.html` nunca escolhe, e o
+  Consent Mode fica negado (subregistra conversão do Ads).
+
 - **2026-06-30 — [Claude]** — 🔎 AUDITORIA DO RASTREAMENTO (NENHUMA mudança de código —
   só registro). Filipe viu no relatório de marketing "0 leads whatsapp_click" na semana
   22–28/06 e pediu pra consertar. Rodei o site no preview (npx serve :4321) e simulei

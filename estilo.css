@@ -1276,3 +1276,57 @@ footer a:hover { color: white; }
   max-width: 880px; margin: 24px auto 0; text-align: center;
   font-size: 12.5px; line-height: 1.6; color: var(--cinza-suave);
 }
+
+/* =====================================================================
+   PASSE DE CONVERSÃO (12/08) — bloco ADITIVO no fim de propósito.
+   Vale para voz.html e disfagia.html. O index tem CSS próprio, inline.
+   1) hero cabe na 1ª tela do celular  2) cookie compacto
+   3) caixa de segurança da disfagia
+===================================================================== */
+
+/* --- 1) O CTA PRECISA CABER NA PRIMEIRA TELA DO CELULAR -------------
+   A foto ocupava 3/4 da largura (≈520px de altura num aparelho de 390px)
+   e empurrava título e botão para fora da tela. */
+@media (max-width: 768px) {
+  .hero-foto { aspect-ratio: 16/9; }
+  #hero { padding-top: 16px; gap: 16px; }
+  .hero-sub { font-size: 15px; margin-bottom: 20px; }
+  #hero .selo-especialista { margin-bottom: 12px; }
+  #hero .secao-label { margin-bottom: 10px; }
+  .hero-headline { margin-bottom: 12px; }
+}
+
+/* --- 2) COOKIE COMPACTO: barra fina, para de cobrir o hero ---------- */
+@media (max-width: 768px) {
+  #cookie-banner {
+    left: 0; right: 0; bottom: 0; max-width: none; border-radius: 0;
+    border-left: none; border-right: none; border-bottom: none;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    font-size: 12.5px; line-height: 1.4;
+  }
+  #cookie-banner.mostrar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  #cookie-banner p { margin: 0; flex: 1 1 100%; }
+  #cookie-banner .ck-botoes { flex: 1 1 auto; gap: 8px; }
+  #cookie-banner button { min-height: 36px; min-width: 0; font-size: 13px; padding: 0 14px; }
+  body.ck-aberto .whats-fab { bottom: 84px; }
+}
+
+/* --- 3) CAIXA DE SEGURANÇA (disfagia) -------------------------------
+   Separa "chamar para avaliar" de "procurar atendimento agora".
+   Sem diagnóstico e sem conduta: só orienta para onde ir. */
+.caixa-seguranca {
+  max-width: 880px; margin: 0 auto;
+  border: 1px solid rgba(0,110,180,.35); border-radius: 6px;
+  padding: 20px 24px; background: #fff;
+}
+.caixa-seguranca h3 {
+  font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700;
+  color: var(--azul); margin: 0 0 12px;
+}
+.caixa-seguranca p { font-size: 15px; line-height: 1.6; margin: 0 0 12px; }
+.caixa-seguranca ul { margin: 0 0 12px 20px; padding: 0; }
+.caixa-seguranca li { font-size: 15px; line-height: 1.6; margin-bottom: 6px; }
+.caixa-seguranca .cs-nota { font-size: 13px; color: var(--cinza-suave); margin: 0; }
+@media (max-width: 768px) {
+  .caixa-seguranca { padding: 18px 16px; }
+}
