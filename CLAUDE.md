@@ -58,6 +58,19 @@ Ads dispara exatamente nesse link.
   *Health in Personalized Advertising*.
 - ⛔ **Não assumir que editar o CSS do index vale para as landings** (e vice-versa). O visual
   vive em 2 lugares independentes e **já divergiram**. Mudança de aparência vai nos dois.
+- ⛔ **Não abrir texto com nome de doença.** Sintoma primeiro, causa depois e em lista
+  ABERTA. Listar "idosos e pós-AVC" exclui quem tem disfagia por cabeça e pescoço,
+  Parkinson, demência, pós-intubação ou pela idade — e essa pessoa fecha a página. Regra
+  dita pelo Filipe em 12/08/2026, ao revisar o hero. Vale para card, título e porta de
+  entrada; meta/og/schema podem citar a doença.
+- ⛔ **Não colocar "antes e depois" em legenda de vídeo** (nem de voz, nem de imagem). É
+  regra do `DESIGN.md` que já ficou meses furada no site — limpo em 12/08/2026.
+- ⚠️ **A primeira tela do celular é decidida pela FOTO, não pelo texto.** `.hero-foto` com
+  `aspect-ratio` alto (era 3/4) vira 520px num aparelho de 390px e joga o CTA para fora.
+  Antes de mexer no hero, ler `receita-primeira-tela-celular-converte` na memória.
+- ⚠️ **As landings não têm banner de cookies** — só respeitam a escolha feita no index.
+  Quem entra por anúncio direto em `/voz.html` nunca consente, o Consent Mode fica negado e
+  o lead não é contado pelo Ads. Achado de 12/08/2026, ainda **não** consertado.
 - ⛔ **Não transformar a tagline "Vozes que ressoam" em H1/headline.** É assinatura (kicker do
   hero e rodapé). Já aconteceu e teve que ser revertido.
 - ⛔ **Cores e fontes travadas:** Azul `#006EB4`, Turquesa `#46C8BE`, Grafite `#141414`, bg
