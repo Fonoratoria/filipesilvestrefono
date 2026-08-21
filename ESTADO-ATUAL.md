@@ -38,6 +38,13 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-08-21 — [Claude]** — 📱 MESMO CONSERTO NAS LANDINGS DE ANÚNCIO (`estilo.css`, bloco
+  ADITIVO no fim). `voz.html` e `disfagia.html` usam a MESMA `foto-hero.jpg` e tinham o mesmo
+  `aspect-ratio:16/9` no mobile — ou seja, quem clicava no anúncio pago também caía numa
+  página com a foto cortada no queixo. Agora 5/4 + `max-height:30vh` + foco em 20%, selo
+  compacto, `.whats-fab` 52px. Medido em 390×844: em `voz.html` o CTA fica em 687–755 e em
+  `disfagia.html` em 604–672, ambos dentro da primeira tela, 0 rolagem horizontal.
+
 - **2026-08-21 — [Claude]** — 📱 CONSERTO URGENTE DA PRIMEIRA TELA DO CELULAR (`index.html`,
   bloco ADITIVO no fim do `<style>` inline, dentro de `@media max-width:768px`). O passe de
   12/08 deixou `.hero-foto` em `aspect-ratio:16/9` com `object-position:center top` → no
