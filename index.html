@@ -1797,7 +1797,8 @@ footer a:hover { color: white; }
 
   /* A foto ocupava 3/4 da largura (≈520px num aparelho de 390px) e jogava
      título e portas para fora da primeira tela. */
-  .hero-foto { aspect-ratio: 16/9; }
+  .hero-foto { aspect-ratio: 4/3; max-height: 42vh; }
+  .hero-foto img { object-position: center 18%; }
   #hero { padding-top: 16px; gap: 16px; }
   .hero-sub { font-size: 15px; margin-bottom: 0; }
   .hero-headline { margin-bottom: 8px; }
@@ -1825,6 +1826,32 @@ footer a:hover { color: white; }
    que é a conversão de verdade. No computador o assistente continua. */
 @media (max-width: 768px) {
   #iaf-fab { display: none !important; }
+}
+/* --- 21/08/2026: PRIMEIRA TELA DO CELULAR — menos poluição -----------
+   A foto em 16/9 com foco no topo mostrava só a cabeça, e o empilhamento
+   selo + assinatura + legenda + H1 + sub empurrava as portas para baixo
+   do banner de cookie. Bloco ADITIVO, fácil de reverter. -------------- */
+@media (max-width: 768px) {
+  /* foto: rosto E jaleco, sem virar faixa */
+  .hero-foto { aspect-ratio: 5/4; max-height: 30vh; }
+  .hero-foto img { object-position: center 20%; }
+
+  /* selo do titulo oficial: pilula compacta */
+  .selo-especialista { font-size: 12.5px; padding: 7px 12px; gap: 7px; margin-bottom: 8px; }
+  .selo-especialista svg { width: 16px; height: 16px; }
+  .selo-verificar { font-size: 10.5px; padding: 3px 8px; }
+
+  /* assinatura e legenda local: leves, sem competir com o H1 */
+  .hero-assinatura { font-size: 14px; margin-bottom: 4px; }
+  #hero .secao-label { font-size: 11.5px; line-height: 1.35; }
+  .hero-sub { font-size: 14.5px; line-height: 1.5; margin-bottom: 0; }
+  .hero-portas { margin: 10px 0 4px; gap: 10px; }
+  #hero { gap: 12px; }
+
+  /* o flutuante do WhatsApp cobria o texto da porta de Voz */
+  .whats-fab { width: 52px; height: 52px; right: 14px; }
+  .whats-fab svg { width: 26px; height: 26px; }
+  .porta { padding-right: 44px; }
 }
 </style>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","x0so945ueq");</script>

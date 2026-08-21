@@ -38,6 +38,17 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-08-21 — [Claude]** — 📱 CONSERTO URGENTE DA PRIMEIRA TELA DO CELULAR (`index.html`,
+  bloco ADITIVO no fim do `<style>` inline, dentro de `@media max-width:768px`). O passe de
+  12/08 deixou `.hero-foto` em `aspect-ratio:16/9` com `object-position:center top` → no
+  celular a foto virava faixa e mostrava **só a cabeça**. Agora: `5/4` + `max-height:30vh` +
+  `object-position:center 20%` (rosto E jaleco). Junto, tirei a poluição do topo: selo do
+  título em pílula compacta (1 linha), assinatura/legenda/sub menores, `.hero-portas` e
+  `#hero` com gaps menores, e o `.whats-fab` reduzido (58→52px) porque cobria o texto da
+  porta de Voz. Medido em 390×844: porta de Voz inteira (608–682) e porta de disfagia
+  visível (692–805) acima do cookie; 0 rolagem horizontal. Desktop intocado (tudo dentro do
+  media query). Motivo: Filipe ia apresentar o site e viu quebrado no celular.
+
 - **2026-08-12 — [Claude]** — 🎯 PASSE DE CONVERSÃO, a partir da auditoria do Manus
   (`04_MARKETING/2026-08-12_Relatorio-Manus_Site-Clinica_conversao.md`). Decisão do
   Filipe: **Voz é a especialidade e a prioridade** — as duas portas NÃO são 50/50.
