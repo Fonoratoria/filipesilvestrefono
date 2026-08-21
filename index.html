@@ -1895,6 +1895,27 @@ footer a:hover { color: white; }
   .hero-whats-direto { font-size: 13.5px; color: #5a6673; }
 
 }
+/* --- 21/08/2026 (3a passada): O HERO PRECISA RESPIRAR ----------------
+   Sobrava ruído: a logo aparecia 2x (topo + dentro da foto), os espaços
+   entre os blocos eram irregulares e o flutuante verde brigava com as
+   portas. Aqui a foto vira retrato em close, os espaços seguem a escala
+   de 4px do DESIGN.md e o flutuante só aparece depois do hero. ------- */
+@media (max-width: 768px) {
+  .hero-foto { aspect-ratio: 5/4; max-height: 28vh; border-radius: 20px; }
+
+  #hero { padding-top: 20px; gap: 20px; }
+  .hero-assinatura   { margin-bottom: 4px; }
+  .hero-headline     { margin-bottom: 12px; line-height: 1.15; }
+  .hero-sub          { margin-bottom: 20px; }
+  .hero-portas       { margin: 0 0 16px; gap: 12px; }
+  .porta             { padding: 18px 44px 18px 18px; }
+  .hero-whats-direto { margin-bottom: 20px; text-decoration: none; border-bottom: 1px solid rgba(0,110,180,.25); align-self: flex-start; padding-bottom: 2px; }
+  .selo-especialista { margin-bottom: 12px; }
+
+  /* o flutuante do WhatsApp só entra depois do hero (JS liga a classe) */
+  body.hero-na-tela .whats-fab { opacity: 0; pointer-events: none; transform: scale(.85); }
+  .whats-fab { transition: opacity .25s ease, transform .25s ease; }
+}
 </style>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","x0so945ueq");</script>
 </head>
@@ -1958,8 +1979,8 @@ footer a:hover { color: white; }
       <span>cansada ou falhando?</span>
     </h1>
     <p class="hero-sub">
-      <strong>Fonoaudiólogo Especialista em Voz</strong>, com atendimento humanizado —
-      <strong>em casa ou online</strong>, em Anápolis/GO.
+      <strong>Fonoaudiólogo Especialista em Voz</strong> — atendimento humanizado
+      em casa ou online, em Anápolis/GO.
     </p>
 
     <!-- AS DUAS PORTAS — cada uma leva à landing do próprio caso.
@@ -3248,5 +3269,17 @@ header.encolhido .nav-logo{ height: 42px; }
 })();
 </script>
 
+<script>
+/* 21/08/2026 — no celular, o flutuante do WhatsApp só aparece depois do hero
+   (na primeira tela já existem as portas e o link direto). Aditivo. */
+(function(){
+  var h = document.getElementById('hero');
+  if (!h || !('IntersectionObserver' in window)) return;
+  var b = document.body;
+  new IntersectionObserver(function(e){
+    b.classList.toggle('hero-na-tela', e[0].isIntersecting && e[0].intersectionRatio > 0.25);
+  }, { threshold: [0, 0.25, 0.5] }).observe(h);
+})();
+</script>
 </body>
 </html>

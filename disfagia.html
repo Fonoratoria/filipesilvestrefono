@@ -538,5 +538,17 @@ if (!window.__convWhatsAtiva) {
   });
 }
 </script>
+<script>
+/* 21/08/2026 — no celular, o flutuante do WhatsApp só aparece depois do hero
+   (na primeira tela já existem as portas e o link direto). Aditivo. */
+(function(){
+  var h = document.getElementById('hero');
+  if (!h || !('IntersectionObserver' in window)) return;
+  var b = document.body;
+  new IntersectionObserver(function(e){
+    b.classList.toggle('hero-na-tela', e[0].isIntersecting && e[0].intersectionRatio > 0.25);
+  }, { threshold: [0, 0.25, 0.5] }).observe(h);
+})();
+</script>
 </body>
 </html>

@@ -38,6 +38,18 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-08-21 — [Claude]** — 🌬️ 3a PASSADA: RESPIRO NO HERO DO CELULAR (`index.html`,
+  `estilo.css` + script aditivo no fim de index/voz/disfagia). (1) Espaços do hero na escala de
+  4px do DESIGN.md (foto 20px assinatura 4 H1 12 sub 20 portas 16 link), portas com padding
+  maior. (2) O subtítulo do hero tinha 2 negritos picotando a frase → ficou 1 só
+  ("Fonoaudiólogo Especialista em Voz — atendimento humanizado em casa ou online"). (3) O
+  `.whats-fab` verde some enquanto o hero está na tela e volta ao rolar (IntersectionObserver
+  de 8 linhas + classe `body.hero-na-tela`); motivo: na primeira tela já existem as 2 portas e
+  o link direto — eram 4 chamadas simultâneas. Conferido nas 3 páginas: fab opacity 0 no hero
+  → 1 depois de rolar, 0 erro de console (o fetch de `reviews.json` só falha em `file://`).
+  ❌ TENTADO E REVERTIDO: dar zoom na foto (`transform:scale`) para tirar a logo repetida de
+  dentro dela — cortou a logo no meio, que é pior. A foto continua com a logo inteira.
+
 - **2026-08-21 — [Claude]** — 🧹 2a PASSADA: HERO DO CELULAR SEM POLUIÇÃO (`index.html` +
   `estilo.css`, blocos ADITIVOS no fim de cada um). Filipe: "salada de frutas" no mobile — ele
   ia usar o próprio site como amostra para VENDER landing pages. Eram 10 elementos brigando na

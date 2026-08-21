@@ -1393,3 +1393,25 @@ footer a:hover { color: white; }
   .hero-whats-direto { font-size: 13.5px; color: #5a6673; }
 
 }
+
+/* --- 21/08/2026 (3a passada): O HERO PRECISA RESPIRAR ----------------
+   Sobrava ruído: a logo aparecia 2x (topo + dentro da foto), os espaços
+   entre os blocos eram irregulares e o flutuante verde brigava com as
+   portas. Aqui a foto vira retrato em close, os espaços seguem a escala
+   de 4px do DESIGN.md e o flutuante só aparece depois do hero. ------- */
+@media (max-width: 768px) {
+  .hero-foto { aspect-ratio: 5/4; max-height: 28vh; border-radius: 20px; }
+
+  #hero { padding-top: 20px; gap: 20px; }
+  .hero-assinatura   { margin-bottom: 4px; }
+  .hero-headline     { margin-bottom: 12px; line-height: 1.15; }
+  .hero-sub          { margin-bottom: 20px; }
+  .hero-portas       { margin: 0 0 16px; gap: 12px; }
+  .porta             { padding: 18px 44px 18px 18px; }
+  .hero-whats-direto { margin-bottom: 20px; text-decoration: none; border-bottom: 1px solid rgba(0,110,180,.25); align-self: flex-start; padding-bottom: 2px; }
+  .selo-especialista { margin-bottom: 12px; }
+
+  /* o flutuante do WhatsApp só entra depois do hero (JS liga a classe) */
+  body.hero-na-tela .whats-fab { opacity: 0; pointer-events: none; transform: scale(.85); }
+  .whats-fab { transition: opacity .25s ease, transform .25s ease; }
+}
