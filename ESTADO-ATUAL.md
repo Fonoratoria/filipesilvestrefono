@@ -38,6 +38,19 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-08-21 — [Claude]** — 🧹 2a PASSADA: HERO DO CELULAR SEM POLUIÇÃO (`index.html` +
+  `estilo.css`, blocos ADITIVOS no fim de cada um). Filipe: "salada de frutas" no mobile — ele
+  ia usar o próprio site como amostra para VENDER landing pages. Eram 10 elementos brigando na
+  primeira tela. Agora, no celular, a ordem VISUAL é foto → assinatura → H1 → sub → ação
+  (2 portas no index / CTA nas landings), e credencial + prova social + legenda local descem
+  para depois da ação. **O HTML não mudou — só `order` no flex e peso visual, então SEO
+  intacto.** 🪤 GOTCHA: a regra base é `.hero-conteudo > * { order: 1 }` e só os que descem
+  levam order maior — enumerar item por item quebrou as landings (o CTA, sem `order`, saltou
+  para o topo). Selo do CFFa virou pílula branca com borda azul (regra do DESIGN.md: borda em
+  vez de sombra) e a `.secao-label` do hero virou linha leve em caixa baixa (Inter 11,5px
+  cinza, sem pílula nem bolinha). Medido em 390×844: index com as 2 portas visíveis,
+  `voz.html` CTA em 588–656, `disfagia.html` em 553–621, 0 rolagem horizontal nos três.
+
 - **2026-08-21 — [Claude]** — 📱 MESMO CONSERTO NAS LANDINGS DE ANÚNCIO (`estilo.css`, bloco
   ADITIVO no fim). `voz.html` e `disfagia.html` usam a MESMA `foto-hero.jpg` e tinham o mesmo
   `aspect-ratio:16/9` no mobile — ou seja, quem clicava no anúncio pago também caía numa
