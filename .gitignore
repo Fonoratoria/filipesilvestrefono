@@ -2,3 +2,6 @@
 fotos do site/
 avaliacoes/
 backup-imagens-orig/
+
+# scripts de teste visual (temporarios, nao fazem parte do site)
+*.py
