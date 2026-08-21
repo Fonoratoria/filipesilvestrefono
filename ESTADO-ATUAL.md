@@ -38,6 +38,31 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-08-21 — [Claude]** — 🎨 PASSE DE SISTEMA VISUAL + MENOS ROLAGEM (`index.html` e
+  `estilo.css`). Veio da auditoria de marca do dia (Drive
+  `04_MARKETING/2026-08-21_Auditoria-de-marca_Site-filipesilvestrefono.md`).
+  **(1) ESCALA TIPOGRÁFICA — a peça que faltava no DESIGN.md:** eram **27 tamanhos de fonte
+  distintos** na home (25 declarados no CSS + `rem` soltos + 4 `clamp`). Normalizados para
+  **8 degraus: 12 · 14 · 16 · 18 · 22 · 26 · 36 · 48**. Os `clamp` foram alinhados aos mesmos
+  degraus e os `rem` da seção Anápolis viraram px. Sobra só `13.33px` em botões sem texto
+  visível (hambúrguer, play do vídeo) e no "Enviar" do widget de IA — não mexi.
+  **(2) CARD PARADO USA BORDA, NÃO SOMBRA** (proibição nº5 do DESIGN.md): `.servico-card`,
+  `.diferencial-card`, `.caso-card`, `.avaliacao-card`, `.contato-item`, `.horario-box`,
+  `.triador` e `.faq-item` perderam a sombra e ganharam `1px solid rgba(0,110,180,.14)`; a
+  sombra volta no `:hover`, que é estado interativo. **(3) CANTO:** token `--raio` 14px → 8px
+  (regra "nunca acima de 8 em card"); fotos e mídia em 12px.
+  **(4) SANFONA SÓ NO CELULAR** (`<details class="sanfona">`, recurso nativo): "Sobre o título
+  de especialista", "Ver formação completa" e "Ler mais sobre o atendimento em Anápolis". No
+  computador o `summary` some e o corpo fica aberto por CSS — o desktop continua igual ao que
+  estava. **(5) VER MAIS:** no celular, casos em vídeo e diferenciais mostram o primeiro item;
+  avaliações mostram 3 (o JS do site já servia 6 dos 10 do `reviews.json`). 🪤 GOTCHA: o botão
+  precisa ser criado para **todos** os grids de cada tipo (`querySelectorAll`) — com
+  `querySelector` o segundo bloco de vídeos ficava com itens escondidos e sem botão.
+  **Medido:** home no celular **23,8 → 17,8 telas** de rolagem; `voz.html` 11,1;
+  `disfagia.html` 10,0. Desktop 17,6 telas com todo o conteúdo aberto. 0 erro de console,
+  0 rolagem horizontal, clique em todos os "ver mais" testado (abre os 4 casos e os 4
+  diferenciais). Nada de texto foi apagado — o Google continua lendo tudo.
+
 - **2026-08-21 — [Claude]** — 🌬️ 3a PASSADA: RESPIRO NO HERO DO CELULAR (`index.html`,
   `estilo.css` + script aditivo no fim de index/voz/disfagia). (1) Espaços do hero na escala de
   4px do DESIGN.md (foto 20px assinatura 4 H1 12 sub 20 portas 16 link), portas com padding
