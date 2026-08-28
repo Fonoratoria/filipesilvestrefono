@@ -3234,7 +3234,13 @@ header.encolhido .nav-logo{ height: 42px; }
 <script>
 (function(){
   var EXEC='https://script.google.com/macros/s/AKfycbxEj3uFJdDpQt3KDd_cF6KO7N3469W0ie6ypxBeA-ehVf1EIwrsRnApsbDCP6pGn58E4Q/exec';
-  var TOKEN='fono_3Jb9Kp2Qw7Zx5Tn8Rv4Lc6Yd1Hs0Mg';
+  // 🔓 A CHAVE MESTRA SAIU DAQUI EM 28/08/2026. Ela ficou neste arquivo desde
+  // 05/06, num repositorio PUBLICO, e abria a base INTEIRA de pacientes
+  // (get/save/ler_agenda). Site estatico nao tem onde esconder segredo:
+  // o de baixo TAMBEM fica a vista — a diferenca e que ele SO conversa.
+  // ⛔ NUNCA voltar a por o APP_TOKEN aqui. Se precisar de dado do app no
+  //    site, o caminho e um intermediario no servidor, nunca a chave no HTML.
+  var SECRET='site_ai_obskzhUTcTGHTr-bBpF09bqbnd56tTf_';
   var WA='556298814511';
   var MODEL='claude-haiku-4-5';
   var SYS="Voce e a assistente virtual do site do fonoaudiologo Filipe Silvestre (Anapolis-GO, atendimento domiciliar, adultos). O Filipe atende APENAS estas tres areas: 1) Voz e rouquidao; 2) Disfagia (dificuldade para engolir); 3) Performance comunicativa (comunicacao, oratoria, voz profissional, desenvoltura para falar em publico/trabalho). Ele NAO atende fono infantil, fala/linguagem de crianca, nem outras areas. Se perguntarem sobre crianca, fala infantil ou area fora dessas tres, explique com gentileza que o Filipe trabalha com adultos nessas tres areas (voz, disfagia e performance comunicativa) e que talvez nao seja o caso dele. Seja acolhedora e breve: no maximo 3 ou 4 linhas, em portugues do Brasil. Faca no maximo UMA pergunta por vez. Escreva em TEXTO SIMPLES: nao use markdown, asteriscos, negrito nem listas numeradas. NAO de diagnostico nem prescricao: oriente e incentive a avaliacao com o Filipe. Assim que entender o que a pessoa precisa (ou se ela quiser agendar), finalize a sua resposta com UMA linha exatamente neste formato: [[WHATSAPP: mensagem curta em primeira pessoa que a pessoa enviaria ao Filipe resumindo o caso]]. Nao comente nem explique esse marcador.";
@@ -3276,7 +3282,7 @@ header.encolhido .nav-logo{ height: 42px; }
     busy=true; btn.disabled=true; typing(true);
     try{
       var res=await fetch(EXEC,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body:JSON.stringify({token:TOKEN,action:'ai',model:MODEL,system:SYS,messages:msgs,max_tokens:400})});
+        body:JSON.stringify({secret:SECRET,action:'site_ai',system:SYS,messages:msgs})});
       var r=await res.json();
       var txt=(r&&r.ok&&r.text)?r.text:'Tive um probleminha aqui. Pode tentar de novo? Ou fale direto no WhatsApp 👇';
       var m=txt.match(/\[\[WHATSAPP:\s*([\s\S]*?)\]\]/i);

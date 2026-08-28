@@ -92,8 +92,16 @@ Ads dispara exatamente nesse link.
 
 ## 🔴 Segurança — o repo é PÚBLICO
 
-- **O token do assistente de IA e o endpoint do Apps Script estão em texto puro dentro do
-  HTML** que qualquer visitante baixa. Trate como público: nunca mande dado de paciente por
-  esse widget.
+- **Tudo que está no HTML é público** — o visitante baixa e lê. Nunca mande dado de paciente
+  pelo widget da assistente.
+- 🔑 **A CHAVE MESTRA SAIU DAQUI EM 28/08/2026** (⚠️ linha atualizada pelo Claude na obra do
+  dia; antes ela dizia que o token do assistente estava no HTML — e estava, desde 05/06).
+  Hoje o HTML leva um `SECRET` que **só conversa** com a assistente (`action:'site_ai'`);
+  ele fica exposto de propósito, porque site estático não tem onde esconder segredo — a
+  diferença é que ele **não abre** `get`, `save` nem `ler_agenda`.
+  ⛔ **NUNCA voltar a pôr o `APP_TOKEN` neste repositório.** Se o site precisar de algum dado
+  do app, o caminho é uma porta limitada no servidor (`Code.gs`), nunca a chave no HTML.
+  ⏳ Enquanto o `SITE_AI_SECRET` não estiver cadastrado no Apps Script, a assistente responde
+  com o recado de erro e oferece o WhatsApp — é o comportamento esperado, não é bug.
 - **Confira o que entra no stage antes de commitar** — já houve arquivo pessoal versionado
   aqui. O que entra no repo público fica no histórico do git mesmo depois de apagado.
