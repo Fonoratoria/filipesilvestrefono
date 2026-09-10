@@ -769,6 +769,15 @@ nav {
   margin-bottom: 20px;
 }
 
+/* link do Balbuu dentro do texto do "Quem sou eu?" — 10/09/2026.
+   Sem cor e sem sublinhado ele ficava igual ao texto e ninguem clicava. */
+.sobre-texto a.link-balbuu {
+  color: var(--azul);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sobre-texto a.link-balbuu:hover { color: var(--azul-escuro); }
+
 .formacao-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2241,6 +2250,11 @@ body.aval-todas #avaliacoes-grid .avaliacao-card { display: block; }
           pelo Conselho Federal de Fonoaudiologia (CFFa), e atendimento domiciliar
           e online em Anápolis/GO. Com zelo, originalidade e visão, ofereço um cuidado
           humanizado e baseado em evidências — no conforto da sua própria casa.
+        </p>
+        <p class="sobre-texto">
+          Sou também o criador do <a class="link-balbuu" href="https://balbuu.com.br" target="_blank" rel="noopener"><strong>Balbuu</strong></a>,
+          aplicativo brasileiro de estimulação dos sons da fala para crianças, testado por
+          26 fonoaudiólogos antes do lançamento.
         </p>
         <details class="sanfona"><summary>Sobre o título de especialista e o meu propósito</summary>
 <div class="sanfona-corpo">
