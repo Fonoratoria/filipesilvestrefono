@@ -2580,6 +2580,47 @@ body.aval-todas #avaliacoes-grid .avaliacao-card { display: block; }
 
 
 <!-- =============================================
+     SEÇÃO — PARCERIAS (15/09/2026): só o Balbuu, com o Filipe como CRIADOR.
+     As cores do Balbuu ficam só no cartão dele, de propósito: é a marca do app.
+============================================= -->
+<style>
+  #parcerias { background: var(--bg-suave); padding: var(--secao-v) var(--secao-h); }
+  #parcerias .parc-header { text-align: center; }
+  .parc-card { display: flex; align-items: center; gap: 32px; max-width: 860px; margin: 36px auto 0; padding: 32px 36px; background: #fff; border: 1px solid rgba(36,191,173,.45); border-radius: 16px; color: inherit; text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+  .parc-card:hover { transform: translateY(-2px); border-color: #24BFAD; }
+  .parc-card img { width: 170px; height: auto; flex: none; }
+  .parc-selo { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #159C8E; background: #e9f8f6; padding: 5px 12px; border-radius: 999px; }
+  .parc-card h3 { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 30px; color: var(--grafite); margin: 10px 0 8px; }
+  .parc-card p { font-size: 16px; line-height: 1.7; color: var(--cinza-texto); margin: 0 0 18px; }
+  .parc-botao { display: inline-block; font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 999px; background: #159C8E; color: #fff; }
+  @media (max-width: 720px) {
+    .parc-card { flex-direction: column; text-align: center; padding: 26px 20px; gap: 16px; }
+    .parc-card img { width: 130px; }
+    .parc-card h3 { font-size: 26px; }
+  }
+</style>
+<section id="parcerias" aria-label="Parcerias">
+  <div class="container">
+    <div class="parc-header">
+      <span class="secao-label" style="margin: 0 auto 14px;">Parcerias</span>
+      <h2 class="titulo-secao">Um projeto que eu criei</h2>
+    </div>
+    <a class="parc-card" href="https://balbuu.com.br/?utm_source=filipesilvestrefono&amp;utm_medium=parcerias" target="_blank" rel="noopener">
+      <img src="balbuu.webp" width="340" height="337" alt="Balbuu, o mascote do app" loading="lazy">
+      <div>
+        <span class="parc-selo">Criador: Filipe Silvestre</span>
+        <h3>Balbuu</h3>
+        <p>App brasileiro de sons da fala para crianças. São 33 sons, quase 300 palavras com foto
+           e voz real, músicas e jogos, para a família praticar em casa. Criado e gravado por mim,
+           como fonoaudiólogo.</p>
+        <span class="parc-botao">Conhecer o Balbuu</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<!-- =============================================
      SEÇÃO — FONOAUDIOLOGIA EM ANÁPOLIS + FAQ  (SEO local)
      Adicionada em 24/06/2026. Conteúdo local + perguntas frequentes com
      FAQPage schema (alvo da busca "fonoaudiologia em Anápolis").
