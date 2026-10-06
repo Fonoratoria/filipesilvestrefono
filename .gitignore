@@ -5,3 +5,6 @@ backup-imagens-orig/
 
 # scripts de teste visual (temporarios, nao fazem parte do site)
 *.py
+
+# protótipos de review (não são o site, não publicar)
+preview-*.html

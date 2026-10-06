@@ -456,6 +456,40 @@
 </a>
 
 
+<!-- 06/10/2026: aviso de cookies COPIADO da home (index.html). Sem ele, quem chegava do anúncio
+     direto nesta página nunca escolhia, o Consent Mode ficava negado e o Google Ads não contava o contato. -->
+<!-- =============================================
+     BANNER DE COOKIES (LGPD) — controla o Modo de Consentimento do Google
+============================================= -->
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos cookies para medir resultados de anúncios. Você escolhe. <a href="cookies.html">Política de Cookies</a>.</p>
+  <div class="ck-botoes">
+    <button type="button" class="ck-rejeitar" onclick="cookieConsent(false)">Rejeitar</button>
+    <button type="button" class="ck-aceitar" onclick="cookieConsent(true)">Aceitar</button>
+  </div>
+</div>
+<script>
+  // Mostra o banner só se ainda não houve escolha; ao aceitar, libera os cookies no Consent Mode.
+  (function () {
+    var escolha = null;
+    try { escolha = localStorage.getItem('cookieConsent'); } catch (e) { console.warn("[cookies] localStorage indisponível:", e); }
+    if (!escolha) {
+      var b = document.getElementById('cookie-banner');
+      if (b) { b.classList.add('mostrar'); document.body.classList.add('ck-aberto'); }
+    }
+  })();
+  function cookieConsent(aceitou) {
+    try { localStorage.setItem('cookieConsent', aceitou ? 'aceito' : 'rejeitado'); } catch (e) { console.warn("[cookies] localStorage indisponível:", e); }
+    if (aceitou && typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        'ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted','analytics_storage':'granted'
+      });
+    }
+    var b = document.getElementById('cookie-banner'); if (b) b.classList.remove('mostrar');
+    document.body.classList.remove('ck-aberto');
+  }
+</script>
+
 <script>
 // Menu mobile (mesmo do index)
 function toggleMenu() {

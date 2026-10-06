@@ -38,9 +38,23 @@
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
 
+- **2026-10-06 — [Claude]** — 🍪 AVISO DE COOKIES NAS LANDINGS (`voz.html` + `disfagia.html`). Fecha o
+  achado aberto desde 12/08: quem chegava do anúncio direto numa landing nunca escolhia, o Consent Mode
+  ficava negado e o Google Ads não contava o contato. O bloco HTML+JS foi **COPIADO da home** (mesmo
+  `id="cookie-banner"`, mesma chave `cookieConsent`, mesmo `gtag("consent","update")`); só os 2 `catch`
+  vazios viraram `console.warn`. O CSS compacto já estava no `estilo.css` desde 12/08 — faltava só o HTML.
+  Testado no preview (375×812 e 1024px): aviso aparece sem cobrir o botão de WhatsApp (CTA voz 579–649,
+  disfagia 546–616; aviso a partir de 712), Rejeitar/Aceitar somem e guardam a escolha, recarregar não
+  mostra de novo, Aceitar manda `consent update: granted`, clique no WhatsApp segue disparando
+  `whatsapp_click` + `conversion`; com o armazenamento bloqueado o aviso some e o erro aparece no console.
+  0 erro de console. Junto: 2 caminhos corrigidos neste arquivo e `.gitignore` com `preview-*.html`
+  (pendentes desde 22/08). Mesmo dia, no Google Ads (campanha "Domiciliar e clinica"): teto R$4,50,
+  seg–sex 8h–18h, 2 palavras exatas, 17 negativas e 2º anúncio — ver Drive
+  `04_MARKETING/ADS/2026-10-05_ANALISE_google-ads-domiciliar-e-clinica.md`.
+
 - **2026-08-21 — [Claude]** — 🎨 PASSE DE SISTEMA VISUAL + MENOS ROLAGEM (`index.html` e
   `estilo.css`). Veio da auditoria de marca do dia (Drive
-  `04_MARKETING/2026-08-21_Auditoria-de-marca_Site-filipesilvestrefono.md`).
+  `04_MARKETING/Instagram e site/2026-08-21_Auditoria-de-marca_Site-filipesilvestrefono.md`).
   **(1) ESCALA TIPOGRÁFICA — a peça que faltava no DESIGN.md:** eram **27 tamanhos de fonte
   distintos** na home (25 declarados no CSS + `rem` soltos + 4 `clamp`). Normalizados para
   **8 degraus: 12 · 14 · 16 · 18 · 22 · 26 · 36 · 48**. Os `clamp` foram alinhados aos mesmos
@@ -107,7 +121,7 @@
   media query). Motivo: Filipe ia apresentar o site e viu quebrado no celular.
 
 - **2026-08-12 — [Claude]** — 🎯 PASSE DE CONVERSÃO, a partir da auditoria do Manus
-  (`04_MARKETING/2026-08-12_Relatorio-Manus_Site-Clinica_conversao.md`). Decisão do
+  (`04_MARKETING/Relatorios-Manus/2026-08-12_Relatorio-Manus_Site-Clinica_conversao.md`). Decisão do
   Filipe: **Voz é a especialidade e a prioridade** — as duas portas NÃO são 50/50.
   **(1) HERO DAS DUAS PORTAS** (`index.html`): o H1 que misturava 3 públicos ("Sua voz
   firme… Refeições sem medo… Palavras que reconectam") virou pergunta de sintoma de VOZ
