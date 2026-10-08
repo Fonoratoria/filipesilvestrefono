@@ -37,6 +37,17 @@
 
 ## 📝 CHANGELOG — adicionar no TOPO a cada mudança
 > Formato: **[AAAA-MM-DD] — [Cline ou Claude] — o que mudou (arquivos + resumo)**
+- **2026-10-08 — [Claude]** — 📝 BLOG NO AR (`/blog/`), 20 textos: 14 de voz e 6 de deglutição. Fonte em
+  `_blog-fonte/artigos/*.md` (pasta com `_` não é publicada pelo GitHub Pages). Montagem: `node _blog-fonte/montar.mjs`
+  gera `blog/<slug>/index.html`, `blog/index.html`, `blog/blog.css`, `blog/feed.xml` e reescreve SÓ as linhas /blog/ do
+  `sitemap.xml`; ⛔ não editar `blog/` à mão. A montagem PARA se achar palavra proibida do CFFa (cura, garantido,
+  especialista em disfagia, criança…) ou link interno quebrado. Capas 1200×630 por `node _blog-fonte/capas.mjs`
+  (puppeteer-core global). Cabeçalho, rodapé, aviso de cookies e medição COPIADOS da `voz.html` para o `site.mjs`:
+  clique no WhatsApp do blog dispara `whatsapp_click` (com `origem: blog` e o serviço tirado da categoria do texto,
+  `data-servico` no body) + a conversão do Ads — testado no preview. Link "Blog" no menu da home e no rodapé das 3
+  páginas (landings só no rodapé, para não abrir fuga no anúncio). Textos escritos com Haiku e revisados um a um
+  (clínica e compliance) — ⏳ o Filipe ainda vai reler a parte clínica.
+
 
 - **2026-10-06 — [Claude]** — 🍪 AVISO DE COOKIES NAS LANDINGS (`voz.html` + `disfagia.html`). Fecha o
   achado aberto desde 12/08: quem chegava do anúncio direto numa landing nunca escolhia, o Consent Mode
